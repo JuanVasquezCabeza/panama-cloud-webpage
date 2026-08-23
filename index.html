@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juan Vicente | High-Performance Cloud Architect & DevOps Specialist</title>
+    <meta name="description" content="Personal landing page of Juan Vicente, a DevOps Systems Engineer and Full-Stack Developer specializing in high-density, low-latency cloud ecosystems.">
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Modern CSS Variables & Resets */
+        :root {
+            --bg-dark: #0a0f1d;
+            --bg-card: #131b2e;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-cyan: #00f2fe;
+            --accent-blue: #4facfe;
+            --accent-panama: #ff2a5f; /* Panama Flag Red accent */
+            --accent-panama-blue: #0051b5; /* Panama Flag Blue accent */
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Ambient Glow Backgrounds */
+        .ambient-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(79, 172, 254, 0.08) 0%, rgba(0, 242, 254, 0.02) 50%, rgba(0,0,0,0) 100%);
+            top: -200px;
+            right: -100px;
+            z-index: 0;
+            pointer-events: none;
+            border-radius: 50%;
+        }
+
+        .ambient-glow-2 {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 42, 95, 0.04) 0%, rgba(0,0,0,0) 70%);
+            bottom: -100px;
+            left: -100px;
+            z-index: 0;
+            pointer-events: none;
+            border-radius: 50%;
+        }
+
+        /* Container & Layout */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            padding: 2.5rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-panama);
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 6rem 0 4rem;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        @media (max-width: 868px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 3rem;
+                padding: 3rem 0;
+            }
+        }
+
+        .badge {
+            background: rgba(0, 242, 254, 0.08);
+            border: 1px solid rgba(0, 242, 254, 0.2);
+            color: var(--accent-cyan);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 40%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            max-width: 580px;
+        }
+
+        @media (max-width: 868px) {
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        /* Interactive Panama Widget */
+        .widget-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+        }
+
+        .widget-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-panama-blue), #ffffff, var(--accent-panama));
+        }
+
+        .widget-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 242, 254, 0.15);
+            box-shadow: 0 25px 50px rgba(0, 242, 254, 0.05);
+        }
+
+        .widget-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .widget-time {
+            font-size: 2.25rem;
+            font-weight: 700;
+            font-variant-numeric: tabular-nums;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #ffffff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .widget-timezone {
+            font-size: 0.85rem;
+            color: var(--accent-cyan);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .latency-indicator {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .metric-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.875rem;
+        }
+
+        .metric-label {
+            color: var(--text-secondary);
+        }
+
+        .metric-value {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .metric-value.green {
+            color: #10b981;
+        }
+
+        /* Buttons & Actions */
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+        }
+
+        @media (max-width: 868px) {
+            .btn-group {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .btn-group {
+                flex-direction: column;
+            }
+        }
+
+        .btn {
+            padding: 0.875rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            color: #020617;
+            box-shadow: 0 10px 20px rgba(0, 242, 254, 0.15);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(0, 242, 254, 0.25);
+            opacity: 0.95;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-primary);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        /* Ecosystem Features Section */
+        .features {
+            padding: 4rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: rgba(19, 27, 46, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            transition: var(--transition-smooth);
+        }
+
+        .card:hover {
+            background: var(--bg-card);
+            border-color: rgba(0, 242, 254, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(79, 172, 254, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-cyan);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 3rem 0;
+            margin-top: 4rem;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .footer-logo {
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-glow"></div>
+    <div class="ambient-glow-2"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                panama-cloud<span class="logo-dot"></span>
+            </div>
+            <div>
+                <a href="#features" class="btn btn-secondary" style="padding: 0.5rem 1.2rem; font-size: 0.85rem; border-radius: 8px;">Stack Specs</a>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div>
+                <div class="badge">
+                    <span style="display:inline-block; width:8px; height:8px; background-color:#10b981; border-radius:50%; animation: pulse 2s infinite;"></span>
+                    Panama Edge Optimization Active
+                </div>
+                <h1>High-Density Dev Cloud</h1>
+                <p>
+                    A low-latency, self-hosted Docker PaaS designed for instant-loading, cost-effective deployments. Powered by Coolify on high-efficiency VPS hardware, integrated with Cloudflare's local Panama City caching edge.
+                </p>
+                
+                <div class="btn-group">
+                    <a href="https://github.com" target="_blank" rel="noopener" class="btn btn-primary">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" style="margin-right:0.25rem;"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" /></svg>
+                        Deploy via GitHub
+                    </a>
+                    <a href="#features" class="btn btn-secondary">Explore Architecture</a>
+                </div>
+            </div>
+
+            <!-- Sidebar / Interaction Widget -->
+            <div class="widget-card">
+                <div class="widget-title">
+                    <span>Edge Node Location</span>
+                    <span style="font-weight: 700; color: var(--accent-panama)">PTY 🇵🇦</span>
+                </div>
+                <div class="widget-time" id="local-time">--:--:--</div>
+                <div class="widget-timezone">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    Panama Standard Time (EST)
+                </div>
+                
+                <div class="latency-indicator">
+                    <div class="metric-row">
+                        <span class="metric-label">Target Cloud Latency</span>
+                        <span class="metric-value green" id="latency-val">~32 ms</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Container RAM Allocation</span>
+                        <span class="metric-value">&lt; 10 MB</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Cloudflare Edge Status</span>
+                        <span class="metric-value green">Bypassed (Instant Cache)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ecosystem Features -->
+        <section class="features" id="features">
+            <div class="section-header">
+                <h2>Our High-Density Blueprint</h2>
+                <p>Minimalist footprint, maximum speed. Handcrafted configurations for modern self-hosting.</p>
+            </div>
+
+            <div class="grid">
+                <!-- Card 1 -->
+                <div class="card">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+                    </div>
+                    <h3>Cloudflare Free Tier</h3>
+                    <p>Static assets are fully cached at Cloudflare's Panama City edge node, eliminating server round-trips for repetitive requests and resulting in &lt;10ms local TTFB.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="card">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+                    </div>
+                    <h3>Self-Hosted Coolify</h3>
+                    <p>Docker-powered PaaS managing resource orchestration on low-cost VPS instances. Instant webhook-based automated Git deployments, automatic SSL certificates, and zero platform taxes.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="card">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    </div>
+                    <h3>Alpine-Nginx Engine</h3>
+                    <p>Multi-stage Docker builds stripped down to raw binary running on Alpine Linux. Optimized worker processes limit RAM consumption to under 10MB, maximizing server density.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-logo">panama-cloud</div>
+            <div>&copy; 2026 Juan Vicente. Built with ultra-light structural composition.</div>
+        </footer>
+    </div>
+
+    <!-- Live Timer Script -->
+    <script>
+        function updateTime() {
+            const timeElement = document.getElementById('local-time');
+            const options = {
+                timeZone: 'America/Panama',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            };
+            
+            try {
+                const now = new Date();
+                timeElement.textContent = now.toLocaleTimeString('en-US', options);
+            } catch (e) {
+                console.error("Timezone lookup error, fallback to local:", e);
+                const now = new Date();
+                timeElement.textContent = now.toTimeString().split(' ')[0];
+            }
+        }
+
+        // Live ping latency simulator (simulates real time interaction)
+        function simulateLatency() {
+            const latencyElement = document.getElementById('latency-val');
+            setInterval(() => {
+                const base = 30; // ~30ms ping to Miami from Panama
+                const jitter = Math.floor(Math.random() * 5); // 0 to 4ms jitter
+                latencyElement.textContent = `~${base + jitter} ms`;
+            }, 3000);
+        }
+
+        // Initialize
+        updateTime();
+        setInterval(updateTime, 1000);
+        simulateLatency();
+    </script>
+</body>
+</html>
