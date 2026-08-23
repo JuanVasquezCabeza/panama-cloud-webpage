@@ -3,27 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Juan Vicente | High-Performance Cloud Architect & DevOps Specialist</title>
-    <meta name="description" content="Personal landing page of Juan Vicente, a DevOps Systems Engineer and Full-Stack Developer specializing in high-density, low-latency cloud ecosystems.">
+    <title>Minos Consulting | Enterprise Intelligence & Tech Flywheels</title>
+    <meta name="description" content="Minos Consulting bridges business strategy, advanced data science, and modern software engineering to build resilient intelligence layers and growth flywheels.">
     
-    <!-- Google Fonts: Inter -->
+    <!-- Google Fonts: Inter & JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     
     <style>
         /* Modern CSS Variables & Resets */
         :root {
-            --bg-dark: #0a0f1d;
-            --bg-card: #131b2e;
+            --bg-dark: #080c14;
+            --bg-card: #101626;
             --text-primary: #f8fafc;
             --text-secondary: #94a3b8;
-            --accent-cyan: #00f2fe;
-            --accent-blue: #4facfe;
-            --accent-panama: #ff2a5f; /* Panama Flag Red accent */
-            --accent-panama-blue: #0051b5; /* Panama Flag Blue accent */
+            --accent-cyan: #38bdf8;
+            --accent-indigo: #6366f1;
+            --accent-green: #10b981;
+            --border-color: rgba(255, 255, 255, 0.05);
             --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
         }
 
         * {
@@ -44,9 +45,9 @@
         /* Ambient Glow Backgrounds */
         .ambient-glow {
             position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(79, 172, 254, 0.08) 0%, rgba(0, 242, 254, 0.02) 50%, rgba(0,0,0,0) 100%);
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, rgba(56, 189, 248, 0.02) 50%, rgba(0,0,0,0) 100%);
             top: -200px;
             right: -100px;
             z-index: 0;
@@ -56,10 +57,10 @@
 
         .ambient-glow-2 {
             position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(255, 42, 95, 0.04) 0%, rgba(0,0,0,0) 70%);
-            bottom: -100px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.05) 0%, rgba(0,0,0,0) 70%);
+            bottom: 20%;
             left: -100px;
             z-index: 0;
             pointer-events: none;
@@ -68,7 +69,7 @@
 
         /* Container & Layout */
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
             position: relative;
@@ -83,35 +84,36 @@
         }
 
         .logo {
-            font-size: 1.25rem;
+            font-size: 1.35rem;
             font-weight: 800;
-            letter-spacing: -0.05em;
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.04em;
+            color: var(--text-primary);
+            text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.6rem;
         }
 
-        .logo-dot {
-            width: 8px;
-            height: 8px;
-            background-color: var(--accent-panama);
-            border-radius: 50%;
+        .logo-mark {
             display: inline-block;
+            width: 14px;
+            height: 14px;
+            border: 3px solid var(--accent-cyan);
+            border-top: 3px solid var(--accent-indigo);
+            border-radius: 3px;
+            transform: rotate(45deg);
         }
 
         /* Hero Section */
         .hero {
-            padding: 6rem 0 4rem;
+            padding: 5rem 0 4rem;
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
+            grid-template-columns: 1.15fr 0.85fr;
             gap: 4rem;
             align-items: center;
         }
 
-        @media (max-width: 868px) {
+        @media (max-width: 968px) {
             .hero {
                 grid-template-columns: 1fr;
                 text-align: center;
@@ -121,10 +123,10 @@
         }
 
         .badge {
-            background: rgba(0, 242, 254, 0.08);
-            border: 1px solid rgba(0, 242, 254, 0.2);
+            background: rgba(99, 102, 241, 0.08);
+            border: 1px solid rgba(99, 102, 241, 0.2);
             color: var(--accent-cyan);
-            padding: 0.5rem 1rem;
+            padding: 0.5rem 1.1rem;
             border-radius: 9999px;
             font-size: 0.85rem;
             font-weight: 600;
@@ -135,7 +137,7 @@
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 3.75rem;
             font-weight: 800;
             line-height: 1.15;
             letter-spacing: -0.03em;
@@ -147,108 +149,22 @@
 
         @media (max-width: 640px) {
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.75rem;
             }
         }
 
         .hero p {
-            font-size: 1.125rem;
+            font-size: 1.15rem;
             color: var(--text-secondary);
             margin-bottom: 2.5rem;
-            max-width: 580px;
+            max-width: 620px;
         }
 
-        @media (max-width: 868px) {
+        @media (max-width: 968px) {
             .hero p {
                 margin-left: auto;
                 margin-right: auto;
             }
-        }
-
-        /* Interactive Panama Widget */
-        .widget-card {
-            background: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            position: relative;
-            overflow: hidden;
-            transition: var(--transition-smooth);
-        }
-
-        .widget-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent-panama-blue), #ffffff, var(--accent-panama));
-        }
-
-        .widget-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(0, 242, 254, 0.15);
-            box-shadow: 0 25px 50px rgba(0, 242, 254, 0.05);
-        }
-
-        .widget-title {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .widget-time {
-            font-size: 2.25rem;
-            font-weight: 700;
-            font-variant-numeric: tabular-nums;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, #ffffff, #94a3b8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .widget-timezone {
-            font-size: 0.85rem;
-            color: var(--accent-cyan);
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .latency-indicator {
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding-top: 1.25rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-
-        .metric-row {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.875rem;
-        }
-
-        .metric-label {
-            color: var(--text-secondary);
-        }
-
-        .metric-value {
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        .metric-value.green {
-            color: #10b981;
         }
 
         /* Buttons & Actions */
@@ -257,7 +173,7 @@
             gap: 1rem;
         }
 
-        @media (max-width: 868px) {
+        @media (max-width: 968px) {
             .btn-group {
                 justify-content: center;
             }
@@ -271,7 +187,7 @@
 
         .btn {
             padding: 0.875rem 2rem;
-            border-radius: 12px;
+            border-radius: 10px;
             font-weight: 600;
             text-decoration: none;
             font-size: 0.95rem;
@@ -284,32 +200,155 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
-            color: #020617;
-            box-shadow: 0 10px 20px rgba(0, 242, 254, 0.15);
+            background: linear-gradient(135deg, var(--accent-indigo), var(--accent-cyan));
+            color: #ffffff;
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.2);
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 15px 30px rgba(0, 242, 254, 0.25);
+            box-shadow: 0 15px 30px rgba(99, 102, 241, 0.35);
             opacity: 0.95;
         }
 
         .btn-secondary {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
             color: var(--text-primary);
         }
 
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.06);
             border-color: rgba(255, 255, 255, 0.15);
             transform: translateY(-2px);
         }
 
-        /* Ecosystem Features Section */
-        .features {
-            padding: 4rem 0;
+        /* Interactive Simulator Widget */
+        .widget-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+        }
+
+        .widget-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-indigo), var(--accent-cyan));
+        }
+
+        .widget-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(56, 189, 248, 0.15);
+            box-shadow: 0 25px 50px rgba(56, 189, 248, 0.05);
+        }
+
+        .widget-title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font-mono);
+        }
+
+        .widget-metric-box {
+            background: rgba(8, 12, 20, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.25rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .widget-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.3rem;
+        }
+
+        .widget-value {
+            font-size: 2.25rem;
+            font-weight: 700;
+            font-family: var(--font-mono);
+            color: var(--accent-cyan);
+            letter-spacing: -0.02em;
+        }
+
+        .calculator-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .control-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            outline: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--accent-cyan);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.15);
+            background: var(--accent-indigo);
+        }
+
+        .badge-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 1.5rem;
+        }
+
+        .tech-badge {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 0.25rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-family: var(--font-mono);
+        }
+
+        /* 3-Pillar Service Grid Section */
+        .section-padding {
+            padding: 6rem 0;
         }
 
         .section-header {
@@ -318,75 +357,258 @@
         }
 
         .section-header h2 {
-            font-size: 2rem;
+            font-size: 2.25rem;
             font-weight: 800;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.03em;
             margin-bottom: 1rem;
         }
 
         .section-header p {
             color: var(--text-secondary);
-            max-width: 500px;
+            max-width: 600px;
             margin: 0 auto;
+            font-size: 1.05rem;
         }
 
-        .grid {
+        .grid-3 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
         }
 
-        .card {
-            background: rgba(19, 27, 46, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            padding: 2.5rem 2rem;
-            border-radius: 16px;
+        .pillar-card {
+            background: rgba(16, 22, 38, 0.4);
+            border: 1px solid var(--border-color);
+            padding: 3rem 2.25rem;
+            border-radius: 20px;
             transition: var(--transition-smooth);
-        }
-
-        .card:hover {
-            background: var(--bg-card);
-            border-color: rgba(0, 242, 254, 0.1);
-            transform: translateY(-4px);
-        }
-
-        .card-icon {
-            width: 48px;
-            height: 48px;
-            background: rgba(79, 172, 254, 0.1);
-            border-radius: 12px;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent-cyan);
-            font-size: 1.5rem;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .pillar-card:hover {
+            background: var(--bg-card);
+            border-color: rgba(56, 189, 248, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .pillar-num {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--accent-indigo);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .pillar-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .pillar-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
             margin-bottom: 1.5rem;
         }
 
-        .card h3 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 0.75rem;
+        .bullet-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            margin-bottom: 2rem;
         }
 
-        .card p {
+        .bullet-list li {
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .bullet-list li::before {
+            content: "✓";
+            color: var(--accent-cyan);
+            font-weight: bold;
+        }
+
+        /* Leadership Profiles */
+        .leadership-section {
+            background: rgba(16, 22, 38, 0.2);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .founders-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .founders-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .profile-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 2.5rem;
+            border-radius: 20px;
+            transition: var(--transition-smooth);
+        }
+
+        .profile-card:hover {
+            border-color: rgba(99, 102, 241, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .profile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1.25rem;
+        }
+
+        .profile-title h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .profile-role {
+            font-size: 0.9rem;
+            color: var(--accent-cyan);
+            font-weight: 500;
+        }
+
+        .profile-avatar-placeholder {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-indigo), var(--accent-cyan));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #ffffff;
+            font-size: 1.15rem;
+        }
+
+        .profile-bio {
             color: var(--text-secondary);
             font-size: 0.95rem;
-            line-height: 1.5;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-section {
+            margin-top: 1.25rem;
+        }
+
+        .skill-title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-secondary);
+            margin-bottom: 0.6rem;
+            font-weight: 600;
+        }
+
+        /* Interactive Contact Form Audit */
+        .contact-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 3rem 2.5rem;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 640px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            background: rgba(8, 12, 20, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 0.85rem 1rem;
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            outline: none;
+            transition: var(--transition-smooth);
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.1);
         }
 
         /* Footer */
         footer {
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 3rem 0;
-            margin-top: 4rem;
-            text-align: center;
+            border-top: 1px solid var(--border-color);
+            padding: 4rem 0 3rem;
             color: var(--text-secondary);
             font-size: 0.9rem;
+            text-align: center;
         }
 
-        .footer-logo {
-            margin-bottom: 1rem;
+        .footer-grid {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 640px) {
+            .footer-grid {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+
+        .footer-tagline {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
         }
     </style>
 </head>
@@ -398,11 +620,12 @@
     <div class="container">
         <!-- Header -->
         <header>
-            <div class="logo">
-                panama-cloud<span class="logo-dot"></span>
-            </div>
+            <a href="#" class="logo">
+                <span class="logo-mark"></span>
+                minos.consulting
+            </a>
             <div>
-                <a href="#features" class="btn btn-secondary" style="padding: 0.5rem 1.2rem; font-size: 0.85rem; border-radius: 8px;">Stack Specs</a>
+                <a href="#audit" class="btn btn-secondary" style="padding: 0.55rem 1.2rem; font-size: 0.85rem; border-radius: 8px;">Request Audit</a>
             </div>
         </header>
 
@@ -410,132 +633,311 @@
         <section class="hero">
             <div>
                 <div class="badge">
-                    <span style="display:inline-block; width:8px; height:8px; background-color:#10b981; border-radius:50%; animation: pulse 2s infinite;"></span>
+                    <span style="display:inline-block; width:8px; height:8px; background-color:var(--accent-green); border-radius:50%; animation: pulse 2s infinite;"></span>
                     Panama Edge Optimization Active
                 </div>
-                <h1>High-Density Dev Cloud</h1>
+                <h1>We Engineer Enterprise Intelligence & RevOps Flywheels</h1>
                 <p>
-                    A low-latency, self-hosted Docker PaaS designed for instant-loading, cost-effective deployments. Powered by Coolify on high-efficiency VPS hardware, integrated with Cloudflare's local Panama City caching edge.
+                    Minos Consulting bridges high-level business strategy, advanced data science, and modern software engineering to build resilient intelligence layers, automated RevOps engines, and scalable digital products.
                 </p>
                 
                 <div class="btn-group">
-                    <a href="https://github.com" target="_blank" rel="noopener" class="btn btn-primary">
-                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" style="margin-right:0.25rem;"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" /></svg>
-                        Deploy via GitHub
-                    </a>
-                    <a href="#features" class="btn btn-secondary">Explore Architecture</a>
+                    <a href="#audit" class="btn btn-primary">Schedule Technical Audit</a>
+                    <a href="#pillars" class="btn btn-secondary">Explore Capabilities</a>
                 </div>
             </div>
 
-            <!-- Sidebar / Interaction Widget -->
+            <!-- Interactive Metrics Simulator Widget -->
             <div class="widget-card">
                 <div class="widget-title">
-                    <span>Edge Node Location</span>
-                    <span style="font-weight: 700; color: var(--accent-panama)">PTY 🇵🇦</span>
-                </div>
-                <div class="widget-time" id="local-time">--:--:--</div>
-                <div class="widget-timezone">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                    Panama Standard Time (EST)
+                    <span>Flywheel Metrics Simulator</span>
+                    <span style="font-weight: 700; color: var(--accent-cyan); font-family: var(--font-mono);">ACTIVE</span>
                 </div>
                 
-                <div class="latency-indicator">
-                    <div class="metric-row">
-                        <span class="metric-label">Target Cloud Latency</span>
-                        <span class="metric-value green" id="latency-val">~32 ms</span>
+                <div class="widget-metric-box">
+                    <div class="widget-label">Estimated Annual Growth Flywheel Value</div>
+                    <div class="widget-value" id="flywheel-val">$184,000</div>
+                </div>
+                
+                <div class="calculator-controls">
+                    <div class="control-group">
+                        <div class="control-header">
+                            <span>Current Annual Lead Flow</span>
+                            <span id="leads-lbl" style="color:var(--accent-cyan); font-family:var(--font-mono);">5,000</span>
+                        </div>
+                        <input type="range" id="leads-input" min="1000" max="50000" step="1000" value="5000">
                     </div>
-                    <div class="metric-row">
-                        <span class="metric-label">Container RAM Allocation</span>
-                        <span class="metric-value">&lt; 10 MB</span>
+                    
+                    <div class="control-group">
+                        <div class="control-header">
+                            <span>Predicted Attribution Leakage</span>
+                            <span id="leakage-lbl" style="color:var(--accent-cyan); font-family:var(--font-mono);">30%</span>
+                        </div>
+                        <input type="range" id="leakage-input" min="5" max="80" step="5" value="30">
                     </div>
-                    <div class="metric-row">
-                        <span class="metric-label">Cloudflare Edge Status</span>
-                        <span class="metric-value green">Bypassed (Instant Cache)</span>
+                </div>
+
+                <div class="badge-list">
+                    <span class="tech-badge">AWS</span>
+                    <span class="tech-badge">Node.js</span>
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">HubSpot API</span>
+                    <span class="tech-badge">Predictive AI</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Service Pillars -->
+        <section class="section-padding" id="pillars">
+            <div class="section-header">
+                <h2>Our Core Capability Matrix</h2>
+                <p>Designing proprietary tech stacks that transform process footprints into compounding enterprise flywheels.</p>
+            </div>
+
+            <div class="grid-3">
+                <!-- Pillar 1 -->
+                <div class="pillar-card">
+                    <div>
+                        <div class="pillar-num">Pillar 01</div>
+                        <h3 class="pillar-title">Enterprise RevOps & Growth Engineering</h3>
+                        <p class="pillar-desc">
+                            We dismantle fragmented marketing and sales setups, aligning commercial data models into unified, automated revenue generation engines.
+                        </p>
+                        <ul class="bullet-list">
+                            <li>Unified HubSpot & Salesforce Custom Architectures</li>
+                            <li>Multi-Touch Attribution Tracking Models</li>
+                            <li>Twilio, PSTN & Omnichannel Database Integration</li>
+                        </ul>
+                    </div>
+                    <div class="badge-list" style="margin-top:0;">
+                        <span class="tech-badge">HubSpot API</span>
+                        <span class="tech-badge">Salesforce</span>
+                        <span class="tech-badge">Twilio Voice</span>
+                        <span class="tech-badge">Serverless</span>
+                    </div>
+                </div>
+
+                <!-- Pillar 2 -->
+                <div class="pillar-card">
+                    <div>
+                        <div class="pillar-num">Pillar 02</div>
+                        <h3 class="pillar-title">Enterprise Intelligence & Data Flywheels</h3>
+                        <p class="pillar-desc">
+                            We construct custom machine learning pipelines and intelligence layers, ensuring you own your data assets without depending on brittle external wrappers.
+                        </p>
+                        <ul class="bullet-list">
+                            <li>Proprietary Data Collection & Training Flywheels</li>
+                            <li>Predictive Sales Pipeline Velocity & Analytics</li>
+                            <li>Secure Custom LLM & Agent Frameworks</li>
+                        </ul>
+                    </div>
+                    <div class="badge-list" style="margin-top:0;">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">PyTorch</span>
+                        <span class="tech-badge">Local Agents</span>
+                        <span class="tech-badge">SQL Pipelines</span>
+                    </div>
+                </div>
+
+                <!-- Pillar 3 -->
+                <div class="pillar-card">
+                    <div>
+                        <div class="pillar-num">Pillar 03</div>
+                        <h3 class="pillar-title">Digital Product Strategy & Cloud Architecture</h3>
+                        <p class="pillar-desc">
+                            We offer strategic Product Leadership to architect enterprise-grade products from the ground up, guaranteeing high uptime and scalable performance.
+                        </p>
+                        <ul class="bullet-list">
+                            <li>Product Management as a Service (PMaaS) & PLG</li>
+                            <li>High-Throughput AWS & GCP Microservices</li>
+                            <li>Enterprise Identity Security (SAML SSO, OAuth)</li>
+                        </ul>
+                    </div>
+                    <div class="badge-list" style="margin-top:0;">
+                        <span class="tech-badge">AWS/GCP</span>
+                        <span class="tech-badge">Terraform</span>
+                        <span class="tech-badge">Docker</span>
+                        <span class="tech-badge">SAML SSO</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Ecosystem Features -->
-        <section class="features" id="features">
+        <!-- Leadership / Founding Team Section -->
+        <section class="section-padding leadership-section" id="team">
             <div class="section-header">
-                <h2>Our High-Density Blueprint</h2>
-                <p>Minimalist footprint, maximum speed. Handcrafted configurations for modern self-hosting.</p>
+                <h2>Our Leadership Team</h2>
+                <p>Bringing elite product leadership and battle-tested cloud engineering capabilities to high-growth enterprises.</p>
             </div>
 
-            <div class="grid">
-                <!-- Card 1 -->
-                <div class="card">
-                    <div class="card-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+            <div class="founders-grid">
+                <!-- Ulises -->
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <div class="profile-title">
+                            <h3>Ulises Múnera</h3>
+                            <div class="profile-role">Chief Technology Officer & Head of AI/Cloud Engineering</div>
+                        </div>
+                        <div class="profile-avatar-placeholder">UM</div>
                     </div>
-                    <h3>Cloudflare Free Tier</h3>
-                    <p>Static assets are fully cached at Cloudflare's Panama City edge node, eliminating server round-trips for repetitive requests and resulting in &lt;10ms local TTFB.</p>
+                    <p class="profile-bio">
+                        Veteran tech leader specializing in architecting secure, high-throughput cloud platforms, building enterprise DevOps workflows, and integrating foundational artificial intelligence directly into proprietary core systems.
+                    </p>
+                    <div class="skill-section">
+                        <div class="skill-title">Technical Expertise</div>
+                        <div class="badge-list">
+                            <span class="tech-badge">AWS</span>
+                            <span class="tech-badge">GCP</span>
+                            <span class="tech-badge">Terraform</span>
+                            <span class="tech-badge">Docker / K8s</span>
+                            <span class="tech-badge">Machine Learning</span>
+                            <span class="tech-badge">Distributed DBs</span>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Card 2 -->
-                <div class="card">
-                    <div class="card-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+                <!-- Diego -->
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <div class="profile-title">
+                            <h3>Diego Mauricio Puerto Rojas</h3>
+                            <div class="profile-role">Chief Product Officer & Head of Product Strategy</div>
+                        </div>
+                        <div class="profile-avatar-placeholder">DP</div>
                     </div>
-                    <h3>Self-Hosted Coolify</h3>
-                    <p>Docker-powered PaaS managing resource orchestration on low-cost VPS instances. Instant webhook-based automated Git deployments, automatic SSL certificates, and zero platform taxes.</p>
+                    <p class="profile-bio">
+                        Senior Product Management executive with deep expertise in converting complex technical and CRM capabilities into intuitive, high-impact digital products. Diego aligns software metrics directly with commercial ROI.
+                    </p>
+                    <div class="skill-section">
+                        <div class="skill-title">Strategic Expertise</div>
+                        <div class="badge-list">
+                            <span class="tech-badge">Product Roadmap</span>
+                            <span class="tech-badge">Telemetry & Metrics</span>
+                            <span class="tech-badge">PLG Frameworks</span>
+                            <span class="tech-badge">RICE Prioritization</span>
+                            <span class="tech-badge">Rapid Prototyping</span>
+                            <span class="tech-badge">UX Architecture</span>
+                        </div>
+                    </div>
                 </div>
+            </div>
+        </section>
 
-                <!-- Card 3 -->
-                <div class="card">
-                    <div class="card-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+        <!-- Technical Audit Contact Form -->
+        <section class="section-padding" id="audit">
+            <div class="section-header">
+                <h2>Schedule a Technical Audit</h2>
+                <p>Get a rigorous evaluation of your growth stack, process gaps, and database bottlenecks directly with our partners.</p>
+            </div>
+
+            <div class="contact-card">
+                <form id="audit-form" action="#" onsubmit="event.preventDefault(); alert('Audit inquiry successfully captured. A Minos Consulting partner will follow up in 24 hours.');">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" required placeholder="John Doe">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Work Email</label>
+                            <input type="email" id="email" required placeholder="john@company.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="company">Company Name</label>
+                            <input type="text" id="company" required placeholder="Acme Enterprise">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="size">Company Size</label>
+                            <select id="size">
+                                <option value="under-50">1 - 50 employees</option>
+                                <option value="mid-market" selected>51 - 250 employees</option>
+                                <option value="enterprise-500">251 - 1000 employees</option>
+                                <option value="large-enterprise">1000+ employees</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="friction">Primary Friction Area</label>
+                            <select id="friction">
+                                <option value="growth">RevOps & CRM Automations (Growth)</option>
+                                <option value="data-ai">Data Engineering & Machine Learning (AI)</option>
+                                <option value="product">Product Architecture & Cloud (Infrastructure)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="stack">Core Tech Stack</label>
+                            <input type="text" id="stack" placeholder="AWS, Python, HubSpot, etc.">
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="details">Describe your main operational friction points</label>
+                            <textarea id="details" rows="4" placeholder="Briefly describe what system, database, or revenue bottleneck is slowing your growth..."></textarea>
+                        </div>
+                        
+                        <div class="form-group full-width" style="margin-top: 1rem;">
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Audit Request</button>
+                        </div>
                     </div>
-                    <h3>Alpine-Nginx Engine</h3>
-                    <p>Multi-stage Docker builds stripped down to raw binary running on Alpine Linux. Optimized worker processes limit RAM consumption to under 10MB, maximizing server density.</p>
-                </div>
+                </form>
             </div>
         </section>
 
         <!-- Footer -->
         <footer>
-            <div class="footer-logo">panama-cloud</div>
-            <div>&copy; 2026 Juan Vicente. Built with ultra-light structural composition.</div>
+            <div class="container">
+                <div class="footer-grid">
+                    <div style="text-align: left;">
+                        <a href="#" class="logo">
+                            <span class="logo-mark"></span>
+                            minos.consulting
+                        </a>
+                        <div class="footer-tagline">Engineering Intelligence & Growth Flywheels for Modern Enterprises.</div>
+                    </div>
+                    <div style="text-align: right; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-cyan);">
+                        91.99.168.106.sslip.io
+                    </div>
+                </div>
+                <div>&copy; 2026 Minos Consulting. All rights reserved.</div>
+            </div>
         </footer>
     </div>
 
-    <!-- Live Timer Script -->
+    <!-- Metrics Simulator Logic -->
     <script>
-        function updateTime() {
-            const timeElement = document.getElementById('local-time');
-            const options = {
-                timeZone: 'America/Panama',
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit',
-                hour12: false
-            };
+        const leadsInput = document.getElementById('leads-input');
+        const leakageInput = document.getElementById('leakage-input');
+        const leadsLbl = document.getElementById('leads-lbl');
+        const leakageLbl = document.getElementById('leakage-lbl');
+        const flywheelVal = document.getElementById('flywheel-val');
+
+        function formatCurrency(amount) {
+            return '$' + amount.toLocaleString('en-US', { maximumFractionDigits: 0 });
+        }
+
+        function calculateFlywheel() {
+            const leads = parseInt(leadsInput.value);
+            const leakage = parseInt(leakageInput.value);
             
-            try {
-                const now = new Date();
-                timeElement.textContent = now.toLocaleTimeString('en-US', options);
-            } catch (e) {
-                console.error("Timezone lookup error, fallback to local:", e);
-                const now = new Date();
-                timeElement.textContent = now.toTimeString().split(' ')[0];
-            }
+            leadsLbl.textContent = leads.toLocaleString('en-US');
+            leakageLbl.textContent = leakage + '%';
+            
+            // Hypothetical calculation:
+            // Recovery value = (Leads * (leakage / 100)) * Average Contract Value ($120) * conversion improvement (roughly 15%)
+            const acv = 120; 
+            const conversionImprovement = 0.15;
+            const value = (leads * (leakage / 100)) * acv * conversionImprovement;
+            
+            flywheelVal.textContent = formatCurrency(value);
         }
 
-        // Live ping latency simulator (simulates real time interaction)
-        function simulateLatency() {
-            const latencyElement = document.getElementById('latency-val');
-            setInterval(() => {
-                const base = 30; // ~30ms ping to Miami from Panama
-                const jitter = Math.floor(Math.random() * 5); // 0 to 4ms jitter
-                latencyElement.textContent = `~${base + jitter} ms`;
-            }, 3000);
-        }
-
-        // Initialize
-        updateTime();
-        setInterval(updateTime, 1000);
-        simulateLatency();
+        leadsInput.addEventListener('input', calculateFlywheel);
+        leakageInput.addEventListener('input', calculateFlywheel);
+        
+        // Initial Calculation
+        calculateFlywheel();
     </script>
 </body>
 </html>
