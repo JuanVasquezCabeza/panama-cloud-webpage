@@ -559,8 +559,20 @@
         }
 
         @media (max-width: 640px) {
+            .container {
+                padding: 0 1.25rem; /* Reduce page margins on small screens to prevent clipping */
+            }
+            .contact-card {
+                padding: 2rem 1.25rem; /* Reduce card padding so inputs fit beautifully on small mobile screens */
+                border-radius: 16px;
+            }
             .form-grid {
                 grid-template-columns: 1fr;
+                gap: 1.25rem;
+                margin-top: 1.5rem;
+            }
+            .widget-card {
+                padding: 1.5rem 1.25rem; /* Reduce widget card padding on mobile */
             }
         }
 
