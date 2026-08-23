@@ -12,17 +12,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     
     <style>
-        /* Modern CSS Variables & Resets */
+        /* Modern CSS Variables & Resets - Crisp Enterprise Light Theme */
         :root {
-            --bg-dark: #080c14;
-            --bg-card: #101626;
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
-            --accent-cyan: #38bdf8;
-            --accent-indigo: #6366f1;
-            --accent-green: #10b981;
-            --border-color: rgba(255, 255, 255, 0.05);
-            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --bg-dark: #f8fafc; /* Clean, warm off-white */
+            --bg-card: #ffffff; /* Crisp white for cards */
+            --bg-input: #ffffff;
+            --text-primary: #0f172a; /* Rich slate/charcoal for strong readability */
+            --text-secondary: #475569; /* Elegant mid-slate for captions/subtext */
+            --accent-cyan: #0284c7; /* Authoritative light blue/ocean */
+            --accent-indigo: #4f46e5; /* Stable, trustworthy indigo */
+            --accent-green: #10b981; /* Secure emerald green */
+            --border-color: #e2e8f0; /* Ultra-thin, clean divider */
+            --shadow-sm: 0 4px 6px -1px rgba(15, 23, 42, 0.03), 0 2px 4px -2px rgba(15, 23, 42, 0.03);
+            --shadow-md: 0 10px 25px -5px rgba(15, 23, 42, 0.05), 0 8px 10px -6px rgba(15, 23, 42, 0.05);
+            --shadow-lg: 0 20px 50px -12px rgba(15, 23, 42, 0.08);
+            --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
             --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
         }
@@ -42,12 +46,12 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Ambient Glow Backgrounds */
+        /* Ambient Faint Watercolor Backgrounds */
         .ambient-glow {
             position: absolute;
             width: 700px;
             height: 700px;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, rgba(56, 189, 248, 0.02) 50%, rgba(0,0,0,0) 100%);
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.04) 0%, rgba(56, 189, 248, 0.01) 60%, rgba(0,0,0,0) 100%);
             top: -200px;
             right: -100px;
             z-index: 0;
@@ -59,7 +63,7 @@
             position: absolute;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(56, 189, 248, 0.05) 0%, rgba(0,0,0,0) 70%);
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.03) 0%, rgba(0,0,0,0) 70%);
             bottom: 20%;
             left: -100px;
             z-index: 0;
@@ -123,9 +127,9 @@
         }
 
         .badge {
-            background: rgba(99, 102, 241, 0.08);
-            border: 1px solid rgba(99, 102, 241, 0.2);
-            color: var(--accent-cyan);
+            background: rgba(99, 102, 241, 0.05);
+            border: 1px solid rgba(99, 102, 241, 0.15);
+            color: var(--accent-indigo);
             padding: 0.5rem 1.1rem;
             border-radius: 9999px;
             font-size: 0.85rem;
@@ -142,9 +146,7 @@
             line-height: 1.15;
             letter-spacing: -0.03em;
             margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #ffffff 40%, #cbd5e1 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--text-primary);
         }
 
         @media (max-width: 640px) {
@@ -202,25 +204,27 @@
         .btn-primary {
             background: linear-gradient(135deg, var(--accent-indigo), var(--accent-cyan));
             color: #ffffff;
-            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.2);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.15);
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 15px 30px rgba(99, 102, 241, 0.35);
+            box-shadow: 0 12px 25px rgba(99, 102, 241, 0.25);
             opacity: 0.95;
         }
 
         .btn-secondary {
-            background: rgba(255, 255, 255, 0.02);
+            background: #ffffff;
             border: 1px solid var(--border-color);
             color: var(--text-primary);
+            box-shadow: var(--shadow-sm);
         }
 
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.06);
-            border-color: rgba(255, 255, 255, 0.15);
+            background: #f8fafc;
+            border-color: #cbd5e1;
             transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
         }
 
         /* Interactive Simulator Widget */
@@ -228,8 +232,8 @@
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            padding: 2.25rem 2rem;
+            box-shadow: var(--shadow-lg);
             position: relative;
             overflow: hidden;
             transition: var(--transition-smooth);
@@ -247,8 +251,8 @@
 
         .widget-card:hover {
             transform: translateY(-5px);
-            border-color: rgba(56, 189, 248, 0.15);
-            box-shadow: 0 25px 50px rgba(56, 189, 248, 0.05);
+            border-color: #cbd5e1;
+            box-shadow: 0 25px 60px -10px rgba(15, 23, 42, 0.12);
         }
 
         .widget-title {
@@ -261,11 +265,12 @@
             justify-content: space-between;
             align-items: center;
             font-family: var(--font-mono);
+            font-weight: 600;
         }
 
         .widget-metric-box {
-            background: rgba(8, 12, 20, 0.6);
-            border: 1px solid var(--border-color);
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
             border-radius: 12px;
             padding: 1.25rem;
             margin-bottom: 1.5rem;
@@ -276,13 +281,14 @@
             font-size: 0.85rem;
             color: var(--text-secondary);
             margin-bottom: 0.3rem;
+            font-weight: 500;
         }
 
         .widget-value {
             font-size: 2.25rem;
             font-weight: 700;
             font-family: var(--font-mono);
-            color: var(--accent-cyan);
+            color: var(--accent-indigo);
             letter-spacing: -0.02em;
         }
 
@@ -302,7 +308,8 @@
             display: flex;
             justify-content: space-between;
             font-size: 0.85rem;
-            font-weight: 500;
+            font-weight: 600;
+            color: var(--text-secondary);
         }
 
         input[type="range"] {
@@ -310,7 +317,7 @@
             width: 100%;
             height: 6px;
             border-radius: 3px;
-            background: rgba(255, 255, 255, 0.1);
+            background: #e2e8f0;
             outline: none;
         }
 
@@ -319,14 +326,15 @@
             width: 18px;
             height: 18px;
             border-radius: 50%;
-            background: var(--accent-cyan);
+            background: var(--accent-indigo);
             cursor: pointer;
             transition: var(--transition-smooth);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         input[type="range"]::-webkit-slider-thumb:hover {
             transform: scale(1.15);
-            background: var(--accent-indigo);
+            background: var(--accent-cyan);
         }
 
         .badge-list {
@@ -337,13 +345,14 @@
         }
 
         .tech-badge {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid var(--border-color);
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
             color: var(--text-secondary);
             padding: 0.25rem 0.6rem;
             border-radius: 6px;
             font-size: 0.75rem;
             font-family: var(--font-mono);
+            font-weight: 500;
         }
 
         /* 3-Pillar Service Grid Section */
@@ -361,6 +370,7 @@
             font-weight: 800;
             letter-spacing: -0.03em;
             margin-bottom: 1rem;
+            color: var(--text-primary);
         }
 
         .section-header p {
@@ -377,28 +387,28 @@
         }
 
         .pillar-card {
-            background: rgba(16, 22, 38, 0.4);
+            background: var(--bg-card);
             border: 1px solid var(--border-color);
             padding: 3rem 2.25rem;
             border-radius: 20px;
             transition: var(--transition-smooth);
+            box-shadow: var(--shadow-sm);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
 
         .pillar-card:hover {
-            background: var(--bg-card);
-            border-color: rgba(56, 189, 248, 0.15);
+            border-color: #cbd5e1;
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            box-shadow: var(--shadow-lg);
         }
 
         .pillar-num {
             font-family: var(--font-mono);
             font-size: 0.85rem;
             color: var(--accent-indigo);
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 1rem;
             text-transform: uppercase;
         }
@@ -408,6 +418,7 @@
             font-weight: 700;
             margin-bottom: 1rem;
             letter-spacing: -0.02em;
+            color: var(--text-primary);
         }
 
         .pillar-desc {
@@ -431,17 +442,18 @@
             display: flex;
             align-items: center;
             gap: 0.6rem;
+            font-weight: 500;
         }
 
         .bullet-list li::before {
             content: "✓";
-            color: var(--accent-cyan);
+            color: var(--accent-indigo);
             font-weight: bold;
         }
 
         /* Leadership Profiles */
         .leadership-section {
-            background: rgba(16, 22, 38, 0.2);
+            background: #f1f5f9; /* Soft contrast background for leadership */
             border-top: 1px solid var(--border-color);
             border-bottom: 1px solid var(--border-color);
         }
@@ -463,12 +475,14 @@
             border: 1px solid var(--border-color);
             padding: 2.5rem;
             border-radius: 20px;
+            box-shadow: var(--shadow-sm);
             transition: var(--transition-smooth);
         }
 
         .profile-card:hover {
-            border-color: rgba(99, 102, 241, 0.15);
+            border-color: #cbd5e1;
             transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
         }
 
         .profile-header {
@@ -484,12 +498,13 @@
             font-size: 1.5rem;
             font-weight: 700;
             margin-bottom: 0.25rem;
+            color: var(--text-primary);
         }
 
         .profile-role {
             font-size: 0.9rem;
-            color: var(--accent-cyan);
-            font-weight: 500;
+            color: var(--accent-indigo);
+            font-weight: 600;
         }
 
         .profile-avatar-placeholder {
@@ -522,7 +537,7 @@
             letter-spacing: 0.05em;
             color: var(--text-secondary);
             margin-bottom: 0.6rem;
-            font-weight: 600;
+            font-weight: 700;
         }
 
         /* Interactive Contact Form Audit */
@@ -531,7 +546,7 @@
             border: 1px solid var(--border-color);
             border-radius: 24px;
             padding: 3rem 2.5rem;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            box-shadow: var(--shadow-lg);
             max-width: 800px;
             margin: 0 auto;
         }
@@ -561,13 +576,13 @@
 
         .form-group label {
             font-size: 0.85rem;
-            font-weight: 500;
+            font-weight: 600;
             color: var(--text-secondary);
         }
 
         .form-group input, .form-group select, .form-group textarea {
-            background: rgba(8, 12, 20, 0.6);
-            border: 1px solid var(--border-color);
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
             border-radius: 8px;
             padding: 0.85rem 1rem;
             color: var(--text-primary);
@@ -578,8 +593,8 @@
         }
 
         .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-            border-color: var(--accent-cyan);
-            box-shadow: 0 0 10px rgba(56, 189, 248, 0.1);
+            border-color: var(--accent-indigo);
+            box-shadow: 0 0 10px rgba(99, 102, 241, 0.08);
         }
 
         /* Footer */
@@ -625,7 +640,7 @@
                 minos.consulting
             </a>
             <div>
-                <a href="#audit" class="btn btn-secondary" style="padding: 0.55rem 1.2rem; font-size: 0.85rem; border-radius: 8px;">Request Audit</a>
+                <a href="#audit" class="btn btn-secondary" style="padding: 0.55rem 1.2rem; font-size: 0.85rem; border-radius: 8px; font-weight:700;">Request Audit</a>
             </div>
         </header>
 
@@ -633,7 +648,7 @@
         <section class="hero">
             <div>
                 <div class="badge">
-                    <span style="display:inline-block; width:8px; height:8px; background-color:var(--accent-green); border-radius:50%; animation: pulse 2s infinite;"></span>
+                    <span style="display:inline-block; width:8px; height:8px; background-color:var(--accent-green); border-radius:50%;"></span>
                     Panama Edge Optimization Active
                 </div>
                 <h1>We Engineer Enterprise Intelligence & RevOps Flywheels</h1>
@@ -651,7 +666,7 @@
             <div class="widget-card">
                 <div class="widget-title">
                     <span>Flywheel Metrics Simulator</span>
-                    <span style="font-weight: 700; color: var(--accent-cyan); font-family: var(--font-mono);">ACTIVE</span>
+                    <span style="font-weight: 700; color: var(--accent-indigo); font-family: var(--font-mono);">ACTIVE</span>
                 </div>
                 
                 <div class="widget-metric-box">
@@ -663,7 +678,7 @@
                     <div class="control-group">
                         <div class="control-header">
                             <span>Current Annual Lead Flow</span>
-                            <span id="leads-lbl" style="color:var(--accent-cyan); font-family:var(--font-mono);">5,000</span>
+                            <span id="leads-lbl" style="color:var(--accent-indigo); font-family:var(--font-mono);">5,000</span>
                         </div>
                         <input type="range" id="leads-input" min="1000" max="50000" step="1000" value="5000">
                     </div>
@@ -671,7 +686,7 @@
                     <div class="control-group">
                         <div class="control-header">
                             <span>Predicted Attribution Leakage</span>
-                            <span id="leakage-lbl" style="color:var(--accent-cyan); font-family:var(--font-mono);">30%</span>
+                            <span id="leakage-lbl" style="color:var(--accent-indigo); font-family:var(--font-mono);">30%</span>
                         </div>
                         <input type="range" id="leakage-input" min="5" max="80" step="5" value="30">
                     </div>
@@ -896,7 +911,7 @@
                         </a>
                         <div class="footer-tagline">Engineering Intelligence & Growth Flywheels for Modern Enterprises.</div>
                     </div>
-                    <div style="text-align: right; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-cyan);">
+                    <div style="text-align: right; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-indigo); font-weight:600;">
                         91.99.168.106.sslip.io
                     </div>
                 </div>
