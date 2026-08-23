@@ -662,42 +662,69 @@
                 </div>
             </div>
 
-            <!-- Interactive Metrics Simulator Widget -->
+            <!-- Interactive MMM Saturation Widget -->
             <div class="widget-card">
                 <div class="widget-title">
-                    <span>Flywheel Metrics Simulator</span>
+                    <span>MMM Diminishing Returns Model</span>
                     <span style="font-weight: 700; color: var(--accent-indigo); font-family: var(--font-mono);">ACTIVE</span>
                 </div>
                 
-                <div class="widget-metric-box">
-                    <div class="widget-label">Estimated Annual Growth Flywheel Value</div>
-                    <div class="widget-value" id="flywheel-val">$184,000</div>
+                <!-- Graph Container -->
+                <div style="margin-bottom: 1.25rem;">
+                    <svg id="mmm-graph" viewBox="0 0 300 135" style="width: 100%; height: auto; display: block; background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 12px; padding: 0.5rem 0.75rem 0.25rem 0.5rem;">
+                        <!-- Grid Lines -->
+                        <line x1="35" y1="10" x2="290" y2="10" stroke="#cbd5e1" stroke-dasharray="3,3" stroke-width="0.5" />
+                        <line x1="35" y1="40" x2="290" y2="40" stroke="#cbd5e1" stroke-dasharray="3,3" stroke-width="0.5" />
+                        <line x1="35" y1="70" x2="290" y2="70" stroke="#cbd5e1" stroke-dasharray="3,3" stroke-width="0.5" />
+                        <line x1="35" y1="100" x2="290" y2="100" stroke="#cbd5e1" stroke-dasharray="3,3" stroke-width="0.5" />
+                        
+                        <!-- Graph Curve -->
+                        <path id="curve-path" d="" fill="none" stroke="var(--accent-indigo)" stroke-width="2.5" />
+                        
+                        <!-- Interactive Pulsing Dot -->
+                        <circle id="pulsing-dot" cx="35" cy="110" r="5" fill="var(--accent-indigo)" style="filter: drop-shadow(0 2px 4px rgba(79, 70, 229, 0.3));" />
+                        
+                        <!-- Axis Lines -->
+                        <line x1="35" y1="10" x2="35" y2="110" stroke="#94a3b8" stroke-width="1" />
+                        <line x1="35" y1="110" x2="290" y2="110" stroke="#94a3b8" stroke-width="1" />
+                        
+                        <!-- Graph Text Labels -->
+                        <text x="30" y="14" fill="#64748b" font-size="7" font-family="var(--font-mono)" text-anchor="end">$240k</text>
+                        <text x="30" y="113" fill="#64748b" font-size="7" font-family="var(--font-mono)" text-anchor="end">$0</text>
+                        <text x="35" y="119" fill="#64748b" font-size="7" font-family="var(--font-mono)">$0</text>
+                        <text x="290" y="119" fill="#64748b" font-size="7" font-family="var(--font-mono)" text-anchor="end">$100k</text>
+                        <text x="162" y="128" fill="#475569" font-size="7.5" font-weight="600" text-anchor="middle">Monthly Channel Ad Spend</text>
+                        <text x="12" y="60" fill="#475569" font-size="7.5" font-weight="600" text-anchor="middle" transform="rotate(-90 12 60)">Revenue Generated</text>
+                    </svg>
                 </div>
-                
+
+                <!-- Live Performance Indicators -->
                 <div class="calculator-controls">
-                    <div class="control-group">
-                        <div class="control-header">
-                            <span>Current Annual Lead Flow</span>
-                            <span id="leads-lbl" style="color:var(--accent-indigo); font-family:var(--font-mono);">5,000</span>
-                        </div>
-                        <input type="range" id="leads-input" min="1000" max="50000" step="1000" value="5000">
+                    <div style="display: flex; gap: 0.4rem; justify-content: center; margin-bottom: 0.5rem;">
+                        <button class="btn btn-secondary mmm-btn" id="btn-social" style="padding: 0.4rem 0.8rem; font-size: 0.75rem; border-radius: 6px; font-weight:700; flex:1;" onclick="selectChannel('social')">Paid Social</button>
+                        <button class="btn btn-secondary mmm-btn" id="btn-search" style="padding: 0.4rem 0.8rem; font-size: 0.75rem; border-radius: 6px; font-weight:700; flex:1;" onclick="selectChannel('search')">Search Ads</button>
+                        <button class="btn btn-secondary mmm-btn" id="btn-brand" style="padding: 0.4rem 0.8rem; font-size: 0.75rem; border-radius: 6px; font-weight:700; flex:1;" onclick="selectChannel('brand')">Brand Ads</button>
                     </div>
-                    
+
                     <div class="control-group">
                         <div class="control-header">
-                            <span>Predicted Attribution Leakage</span>
-                            <span id="leakage-lbl" style="color:var(--accent-indigo); font-family:var(--font-mono);">30%</span>
+                            <span>Monthly Ad Spend</span>
+                            <span id="spend-lbl" style="color:var(--accent-indigo); font-family:var(--font-mono); font-weight:700;">$30,000</span>
                         </div>
-                        <input type="range" id="leakage-input" min="5" max="80" step="5" value="30">
+                        <input type="range" id="spend-input" min="0" max="100000" step="2500" value="30000">
                     </div>
                 </div>
 
-                <div class="badge-list">
-                    <span class="tech-badge">AWS</span>
-                    <span class="tech-badge">Node.js</span>
-                    <span class="tech-badge">Python</span>
-                    <span class="tech-badge">HubSpot API</span>
-                    <span class="tech-badge">Predictive AI</span>
+                <!-- Performance Metrics Grid -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1.25rem; border-top: 1px solid var(--border-color); padding-top: 1rem;">
+                    <div>
+                        <div style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 500;">Incremental Revenue</div>
+                        <div id="metric-rev" style="font-size: 1.15rem; font-weight: 700; font-family: var(--font-mono); color: var(--text-primary);">$64,500</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 500;">Marginal ROI (Next $1)</div>
+                        <div id="metric-mroi" style="font-size: 1.15rem; font-weight: 700; font-family: var(--font-mono); color: var(--accent-green);">2.15x</div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -898,39 +925,110 @@
         </footer>
     </div>
 
-    <!-- Metrics Simulator Logic -->
+    <!-- MMM Saturation & Diminishing Returns Logic -->
     <script>
-        const leadsInput = document.getElementById('leads-input');
-        const leakageInput = document.getElementById('leakage-input');
-        const leadsLbl = document.getElementById('leads-lbl');
-        const leakageLbl = document.getElementById('leakage-lbl');
-        const flywheelVal = document.getElementById('flywheel-val');
+        const spendInput = document.getElementById('spend-input');
+        const spendLbl = document.getElementById('spend-lbl');
+        const metricRev = document.getElementById('metric-rev');
+        const metricMroi = document.getElementById('metric-mroi');
+        const curvePath = document.getElementById('curve-path');
+        const pulsingDot = document.getElementById('pulsing-dot');
+
+        // Marketing Mix Modeling channel specifications
+        const channels = {
+            social: { max_return: 130000, alpha: 0.000035 }, // Quick saturation, high early ROI
+            search: { max_return: 170000, alpha: 0.000018 }, // Moderate saturation, highly consistent
+            brand: { max_return: 240000, alpha: 0.000007 }   // High threshold, slow ramp-up, huge ceiling
+        };
+
+        let currentChannel = 'social';
 
         function formatCurrency(amount) {
             return '$' + amount.toLocaleString('en-US', { maximumFractionDigits: 0 });
         }
 
-        function calculateFlywheel() {
-            const leads = parseInt(leadsInput.value);
-            const leakage = parseInt(leakageInput.value);
-            
-            leadsLbl.textContent = leads.toLocaleString('en-US');
-            leakageLbl.textContent = leakage + '%';
-            
-            // Hypothetical calculation:
-            // Recovery value = (Leads * (leakage / 100)) * Average Contract Value ($120) * conversion improvement (roughly 15%)
-            const acv = 120; 
-            const conversionImprovement = 0.15;
-            const value = (leads * (leakage / 100)) * acv * conversionImprovement;
-            
-            flywheelVal.textContent = formatCurrency(value);
+        function calculateMMM() {
+            const spend = parseFloat(spendInput.value);
+            const { max_return, alpha } = channels[currentChannel];
+
+            // 1. Calculate Revenue using exponential saturation formula: R = L * (1 - e^(-alpha * S))
+            const revenue = max_return * (1 - Math.exp(-alpha * spend));
+
+            // 2. Calculate Marginal ROI (First derivative): dR/dS = L * alpha * e^(-alpha * S)
+            const marginalRoi = max_return * alpha * Math.exp(-alpha * spend);
+
+            // Update Labels
+            spendLbl.textContent = formatCurrency(spend);
+            metricRev.textContent = formatCurrency(revenue);
+            metricMroi.textContent = marginalRoi.toFixed(2) + 'x';
+
+            // Color-code Marginal ROI for executive-level visual warning
+            if (marginalRoi >= 1.2) {
+                metricMroi.style.color = 'var(--accent-green)'; // Safe, keep spending!
+            } else if (marginalRoi >= 1.0) {
+                metricMroi.style.color = '#d97706'; // Saturating, monitor closely!
+            } else {
+                metricMroi.style.color = '#ef4444'; // Saturated (losing money on next dollar)
+            }
+
+            // 3. Draw Dynamic Graph Curve via SVG path
+            // Graph Dimensions: Left X = 35, Right X = 290 (Width = 255), Bottom Y = 110, Top Y = 10 (Height = 100)
+            const xStart = 35;
+            const xRange = 255;
+            const yStart = 110;
+            const yRange = 100;
+            const maxValY = 240000; // Match top label of graph
+
+            let pathD = '';
+            const steps = 30;
+            for (let i = 0; i <= steps; i++) {
+                const sVal = (i / steps) * 100000; // Spend from $0 to $100k
+                const rVal = max_return * (1 - Math.exp(-alpha * sVal)); // Revenue
+
+                const xSvg = xStart + (sVal / 100000) * xRange;
+                const ySvg = yStart - (rVal / maxValY) * yRange;
+
+                if (i === 0) {
+                    pathD += `M ${xSvg} ${ySvg}`;
+                } else {
+                    pathD += ` L ${xSvg} ${ySvg}`;
+                }
+            }
+            curvePath.setAttribute('d', pathD);
+
+            // 4. Update Pulsing Interactive Dot Coordinates
+            const dotX = xStart + (spend / 100000) * xRange;
+            const dotY = yStart - (revenue / maxValY) * yRange;
+            pulsingDot.setAttribute('cx', dotX);
+            pulsingDot.setAttribute('cy', dotY);
         }
 
-        leadsInput.addEventListener('input', calculateFlywheel);
-        leakageInput.addEventListener('input', calculateFlywheel);
-        
-        // Initial Calculation
-        calculateFlywheel();
+        function selectChannel(channelId) {
+            currentChannel = channelId;
+            
+            // Highlight selected button & reset others
+            const buttons = ['social', 'search', 'brand'];
+            buttons.forEach(id => {
+                const btn = document.getElementById('btn-' + id);
+                if (id === channelId) {
+                    btn.style.background = 'var(--accent-indigo)';
+                    btn.style.color = '#ffffff';
+                    btn.style.borderColor = 'var(--accent-indigo)';
+                } else {
+                    btn.style.background = '#ffffff';
+                    btn.style.color = 'var(--text-primary)';
+                    btn.style.borderColor = 'var(--border-color)';
+                }
+            });
+
+            calculateMMM();
+        }
+
+        // Attach listeners
+        spendInput.addEventListener('input', calculateMMM);
+
+        // Initial Calculation (Default: Paid Social)
+        selectChannel('social');
     </script>
 </body>
 </html>
