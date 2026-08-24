@@ -689,68 +689,39 @@
                 </div>
             </div>
 
-            <!-- Interactive MMM Saturation Widget -->
-            <div class="widget-card">
-                <div class="widget-title">
-                    <span>MMM Diminishing Returns Model</span>
-                    <span style="font-weight: 700; color: var(--accent-indigo); font-family: var(--font-mono);">ACTIVE</span>
+            <!-- Minos Cloud Telemetry Card -->
+            <div class="widget-card" style="padding: 2.25rem 2rem;">
+                <div class="widget-title" style="margin-bottom: 1.25rem;">
+                    <span>System Telemetry</span>
+                    <span style="font-weight: 700; color: var(--accent-green); font-family: var(--font-mono); display: flex; align-items: center; gap: 0.35rem;">
+                        <span style="display:inline-block; width:6px; height:8px; background-color:var(--accent-green); border-radius:50%; animation: pulse 2s infinite;"></span>
+                        ONLINE
+                    </span>
                 </div>
                 
-                <!-- Graph Container -->
-                <div style="margin-bottom: 1.25rem;">
-                    <svg id="mmm-graph" viewBox="0 0 300 135" style="width: 100%; height: auto; display: block; background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 12px; padding: 0.5rem 0.75rem 0.25rem 0.5rem;">
-                        <!-- Grid Lines -->
-                        <line x1="35" y1="10" x2="290" y2="10" stroke="#cbd5e1" stroke-dasharray="3,3" stroke-width="0.5" />
-                        <line x1="35" y1="40" x2="290" y2="40" stroke="#cbd5e1" stroke-dasharray="3,3" stroke-width="0.5" />
-                        <line x1="35" y1="70" x2="290" y2="70" stroke="#cbd5e1" stroke-dasharray="3,3" stroke-width="0.5" />
-                        <line x1="35" y1="100" x2="290" y2="100" stroke="#cbd5e1" stroke-dasharray="3,3" stroke-width="0.5" />
-                        
-                        <!-- Graph Curve -->
-                        <path id="curve-path" d="" fill="none" stroke="var(--accent-indigo)" stroke-width="2.5" />
-                        
-                        <!-- Interactive Pulsing Dot -->
-                        <circle id="pulsing-dot" cx="35" cy="110" r="5" fill="var(--accent-indigo)" style="filter: drop-shadow(0 2px 4px rgba(79, 70, 229, 0.3));" />
-                        
-                        <!-- Axis Lines -->
-                        <line x1="35" y1="10" x2="35" y2="110" stroke="#94a3b8" stroke-width="1" />
-                        <line x1="35" y1="110" x2="290" y2="110" stroke="#94a3b8" stroke-width="1" />
-                        
-                        <!-- Graph Text Labels -->
-                        <text x="30" y="14" fill="#64748b" font-size="7" font-family="var(--font-mono)" text-anchor="end">$240k</text>
-                        <text x="30" y="113" fill="#64748b" font-size="7" font-family="var(--font-mono)" text-anchor="end">$0</text>
-                        <text x="35" y="119" fill="#64748b" font-size="7" font-family="var(--font-mono)">$0</text>
-                        <text x="290" y="119" fill="#64748b" font-size="7" font-family="var(--font-mono)" text-anchor="end">$100k</text>
-                        <text x="162" y="128" fill="#475569" font-size="7.5" font-weight="600" text-anchor="middle">Monthly Channel Ad Spend</text>
-                        <text x="12" y="60" fill="#475569" font-size="7.5" font-weight="600" text-anchor="middle" transform="rotate(-90 12 60)">Revenue Generated</text>
-                    </svg>
-                </div>
-
-                <!-- Live Performance Indicators -->
-                <div class="calculator-controls">
-                    <div style="display: flex; gap: 0.4rem; justify-content: center; margin-bottom: 0.5rem;">
-                        <button class="btn btn-secondary mmm-btn" id="btn-social" style="padding: 0.4rem 0.8rem; font-size: 0.75rem; border-radius: 6px; font-weight:700; flex:1;" onclick="selectChannel('social')">Paid Social</button>
-                        <button class="btn btn-secondary mmm-btn" id="btn-search" style="padding: 0.4rem 0.8rem; font-size: 0.75rem; border-radius: 6px; font-weight:700; flex:1;" onclick="selectChannel('search')">Search Ads</button>
-                        <button class="btn btn-secondary mmm-btn" id="btn-brand" style="padding: 0.4rem 0.8rem; font-size: 0.75rem; border-radius: 6px; font-weight:700; flex:1;" onclick="selectChannel('brand')">Brand Ads</button>
-                    </div>
-
-                    <div class="control-group">
-                        <div class="control-header">
-                            <span>Monthly Ad Spend</span>
-                            <span id="spend-lbl" style="color:var(--accent-indigo); font-family:var(--font-mono); font-weight:700;">$30,000</span>
-                        </div>
-                        <input type="range" id="spend-input" min="0" max="100000" step="2500" value="30000">
+                <div style="background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.25rem; margin-bottom: 1.5rem;">
+                    <div style="font-size: 0.8rem; color: var(--text-secondary); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; font-family: var(--font-mono);">Active Edge Gateway</div>
+                    <div style="font-size: 1.65rem; font-weight: 800; color: var(--accent-indigo); letter-spacing: -0.02em; display: flex; align-items: center; gap: 0.5rem;">
+                        PTY Node 🇵🇦
                     </div>
                 </div>
 
-                <!-- Performance Metrics Grid -->
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1.25rem; border-top: 1px solid var(--border-color); padding-top: 1rem;">
-                    <div>
-                        <div style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 500;">Incremental Revenue</div>
-                        <div id="metric-rev" style="font-size: 1.15rem; font-weight: 700; font-family: var(--font-mono); color: var(--text-primary);">$64,500</div>
+                <div style="display: flex; flex-direction: column; gap: 1rem; border-top: 1px solid var(--border-color); padding-top: 1.25rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem;">
+                        <span style="color: var(--text-secondary); font-weight: 500;">Edge Cache Hit-Rate</span>
+                        <span style="font-weight: 700; font-family: var(--font-mono); color: var(--accent-green);">99.8% (Instant)</span>
                     </div>
-                    <div>
-                        <div style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 500;">Marginal ROI (Next $1)</div>
-                        <div id="metric-mroi" style="font-size: 1.15rem; font-weight: 700; font-family: var(--font-mono); color: var(--accent-green);">2.15x</div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem;">
+                        <span style="color: var(--text-secondary); font-weight: 500;">Page Load Latency</span>
+                        <span style="font-weight: 700; font-family: var(--font-mono); color: var(--accent-green);">~14 ms</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem;">
+                        <span style="color: var(--text-secondary); font-weight: 500;">Active RAM Footprint</span>
+                        <span style="font-weight: 700; font-family: var(--font-mono); color: var(--text-primary);">&lt; 10 MB</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem;">
+                        <span style="color: var(--text-secondary); font-weight: 500;">Origin Server</span>
+                        <span style="font-weight: 700; font-family: var(--font-mono); color: var(--text-primary);">Hetzner Core KVM</span>
                     </div>
                 </div>
             </div>
@@ -870,6 +841,235 @@
             </div>
         </section>
 
+        <!-- Minos Engineering Labs (Interactive Simulators) -->
+        <section class="section-padding" id="labs" style="border-bottom: 1px solid var(--border-color);">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Minos Engineering Labs</h2>
+                    <p>Interact with our proprietary mathematical models simulating real-world marketing mix saturation, agile sprint capacity, and enterprise AI self-hosting cost trade-offs.</p>
+                </div>
+
+                <!-- Tab Switcher Navigation -->
+                <div class="labs-tabs-row" style="display: flex; justify-content: center; gap: 0.75rem; margin-bottom: 3rem; flex-wrap: wrap;">
+                    <button class="btn tab-btn active" id="tab-mmm" onclick="switchLab('mmm')" style="padding: 0.6rem 1.25rem; font-size: 0.85rem; font-weight:700;">01. Marketing Mix Model</button>
+                    <button class="btn tab-btn" id="tab-agile" onclick="switchLab('agile')" style="padding: 0.6rem 1.25rem; font-size: 0.85rem; font-weight:700;">02. Agile Capacity Planner</button>
+                    <button class="btn tab-btn" id="tab-ai" onclick="switchLab('ai')" style="padding: 0.6rem 1.25rem; font-size: 0.85rem; font-weight:700;">03. Enterprise AI & RAG Optimizer</button>
+                </div>
+
+                <!-- Panel Container -->
+                <div class="labs-panel-container" style="max-width: 800px; margin: 0 auto;">
+                    
+                    <!-- LAB 1: MMM SATURATION -->
+                    <div class="lab-panel" id="panel-mmm" style="display: block;">
+                        <div class="contact-card" style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 2.5rem; padding: 2.5rem 2rem;">
+                            <div>
+                                <div class="pillar-num">Model 01</div>
+                                <h3 class="pillar-title" style="font-size: 1.5rem; margin-bottom: 0.75rem;">Marketing Mix Modeling (MMM) Saturation</h3>
+                                <p class="pillar-desc" style="font-size: 0.9rem; margin-bottom: 1.5rem;">
+                                    Simulate marketing channel diminishing returns based on exponential saturation curves. Toggle channels to discover their optimal marginal spending limits.
+                                </p>
+                                
+                                <div class="calculator-controls">
+                                    <div style="display: flex; gap: 0.4rem; justify-content: center; margin-bottom: 0.5rem;">
+                                        <button class="btn mmm-btn" id="btn-social" style="padding: 0.4rem 0.6rem; font-size: 0.7rem; border-radius: 6px; font-weight:700; flex:1;" onclick="selectChannel('social')">Paid Social</button>
+                                        <button class="btn mmm-btn" id="btn-search" style="padding: 0.4rem 0.6rem; font-size: 0.7rem; border-radius: 6px; font-weight:700; flex:1;" onclick="selectChannel('search')">Search Ads</button>
+                                        <button class="btn mmm-btn" id="btn-brand" style="padding: 0.4rem 0.6rem; font-size: 0.7rem; border-radius: 6px; font-weight:700; flex:1;" onclick="selectChannel('brand')">Brand Ads</button>
+                                    </div>
+
+                                    <div class="control-group">
+                                        <div class="control-header">
+                                            <span>Monthly Ad Spend</span>
+                                            <span id="spend-lbl" style="color:var(--accent-indigo); font-family:var(--font-mono); font-weight:700;">$30,000</span>
+                                        </div>
+                                        <input type="range" id="spend-input" min="0" max="100000" step="2500" value="30000">
+                                    </div>
+                                </div>
+
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1.5rem; border-top: 1px solid var(--border-color); padding-top: 1rem;">
+                                    <div>
+                                        <div style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 500;">Incremental Revenue</div>
+                                        <div id="metric-rev" style="font-size: 1.15rem; font-weight: 700; font-family: var(--font-mono); color: var(--text-primary);">$64,500</div>
+                                    </div>
+                                    <div>
+                                        <div style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 500;">Marginal ROI (Next $1)</div>
+                                        <div id="metric-mroi" style="font-size: 1.15rem; font-weight: 700; font-family: var(--font-mono); color: var(--accent-green);">2.15x</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; flex-direction: column; justify-content: center;">
+                                <svg id="mmm-graph" viewBox="0 0 300 135" style="width: 100%; height: auto; display: block; background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 12px; padding: 0.5rem 0.75rem 0.25rem 0.5rem;">
+                                    <line x1="35" y1="10" x2="290" y2="10" stroke="#cbd5e1" stroke-dasharray="3,3" stroke-width="0.5" />
+                                    <line x1="35" y1="40" x2="290" y2="40" stroke="#cbd5e1" stroke-dasharray="3,3" stroke-width="0.5" />
+                                    <line x1="35" y1="70" x2="290" y2="70" stroke="#cbd5e1" stroke-dasharray="3,3" stroke-width="0.5" />
+                                    <line x1="35" y1="100" x2="290" y2="100" stroke="#cbd5e1" stroke-dasharray="3,3" stroke-width="0.5" />
+                                    <path id="curve-path" d="" fill="none" stroke="var(--accent-indigo)" stroke-width="2.5" />
+                                    <circle id="pulsing-dot" cx="35" cy="110" r="5" fill="var(--accent-indigo)" style="filter: drop-shadow(0 2px 4px rgba(79, 70, 229, 0.3));" />
+                                    <line x1="35" y1="10" x2="35" y2="110" stroke="#94a3b8" stroke-width="1" />
+                                    <line x1="35" y1="110" x2="290" y2="110" stroke="#94a3b8" stroke-width="1" />
+                                    <text x="30" y="14" fill="#64748b" font-size="7" font-family="var(--font-mono)" text-anchor="end">$240k</text>
+                                    <text x="30" y="113" fill="#64748b" font-size="7" font-family="var(--font-mono)" text-anchor="end">$0</text>
+                                    <text x="35" y="119" fill="#64748b" font-size="7" font-family="var(--font-mono)">$0</text>
+                                    <text x="290" y="119" fill="#64748b" font-size="7" font-family="var(--font-mono)" text-anchor="end">$100k</text>
+                                    <text x="162" y="128" fill="#475569" font-size="7.5" font-weight="600" text-anchor="middle">Monthly Channel Ad Spend</text>
+                                    <text x="12" y="60" fill="#475569" font-size="7.5" font-weight="600" text-anchor="middle" transform="rotate(-90 12 60)">Revenue Generated</text>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LAB 2: AGILE CAPACITY PLANNER -->
+                    <div class="lab-panel" id="panel-agile" style="display: none;">
+                        <div class="contact-card" style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 2.5rem; padding: 2.5rem 2rem;">
+                            <div>
+                                <div class="pillar-num">Model 02</div>
+                                <h3 class="pillar-title" style="font-size: 1.5rem; margin-bottom: 0.75rem;">Agile Sprint Capacity & Scope Simulator</h3>
+                                <p class="pillar-desc" style="font-size: 0.9rem; margin-bottom: 1.5rem;">
+                                    Graph sprint burndown dynamics in real-time. Tune team capacity against target scope points to preview expected delivery delays or debt thresholds.
+                                </p>
+                                
+                                <div class="calculator-controls">
+                                    <div class="control-group">
+                                        <div class="control-header">
+                                            <span>Sprint Target Scope</span>
+                                            <span id="agile-points-lbl" style="color:var(--accent-indigo); font-family:var(--font-mono); font-weight:700;">40 SP</span>
+                                        </div>
+                                        <input type="range" id="agile-points-input" min="10" max="100" step="5" value="40">
+                                    </div>
+                                    
+                                    <div class="control-group">
+                                        <div class="control-header">
+                                            <span>Active Team Capacity</span>
+                                            <span id="agile-hours-lbl" style="color:var(--accent-indigo); font-family:var(--font-mono); font-weight:700;">120 Hours</span>
+                                        </div>
+                                        <input type="range" id="agile-hours-input" min="40" max="240" step="10" value="120">
+                                    </div>
+
+                                    <div class="control-group">
+                                        <div class="control-header">
+                                            <span>Unplanned Scope Creep</span>
+                                            <span id="agile-creep-lbl" style="color:var(--accent-indigo); font-family:var(--font-mono); font-weight:700;">15%</span>
+                                        </div>
+                                        <input type="range" id="agile-creep-input" min="0" max="50" step="5" value="15">
+                                    </div>
+                                </div>
+
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1.5rem; border-top: 1px solid var(--border-color); padding-top: 1rem;">
+                                    <div>
+                                        <div style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 500;">Sprint Finish Probability</div>
+                                        <div id="agile-success" style="font-size: 1.15rem; font-weight: 700; font-family: var(--font-mono); color: var(--accent-green);">100%</div>
+                                    </div>
+                                    <div>
+                                        <div style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 500;">Expected Completion</div>
+                                        <div id="agile-delay" style="font-size: 1.15rem; font-weight: 700; font-family: var(--font-mono); color: var(--text-primary);">9.2 Days</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; flex-direction: column; justify-content: center;">
+                                <svg id="agile-graph" viewBox="0 0 300 135" style="width: 100%; height: auto; display: block; background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 12px; padding: 0.5rem 0.75rem 0.25rem 0.5rem;">
+                                    <!-- Ideal Burndown Line -->
+                                    <line x1="35" y1="10" x2="290" y2="110" stroke="#94a3b8" stroke-dasharray="3,3" stroke-width="1" />
+                                    <!-- Actual Burndown Line -->
+                                    <path id="agile-path" d="" fill="none" stroke="var(--accent-indigo)" stroke-width="2.5" />
+                                    <!-- Axis Lines -->
+                                    <line x1="35" y1="10" x2="35" y2="110" stroke="#94a3b8" stroke-width="1" />
+                                    <line x1="35" y1="110" x2="290" y2="110" stroke="#94a3b8" stroke-width="1" />
+                                    <!-- Dynamic Pulse Indicator on actual completion day -->
+                                    <circle id="agile-dot" cx="290" cy="110" r="5" fill="var(--accent-indigo)" style="filter: drop-shadow(0 2px 4px rgba(79, 70, 229, 0.3));" />
+                                    
+                                    <!-- Labels -->
+                                    <text x="30" y="14" fill="#64748b" font-size="7" font-family="var(--font-mono)" text-anchor="end">100%</text>
+                                    <text x="30" y="113" fill="#64748b" font-size="7" font-family="var(--font-mono)" text-anchor="end">0%</text>
+                                    <text x="35" y="119" fill="#64748b" font-size="7" font-family="var(--font-mono)">Day 0</text>
+                                    <text x="290" y="119" fill="#64748b" font-size="7" font-family="var(--font-mono)" text-anchor="end">Day 10</text>
+                                    <text x="162" y="128" fill="#475569" font-size="7.5" font-weight="600" text-anchor="middle">Sprint Timeline (10-Day Cycle)</text>
+                                    <text x="12" y="60" fill="#475569" font-size="7.5" font-weight="600" text-anchor="middle" transform="rotate(-90 12 60)">Story Points (SP) Remaining</text>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LAB 3: ENTERPRISE AI & RAG OPTIMIZER -->
+                    <div class="lab-panel" id="panel-ai" style="display: none;">
+                        <div class="contact-card" style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 2.5rem; padding: 2.5rem 2rem;">
+                            <div>
+                                <div class="pillar-num">Model 03</div>
+                                <h3 class="pillar-title" style="font-size: 1.5rem; margin-bottom: 0.75rem;">Enterprise AI & RAG Ingestion Cost Optimizer</h3>
+                                <p class="pillar-desc" style="font-size: 0.9rem; margin-bottom: 1.5rem;">
+                                    Simulate proprietary hosting cluster cost versus cloud-native SaaS APIs. Toggle volume to analyze the critical financial crossover limits.
+                                </p>
+                                
+                                <div class="calculator-controls">
+                                    <div style="display: flex; gap: 0.4rem; justify-content: center; margin-bottom: 0.5rem;">
+                                        <button class="btn mmm-btn" id="btn-ai-saas" style="padding: 0.4rem 0.6rem; font-size: 0.7rem; border-radius: 6px; font-weight:700; flex:1;" onclick="selectAiHost('saas')">SaaS Cloud API</button>
+                                        <button class="btn mmm-btn" id="btn-ai-self" style="padding: 0.4rem 0.6rem; font-size: 0.7rem; border-radius: 6px; font-weight:700; flex:1;" onclick="selectAiHost('self')">Minos Self-Hosted</button>
+                                    </div>
+
+                                    <div class="control-group">
+                                        <div class="control-header">
+                                            <span>Monthly Query Volume</span>
+                                            <span id="ai-queries-lbl" style="color:var(--accent-indigo); font-family:var(--font-mono); font-weight:700;">50,000</span>
+                                        </div>
+                                        <input type="range" id="ai-queries-input" min="5000" max="200000" step="5000" value="50000">
+                                    </div>
+
+                                    <div class="control-group">
+                                        <div class="control-header">
+                                            <span>Context Chunk Size</span>
+                                            <span id="ai-chunk-lbl" style="color:var(--accent-indigo); font-family:var(--font-mono); font-weight:700;">1,024 Tokens</span>
+                                        </div>
+                                        <input type="range" id="ai-chunk-input" min="256" max="4096" step="256" value="1024">
+                                    </div>
+                                </div>
+
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1.5rem; border-top: 1px solid var(--border-color); padding-top: 1rem;">
+                                    <div>
+                                        <div style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 500;">Estimated Monthly Cost</div>
+                                        <div id="ai-cost" style="font-size: 1.15rem; font-weight: 700; font-family: var(--font-mono); color: var(--text-primary);">$340</div>
+                                    </div>
+                                    <div>
+                                        <div style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 500;">Avg. RAG Pipeline Latency</div>
+                                        <div id="ai-latency" style="font-size: 1.15rem; font-weight: 700; font-family: var(--font-mono); color: var(--accent-cyan);">402 ms</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; flex-direction: column; justify-content: center;">
+                                <svg id="ai-graph" viewBox="0 0 300 135" style="width: 100%; height: auto; display: block; background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 12px; padding: 0.5rem 0.75rem 0.25rem 0.5rem;">
+                                    <!-- Grid lines -->
+                                    <line x1="35" y1="10" x2="290" y2="10" stroke="#cbd5e1" stroke-dasharray="3,3" stroke-width="0.5" />
+                                    <line x1="35" y1="40" x2="290" y2="40" stroke="#cbd5e1" stroke-dasharray="3,3" stroke-width="0.5" />
+                                    <line x1="35" y1="70" x2="290" y2="70" stroke="#cbd5e1" stroke-dasharray="3,3" stroke-width="0.5" />
+                                    <line x1="35" y1="100" x2="290" y2="100" stroke="#cbd5e1" stroke-dasharray="3,3" stroke-width="0.5" />
+                                    
+                                    <!-- SaaS Cost Line -->
+                                    <path id="ai-saas-path" d="" fill="none" stroke="#64748b" stroke-width="1.5" stroke-dasharray="2,2" />
+                                    <!-- Self Hosted Cost Line -->
+                                    <path id="ai-self-path" d="" fill="none" stroke="var(--accent-indigo)" stroke-width="2.5" />
+                                    <!-- Current active position indicator dot -->
+                                    <circle id="ai-dot" cx="35" cy="110" r="5" fill="var(--accent-indigo)" style="filter: drop-shadow(0 2px 4px rgba(79, 70, 229, 0.3));" />
+
+                                    <!-- Axis Lines -->
+                                    <line x1="35" y1="10" x2="35" y2="110" stroke="#94a3b8" stroke-width="1" />
+                                    <line x1="35" y1="110" x2="290" y2="110" stroke="#94a3b8" stroke-width="1" />
+                                    
+                                    <!-- Labels -->
+                                    <text x="30" y="14" fill="#64748b" font-size="7" font-family="var(--font-mono)" text-anchor="end">$1,500</text>
+                                    <text x="30" y="113" fill="#64748b" font-size="7" font-family="var(--font-mono)" text-anchor="end">$0</text>
+                                    <text x="35" y="119" fill="#64748b" font-size="7" font-family="var(--font-mono)">$0</text>
+                                    <text x="290" y="119" fill="#64748b" font-size="7" font-family="var(--font-mono)" text-anchor="end">200k</text>
+                                    <text x="162" y="128" fill="#475569" font-size="7.5" font-weight="600" text-anchor="middle">Monthly Enterprise Query Volume</text>
+                                    <text x="12" y="60" fill="#475569" font-size="7.5" font-weight="600" text-anchor="middle" transform="rotate(-90 12 60)">Monthly Infrastructure Cost</text>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
         <!-- Technical Audit Contact Form -->
         <section class="section-padding" id="audit">
             <div class="section-header">
@@ -952,8 +1152,37 @@
         </footer>
     </div>
 
-    <!-- MMM Saturation & Diminishing Returns Logic -->
+    <!-- Combined Interactive Engineering Labs Logic -->
     <script>
+        // Global tab switcher logic
+        function switchLab(labId) {
+            // Hide all panels
+            const panels = ['mmm', 'agile', 'ai'];
+            panels.forEach(id => {
+                document.getElementById('panel-' + id).style.display = 'none';
+                
+                const tabBtn = document.getElementById('tab-' + id);
+                tabBtn.style.background = '#ffffff';
+                tabBtn.style.color = 'var(--text-primary)';
+                tabBtn.style.borderColor = 'var(--border-color)';
+            });
+
+            // Show selected panel & highlight its tab button
+            document.getElementById('panel-' + labId).style.display = 'block';
+            const activeTab = document.getElementById('tab-' + labId);
+            activeTab.style.background = 'var(--accent-indigo)';
+            activeTab.style.color = '#ffffff';
+            activeTab.style.borderColor = 'var(--accent-indigo)';
+
+            // Trigger corresponding calculations immediately
+            if (labId === 'mmm') calculateMMM();
+            if (labId === 'agile') calculateAgile();
+            if (labId === 'ai') calculateAi();
+        }
+
+        // ==========================================
+        // 1. MMM DIMINISHING RETURNS MODEL LOGIC
+        // ==========================================
         const spendInput = document.getElementById('spend-input');
         const spendLbl = document.getElementById('spend-lbl');
         const metricRev = document.getElementById('metric-rev');
@@ -961,7 +1190,6 @@
         const curvePath = document.getElementById('curve-path');
         const pulsingDot = document.getElementById('pulsing-dot');
 
-        // Marketing Mix Modeling channel specifications
         const channels = {
             social: { max_return: 130000, alpha: 0.000035 }, // Quick saturation, high early ROI
             search: { max_return: 170000, alpha: 0.000018 }, // Moderate saturation, highly consistent
@@ -978,39 +1206,32 @@
             const spend = parseFloat(spendInput.value);
             const { max_return, alpha } = channels[currentChannel];
 
-            // 1. Calculate Revenue using exponential saturation formula: R = L * (1 - e^(-alpha * S))
             const revenue = max_return * (1 - Math.exp(-alpha * spend));
-
-            // 2. Calculate Marginal ROI (First derivative): dR/dS = L * alpha * e^(-alpha * S)
             const marginalRoi = max_return * alpha * Math.exp(-alpha * spend);
 
-            // Update Labels
             spendLbl.textContent = formatCurrency(spend);
             metricRev.textContent = formatCurrency(revenue);
             metricMroi.textContent = marginalRoi.toFixed(2) + 'x';
 
-            // Color-code Marginal ROI for executive-level visual warning
             if (marginalRoi >= 1.2) {
-                metricMroi.style.color = 'var(--accent-green)'; // Safe, keep spending!
+                metricMroi.style.color = 'var(--accent-green)';
             } else if (marginalRoi >= 1.0) {
-                metricMroi.style.color = '#d97706'; // Saturating, monitor closely!
+                metricMroi.style.color = '#d97706';
             } else {
-                metricMroi.style.color = '#ef4444'; // Saturated (losing money on next dollar)
+                metricMroi.style.color = '#ef4444';
             }
 
-            // 3. Draw Dynamic Graph Curve via SVG path
-            // Graph Dimensions: Left X = 35, Right X = 290 (Width = 255), Bottom Y = 110, Top Y = 10 (Height = 100)
             const xStart = 35;
             const xRange = 255;
             const yStart = 110;
             const yRange = 100;
-            const maxValY = 240000; // Match top label of graph
+            const maxValY = 240000;
 
             let pathD = '';
             const steps = 30;
             for (let i = 0; i <= steps; i++) {
-                const sVal = (i / steps) * 100000; // Spend from $0 to $100k
-                const rVal = max_return * (1 - Math.exp(-alpha * sVal)); // Revenue
+                const sVal = (i / steps) * 100000;
+                const rVal = max_return * (1 - Math.exp(-alpha * sVal));
 
                 const xSvg = xStart + (sVal / 100000) * xRange;
                 const ySvg = yStart - (rVal / maxValY) * yRange;
@@ -1023,7 +1244,6 @@
             }
             curvePath.setAttribute('d', pathD);
 
-            // 4. Update Pulsing Interactive Dot Coordinates
             const dotX = xStart + (spend / 100000) * xRange;
             const dotY = yStart - (revenue / maxValY) * yRange;
             pulsingDot.setAttribute('cx', dotX);
@@ -1032,8 +1252,6 @@
 
         function selectChannel(channelId) {
             currentChannel = channelId;
-            
-            // Highlight selected button & reset others
             const buttons = ['social', 'search', 'brand'];
             buttons.forEach(id => {
                 const btn = document.getElementById('btn-' + id);
@@ -1047,15 +1265,230 @@
                     btn.style.borderColor = 'var(--border-color)';
                 }
             });
-
             calculateMMM();
         }
 
-        // Attach listeners
-        spendInput.addEventListener('input', calculateMMM);
+        // ==========================================
+        // 2. AGILE CAPACITY PLANNER MODEL LOGIC
+        // ==========================================
+        const agilePointsInput = document.getElementById('agile-points-input');
+        const agilePointsLbl = document.getElementById('agile-points-lbl');
+        const agileHoursInput = document.getElementById('agile-hours-input');
+        const agileHoursLbl = document.getElementById('agile-hours-lbl');
+        const agileCreepInput = document.getElementById('agile-creep-input');
+        const agileCreepLbl = document.getElementById('agile-creep-lbl');
+        const agileSuccess = document.getElementById('agile-success');
+        const agileDelay = document.getElementById('agile-delay');
+        const agilePath = document.getElementById('agile-path');
+        const agileDot = document.getElementById('agile-dot');
 
-        // Initial Calculation (Default: Paid Social)
-        selectChannel('social');
+        function calculateAgile() {
+            const points = parseInt(agilePointsInput.value);
+            const hours = parseInt(agileHoursInput.value);
+            const creep = parseInt(agileCreepInput.value);
+
+            const totalPoints = points * (1 + creep / 100);
+            const requiredHours = totalPoints * 3.2; // Assuming ~3.2 engineering hours per story point
+            const capacityRatio = hours / requiredHours;
+
+            // Update Labels
+            agilePointsLbl.textContent = points + ' SP';
+            agileHoursLbl.textContent = hours + ' Hours';
+            agileCreepLbl.textContent = creep + '%';
+
+            // Calculate Metrics
+            const successPercent = Math.min(100, Math.round(capacityRatio * 100));
+            agileSuccess.textContent = successPercent + '%';
+
+            if (successPercent >= 90) {
+                agileSuccess.style.color = 'var(--accent-green)';
+            } else if (successPercent >= 75) {
+                agileSuccess.style.color = '#d97706';
+            } else {
+                agileSuccess.style.color = '#ef4444';
+            }
+
+            if (capacityRatio >= 1.0) {
+                const compDays = 10 / capacityRatio;
+                agileDelay.textContent = compDays.toFixed(1) + ' Days';
+                agileDelay.style.color = 'var(--text-primary)';
+            } else {
+                agileDelay.textContent = 'Incomplete';
+                agileDelay.style.color = '#ef4444';
+            }
+
+            // Draw Dynamic Burndown SVG Line
+            const xStart = 35;
+            const xRange = 255;
+            const yStart = 110;
+            const yRange = 100;
+            const maxPointsY = 150; // Max vertical scale
+
+            let pathD = '';
+            const steps = 10; // 10 days of sprint
+
+            for (let i = 0; i <= steps; i++) {
+                const day = i;
+                let remainingPoints = totalPoints;
+
+                if (day <= 3) {
+                    // Scope creep crawls in during the first 3 days
+                    remainingPoints = points + (creep / 100 * points) * (day / 3);
+                } else {
+                    // Burn-rate kicks in after Day 3
+                    const burnDays = day - 3;
+                    const spBurnedPerDay = (hours / 10) / 3.2;
+                    remainingPoints = totalPoints - (burnDays * spBurnedPerDay);
+                }
+
+                remainingPoints = Math.max(0, remainingPoints);
+
+                const xSvg = xStart + (day / 10) * xRange;
+                const ySvg = yStart - (remainingPoints / maxPointsY) * yRange;
+
+                if (i === 0) {
+                    pathD += `M ${xSvg} ${ySvg}`;
+                } else {
+                    pathD += ` L ${xSvg} ${ySvg}`;
+                }
+            }
+            agilePath.setAttribute('d', pathD);
+
+            // Position Dot dynamically
+            let completionDay = 10;
+            let completionY = yStart;
+
+            if (capacityRatio >= 1.0) {
+                completionDay = 3 + (points / ((hours / 10) / 3.2));
+                completionDay = Math.min(10, Math.max(0, completionDay));
+                completionY = yStart;
+            } else {
+                completionDay = 10;
+                const unfinishedDebt = totalPoints - (7 * ((hours / 10) / 3.2));
+                completionY = yStart - (Math.max(0, unfinishedDebt) / maxPointsY) * yRange;
+            }
+
+            const dotX = xStart + (completionDay / 10) * xRange;
+            agileDot.setAttribute('cx', dotX);
+            agileDot.setAttribute('cy', completionY);
+        }
+
+        // ==========================================
+        // 3. ENTERPRISE AI & RAG OPTIMIZER MODEL LOGIC
+        // ==========================================
+        const aiQueriesInput = document.getElementById('ai-queries-input');
+        const aiQueriesLbl = document.getElementById('ai-queries-lbl');
+        const aiChunkInput = document.getElementById('ai-chunk-input');
+        const aiChunkLbl = document.getElementById('ai-chunk-lbl');
+        const aiCost = document.getElementById('ai-cost');
+        const aiLatency = document.getElementById('ai-latency');
+        const aiSaasPath = document.getElementById('ai-saas-path');
+        const aiSelfPath = document.getElementById('ai-self-path');
+        const aiDot = document.getElementById('ai-dot');
+
+        let activeAiHost = 'saas';
+
+        function calculateAi() {
+            const queries = parseInt(aiQueriesInput.value);
+            const chunk = parseInt(aiChunkInput.value);
+
+            aiQueriesLbl.textContent = queries.toLocaleString('en-US');
+            aiChunkLbl.textContent = chunk.toLocaleString('en-US') + ' Tokens';
+
+            // Cost Math
+            const inputCost = (chunk + 150) * 0.0000025; // GPT-4o input cost
+            const outputCost = 250 * 0.000010;          // Output cost
+            const saasCostMonthly = queries * (inputCost + outputCost);
+            const selfHostedCost = 450; // Fixed flat server lease node with Minos
+
+            // Update Metrics
+            if (activeAiHost === 'saas') {
+                aiCost.textContent = formatCurrency(saasCostMonthly);
+                const latency = 280 + (chunk * 0.075);
+                aiLatency.textContent = latency.toFixed(0) + ' ms';
+            } else {
+                aiCost.textContent = formatCurrency(selfHostedCost);
+                const latency = 120 + (chunk * 0.035);
+                aiLatency.textContent = latency.toFixed(0) + ' ms';
+            }
+
+            // Draw Double Chart Lines
+            const xStart = 35;
+            const xRange = 255;
+            const yStart = 110;
+            const yRange = 100;
+            const maxCostY = 1500; // Top Y graph limit
+
+            let saasPathD = '';
+            let selfPathD = '';
+            const steps = 20;
+
+            for (let i = 0; i <= steps; i++) {
+                const qVal = (i / steps) * 200000;
+                
+                const sCost = qVal * (inputCost + outputCost);
+                const selfCost = selfHostedCost;
+
+                const xSvg = xStart + (qVal / 200000) * xRange;
+                const ySvgSaaS = yStart - (Math.min(maxCostY, sCost) / maxCostY) * yRange;
+                const ySvgSelf = yStart - (selfCost / maxCostY) * yRange;
+
+                if (i === 0) {
+                    saasPathD += `M ${xSvg} ${ySvgSaaS}`;
+                    selfPathD += `M ${xSvg} ${ySvgSelf}`;
+                } else {
+                    saasPathD += ` L ${xSvg} ${ySvgSaaS}`;
+                    selfPathD += ` L ${xSvg} ${ySvgSelf}`;
+                }
+            }
+            aiSaasPath.setAttribute('d', saasPathD);
+            aiSelfPath.setAttribute('d', selfPathD);
+
+            // Update Tracker Dot
+            const dotX = xStart + (queries / 200000) * xRange;
+            const activeCost = activeAiHost === 'saas' ? saasCostMonthly : selfHostedCost;
+            const dotY = yStart - (Math.min(maxCostY, activeCost) / maxCostY) * yRange;
+            aiDot.setAttribute('cx', dotX);
+            aiDot.setAttribute('cy', dotY);
+        }
+
+        function selectAiHost(hostId) {
+            activeAiHost = hostId;
+            const btnSaas = document.getElementById('btn-ai-saas');
+            const btnSelf = document.getElementById('btn-ai-self');
+
+            if (hostId === 'saas') {
+                btnSaas.style.background = 'var(--accent-indigo)';
+                btnSaas.style.color = '#ffffff';
+                btnSaas.style.borderColor = 'var(--accent-indigo)';
+                btnSelf.style.background = '#ffffff';
+                btnSelf.style.color = 'var(--text-primary)';
+                btnSelf.style.borderColor = 'var(--border-color)';
+            } else {
+                btnSelf.style.background = 'var(--accent-indigo)';
+                btnSelf.style.color = '#ffffff';
+                btnSelf.style.borderColor = 'var(--accent-indigo)';
+                btnSaas.style.background = '#ffffff';
+                btnSaas.style.color = 'var(--text-primary)';
+                btnSaas.style.borderColor = 'var(--border-color)';
+            }
+            calculateAi();
+        }
+
+        // Attach listeners for all 3 Labs
+        spendInput.addEventListener('input', calculateMMM);
+        
+        agilePointsInput.addEventListener('input', calculateAgile);
+        agileHoursInput.addEventListener('input', calculateAgile);
+        agileCreepInput.addEventListener('input', calculateAgile);
+
+        aiQueriesInput.addEventListener('input', calculateAi);
+        aiChunkInput.addEventListener('input', calculateAi);
+
+        // Initial Page Bootstrapping
+        window.addEventListener('DOMContentLoaded', () => {
+            switchLab('mmm'); // Boot Tab 1
+        });
     </script>
 </body>
 </html>
