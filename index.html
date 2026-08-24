@@ -701,7 +701,7 @@
                 
                 <div style="background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.25rem; margin-bottom: 1.5rem;">
                     <div style="font-size: 0.8rem; color: var(--text-secondary); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; font-family: var(--font-mono);">Active Edge Gateway</div>
-                    <div style="font-size: 1.65rem; font-weight: 800; color: var(--accent-indigo); letter-spacing: -0.02em; display: flex; align-items: center; gap: 0.5rem;">
+                    <div id="active-node" style="font-size: 1.65rem; font-weight: 800; color: var(--accent-indigo); letter-spacing: -0.02em; display: flex; align-items: center; gap: 0.5rem;">
                         PTY Node 🇵🇦
                     </div>
                 </div>
@@ -1485,9 +1485,54 @@
         aiQueriesInput.addEventListener('input', calculateAi);
         aiChunkInput.addEventListener('input', calculateAi);
 
+        // Dynamic Cloudflare Edge Node Detection
+        async function detectEdgeNode() {
+            try {
+                // Fetch the automatic Cloudflare debug trace from our own proxied domain
+                const response = await fetch('/cdn-cgi/trace');
+                const text = await response.text();
+                const lines = text.split('\n');
+                let colo = 'PTY'; // Fallback to PTY
+                
+                lines.forEach(line => {
+                    if (line.startsWith('colo=')) {
+                        colo = line.split('=')[1];
+                    }
+                });
+
+                // Map Cloudflare Three-Letter Airport Codes to Countries and Flags
+                const nodes = {
+                    BOG: { flag: '🇨🇴', city: 'Bogota' },
+                    MDE: { flag: '🇨🇴', city: 'Medellin' },
+                    CLO: { flag: '🇨🇴', city: 'Cali' },
+                    PTY: { flag: '🇵🇦', city: 'Panama' },
+                    MIA: { flag: '🇺🇸', city: 'Miami' },
+                    NUE: { flag: '🇩🇪', city: 'Nuremberg' },
+                    FRA: { flag: '🇩🇪', city: 'Frankfurt' },
+                    MEX: { flag: '🇲🇽', city: 'Mexico City' },
+                    UIO: { flag: '🇪🇨', city: 'Quito' },
+                    SCL: { flag: '🇨🇱', city: 'Santiago' },
+                    LIM: { flag: '🇵🇪', city: 'Lima' }
+                };
+
+                const activeNode = document.getElementById('active-node');
+                if (activeNode) {
+                    const nodeInfo = nodes[colo];
+                    if (nodeInfo) {
+                        activeNode.textContent = `${colo} Node ${nodeInfo.flag}`;
+                    } else {
+                        activeNode.textContent = `${colo} Node 🌐`;
+                    }
+                }
+            } catch (e) {
+                console.log('Telemetry fallback: using default edge node branding.');
+            }
+        }
+
         // Initial Page Bootstrapping
         window.addEventListener('DOMContentLoaded', () => {
             switchLab('mmm'); // Boot Tab 1
+            detectEdgeNode(); // Detect and update local Cloudflare edge node dynamically
         });
     </script>
 </body>
