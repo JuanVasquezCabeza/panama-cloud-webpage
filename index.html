@@ -48,6 +48,17 @@
         }
 
         /* Ambient Faint Watercolor Backgrounds */
+        .glow-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
         .ambient-glow {
             position: absolute;
             width: 700px;
@@ -643,8 +654,10 @@
 </head>
 <body>
 
-    <div class="ambient-glow"></div>
-    <div class="ambient-glow-2"></div>
+    <div class="glow-wrapper">
+        <div class="ambient-glow"></div>
+        <div class="ambient-glow-2"></div>
+    </div>
 
     <div class="container">
         <!-- Header -->
@@ -1043,64 +1056,6 @@
 
         // Initial Calculation (Default: Paid Social)
         selectChannel('social');
-    </script>
-
-    <!-- Temporary Layout Diagnostics Script -->
-    <script>
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                const viewportWidth = window.innerWidth;
-                const elements = document.querySelectorAll('*');
-                let foundOverflow = false;
-                
-                // Remove previous banner if any
-                const existingBanner = document.getElementById('debug-banner');
-                if (existingBanner) existingBanner.remove();
-
-                const banner = document.createElement('div');
-                banner.id = 'debug-banner';
-                banner.style.position = 'fixed';
-                banner.style.bottom = '10px';
-                banner.style.left = '10px';
-                banner.style.right = '10px';
-                banner.style.background = '#ef4444';
-                banner.style.color = '#ffffff';
-                banner.style.padding = '12px';
-                banner.style.zIndex = '99999';
-                banner.style.borderRadius = '8px';
-                banner.style.fontSize = '12px';
-                banner.style.fontFamily = 'monospace';
-                banner.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)';
-                banner.style.maxHeight = '200px';
-                banner.style.overflowY = 'auto';
-                banner.innerHTML = '<strong style="display:block;margin-bottom:5px;">🚨 LAYOUT OVERFLOW DIAGNOSTICS:</strong>';
-                
-                elements.forEach(el => {
-                    if (el.id === 'debug-banner' || el.closest('#debug-banner')) return;
-                    
-                    const rect = el.getBoundingClientRect();
-                    const overflowsLeft = rect.left < -1;
-                    const overflowsRight = rect.right > viewportWidth + 1;
-                    
-                    if (overflowsLeft || overflowsRight) {
-                        foundOverflow = true;
-                        el.style.outline = '2px dashed red';
-                        el.style.backgroundColor = 'rgba(255, 0, 0, 0.05)';
-                        
-                        const direction = overflowsLeft ? 'LEFT' : 'RIGHT';
-                        const className = el.className ? '.' + Array.from(el.classList).join('.') : '';
-                        const idName = el.id ? '#' + el.id : '';
-                        banner.innerHTML += `<div style="margin-top:4px;">→ &lt;${el.tagName.toLowerCase()}${idName}${className}&gt; (Overflow: ${direction}, Left: ${rect.left.toFixed(0)}px, Right: ${rect.right.toFixed(0)}px vs Viewport: ${viewportWidth}px)</div>`;
-                    }
-                });
-                
-                if (foundOverflow) {
-                    document.body.appendChild(banner);
-                } else {
-                    console.log('No horizontal overflow found!');
-                }
-            }, 500); // Small delay to let browser finish layouts
-        });
     </script>
 </body>
 </html>
