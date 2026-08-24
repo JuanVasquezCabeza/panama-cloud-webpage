@@ -563,6 +563,29 @@
             margin: 0 auto;
         }
 
+        /* Dedicated Labs Layout Card */
+        .lab-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 2.5rem 2rem;
+            box-shadow: var(--shadow-lg);
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .lab-card {
+                grid-template-columns: 1fr; /* Collapse columns on mobile to stack the graph underneath the sliders */
+                padding: 2rem 1.25rem;
+                gap: 2rem;
+            }
+        }
+
         .form-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -861,7 +884,7 @@
                     
                     <!-- LAB 1: MMM SATURATION -->
                     <div class="lab-panel" id="panel-mmm" style="display: block;">
-                        <div class="contact-card" style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 2.5rem; padding: 2.5rem 2rem;">
+                        <div class="lab-card">
                             <div>
                                 <div class="pillar-num">Model 01</div>
                                 <h3 class="pillar-title" style="font-size: 1.5rem; margin-bottom: 0.75rem;">Marketing Mix Modeling (MMM) Saturation</h3>
@@ -920,7 +943,7 @@
 
                     <!-- LAB 2: AGILE CAPACITY PLANNER -->
                     <div class="lab-panel" id="panel-agile" style="display: none;">
-                        <div class="contact-card" style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 2.5rem; padding: 2.5rem 2rem;">
+                        <div class="lab-card">
                             <div>
                                 <div class="pillar-num">Model 02</div>
                                 <h3 class="pillar-title" style="font-size: 1.5rem; margin-bottom: 0.75rem;">Agile Sprint Capacity & Scope Simulator</h3>
@@ -992,7 +1015,7 @@
 
                     <!-- LAB 3: ENTERPRISE AI & RAG OPTIMIZER -->
                     <div class="lab-panel" id="panel-ai" style="display: none;">
-                        <div class="contact-card" style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 2.5rem; padding: 2.5rem 2rem;">
+                        <div class="lab-card">
                             <div>
                                 <div class="pillar-num">Model 03</div>
                                 <h3 class="pillar-title" style="font-size: 1.5rem; margin-bottom: 0.75rem;">Enterprise AI & RAG Ingestion Cost Optimizer</h3>
