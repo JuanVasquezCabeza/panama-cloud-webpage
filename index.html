@@ -1079,14 +1079,18 @@
                     if (el.id === 'debug-banner' || el.closest('#debug-banner')) return;
                     
                     const rect = el.getBoundingClientRect();
-                    if (rect.right > viewportWidth + 1) {
+                    const overflowsLeft = rect.left < -1;
+                    const overflowsRight = rect.right > viewportWidth + 1;
+                    
+                    if (overflowsLeft || overflowsRight) {
                         foundOverflow = true;
                         el.style.outline = '2px dashed red';
                         el.style.backgroundColor = 'rgba(255, 0, 0, 0.05)';
                         
+                        const direction = overflowsLeft ? 'LEFT' : 'RIGHT';
                         const className = el.className ? '.' + Array.from(el.classList).join('.') : '';
                         const idName = el.id ? '#' + el.id : '';
-                        banner.innerHTML += `<div style="margin-top:4px;">→ &lt;${el.tagName.toLowerCase()}${idName}${className}&gt; (Width: ${rect.width.toFixed(0)}px, Right: ${rect.right.toFixed(0)}px vs Viewport: ${viewportWidth}px)</div>`;
+                        banner.innerHTML += `<div style="margin-top:4px;">→ &lt;${el.tagName.toLowerCase()}${idName}${className}&gt; (Overflow: ${direction}, Left: ${rect.left.toFixed(0)}px, Right: ${rect.right.toFixed(0)}px vs Viewport: ${viewportWidth}px)</div>`;
                     }
                 });
                 
