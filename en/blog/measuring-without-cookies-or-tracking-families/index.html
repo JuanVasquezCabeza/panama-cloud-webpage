@@ -646,6 +646,26 @@
             box-shadow: 0 0 10px rgba(99, 102, 241, 0.08);
         }
 
+        /* Website request forms (tools/forms.mjs + assets/forms.js) */
+        .form-grid > .full-width { grid-column: 1 / -1; }
+        .form-group .req { color: var(--accent-indigo); }
+        .check-group { border: 0; padding: 0; margin: 0; min-width: 0; }
+        .check-group legend { font-size: 0.85rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.6rem; padding: 0; }
+        .check-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.5rem 1rem; }
+        .form-group .check-item { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.92rem; font-weight: 500; color: var(--text-primary); cursor: pointer; line-height: 1.45; }
+        .form-group .check-item input { width: 1.1rem; height: 1.1rem; flex: 0 0 auto; margin-top: 0.15rem; padding: 0; accent-color: var(--accent-indigo); }
+        .consent .check-item { font-size: 0.88rem; color: var(--text-secondary); }
+        .consent a { color: var(--accent-indigo); font-weight: 600; }
+        .form-note { font-size: 0.78rem; color: var(--text-secondary); margin: -0.5rem 0 0; }
+        .hp-field { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+        .form-status { border-radius: 12px; padding: 1rem 1.25rem; font-size: 0.92rem; line-height: 1.6; background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; }
+        .form-status a { color: inherit; font-weight: 700; }
+        .form-success { text-align: center; padding: 2rem 1rem; }
+        .form-success:focus { outline: none; }
+        .form-success h3 { font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--text-primary); }
+        .form-success p { color: var(--text-secondary); }
+        .request-form button[disabled] { opacity: 0.6; cursor: wait; }
+
         /* Footer */
         footer {
             border-top: 1px solid var(--border-color);
@@ -684,6 +704,9 @@
         .lang-switch .lang-current { color: var(--text-primary); }
         .lang-sep { opacity: 0.4; }
         @media (max-width: 760px) { .header-nav .nav-link { display: none; } .header-nav { gap: 0.75rem; } }
+        .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1.5rem; margin-bottom: 1.25rem; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; font-weight: 600; font-size: 0.85rem; }
+        .footer-links a:hover, .footer-links a[aria-current] { color: var(--accent-indigo); }
         .post { max-width: 760px; margin: 0 auto; padding: 1rem 0 4rem; }
         .post h1 { font-size: 2.6rem; font-weight: 800; line-height: 1.2; letter-spacing: -0.03em; margin: 0.5rem 0 1.5rem; }
         .post-body h2 { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.02em; margin: 2.5rem 0 0.75rem; }
@@ -765,6 +788,7 @@
                 <a href="/en/" class="nav-link">Home</a>
                 <a href="/en/products-and-solutions/" class="nav-link">Products & Solutions</a>
                 <a href="/en/blog/" class="nav-link" aria-current="page">Blog</a>
+                <a href="/en/partners/" class="nav-link">Partners</a>
                 <div class="lang-switch" role="group" aria-label="Language / Idioma"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
                     <span class="lang-current" lang="en" aria-current="true" title="English">EN</span><span class="lang-sep" aria-hidden="true">/</span><a href="/es/blog/medir-sin-cookies-ni-rastrear-familias/" lang="es" hreflang="es" data-lang="es" title="Español" aria-label="Cambiar a español">ES</a>
                 </div>
@@ -806,6 +830,7 @@
                     </div>
                     <div style="text-align: right; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-indigo); font-weight:600;">minos.solutions</div>
                 </div>
+                <nav class="footer-links" aria-label="Footer"><a href="/en/partners/" class="nav-link">Partners</a><a href="/en/privacy/" class="nav-link">Privacy Notice</a><a href="mailto:info@minos.solutions" class="nav-link">info@minos.solutions</a></nav>
                 <div>&copy; 2026 Minos Consulting. All rights reserved.</div>
             </div>
         </footer>
@@ -815,6 +840,12 @@
         document.querySelectorAll('[data-lang]').forEach(function (a) {
             a.addEventListener('click', function () { document.cookie = 'lang=' + a.dataset.lang + ';path=/;max-age=31536000;SameSite=Lax'; });
         });
+        // Keep campaign tags (utm_*) from the landing URL for this visit, so a form on another page can send them.
+        try {
+            var q = new URLSearchParams(location.search), u = {}, any = false;
+            ['source', 'medium', 'campaign', 'term', 'content'].forEach(function (k) { var v = q.get('utm_' + k); if (v) { u[k] = v.slice(0, 200); any = true; } });
+            if (any) sessionStorage.setItem('minos_utm', JSON.stringify(u));
+        } catch (e) { /* storage unavailable */ }
     </script>
     <script src="/assets/widgets.js" defer></script>
 </body>

@@ -1,8 +1,9 @@
 // Generates the home page in English (/en/) and Spanish (/es/). Copy for both languages lives in STR below;
-// the interactive demo markup/logic is tools/home-demo.html + tools/home-demo.js. Run via `node tools/build-all.mjs`.
+// the audit form markup is tools/forms.mjs and its submit logic assets/forms.js. Run via `node tools/build-all.mjs`.
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { root, page, paths, otherLang, LANGS } from './lib.mjs';
+import { requestForm } from './forms.mjs';
 
 const REASONS = JSON.parse(readFileSync(join(root, 'content', 'blog', 'reasons.json'), 'utf8'));
 
@@ -36,11 +37,7 @@ const STR = {
     ulises: { role: 'Chief Technology Officer & Head of AI/Cloud Engineering', bio: 'Veteran tech leader specializing in secure, high-throughput data and cloud platforms, and in putting machine learning into production, the engineering foundation behind our models.', skills: 'Technical Expertise', badges: ['AWS', 'GCP', 'Terraform', 'Docker / K8s', 'Machine Learning', 'Distributed DBs'] },
     diego: { role: 'Sales Director', bio: 'Leads Minos’ client relationships and commercial strategy, helping institutions scope the right starting point for measuring and improving their admissions marketing.', skills: 'Commercial Expertise', badges: ['Client Partnerships', 'Commercial Strategy', 'Solution Scoping', 'Education Market'] },
     formH: 'Request the Marketing Data Audit', formP: 'Tell us about your institution and how you invest in admissions. We’ll come back to you within one business day.',
-    f: { name: 'Your Name', namePh: 'Full name', email: 'Work Email', emailPh: 'name@institution.edu', inst: 'Institution or Group', instPh: 'School, group or university', type: 'Institution Type',
-      types: ['K-12 school group', 'Private university', 'Vocational / technical institute', 'Language school', 'Online / edtech', 'Other'], students: 'Approximate Students',
-      sizes: ['Under 1,000', '1,000 - 3,000', '3,000 - 10,000', '10,000+'], countries: 'Countries / Campuses', countriesPh: 'e.g. Colombia, 3 campuses',
-      details: 'Which channels do you invest in, and what would you like to learn?', detailsPh: 'e.g. Meta and Google ads, radio, billboards, open days. We want to know where to cut or add budget.', send: 'Send Audit Request',
-      subject: 'Marketing Data Audit request', mName: 'Name', mEmail: 'Email', mInst: 'Institution', mType: 'Type', mStudents: 'Students', mCountries: 'Countries / campuses' },
+    partnerQ: 'Do you work with schools?', partnerCta: 'Partner with us',
   },
   es: {
     title: 'Minos Solutions | Marketing Mix Modeling para Educación',
@@ -71,13 +68,16 @@ const STR = {
     ulises: { role: 'Director de Tecnología (CTO) y Líder de Ingeniería de IA y Nube', bio: 'Líder tecnológico con trayectoria en plataformas de datos y nube seguras y de alto rendimiento, y en llevar el aprendizaje automático a producción: la base de ingeniería detrás de nuestros modelos.', skills: 'Experiencia técnica', badges: ['AWS', 'GCP', 'Terraform', 'Docker / K8s', 'Machine Learning', 'Bases de datos distribuidas'] },
     diego: { role: 'Director Comercial', bio: 'Lidera las relaciones con clientes y la estrategia comercial de Minos, y ayuda a las instituciones a definir el punto de partida adecuado para medir y mejorar su mercadeo de admisiones.', skills: 'Experiencia comercial', badges: ['Alianzas con clientes', 'Estrategia comercial', 'Definición de alcance', 'Mercado educativo'] },
     formH: 'Solicite la Auditoría de Datos de Marketing', formP: 'Cuéntenos sobre su institución y cómo invierte en admisiones. Le respondemos en un día hábil.',
-    f: { name: 'Su nombre', namePh: 'Nombre completo', email: 'Correo de trabajo', emailPh: 'nombre@institucion.edu', inst: 'Institución o grupo', instPh: 'Colegio, grupo o universidad', type: 'Tipo de institución',
-      types: ['Grupo de colegios K-12', 'Universidad privada', 'Instituto técnico / vocacional', 'Escuela de idiomas', 'Educación en línea / edtech', 'Otro'], students: 'Número aproximado de estudiantes',
-      sizes: ['Menos de 1.000', '1.000 - 3.000', '3.000 - 10.000', 'Más de 10.000'], countries: 'Países / sedes', countriesPh: 'p. ej. Colombia, 3 sedes',
-      details: '¿En qué canales invierte y qué le gustaría saber?', detailsPh: 'p. ej. Meta y Google, radio, vallas, jornadas de puertas abiertas. Queremos saber dónde recortar o sumar presupuesto.', send: 'Enviar solicitud de auditoría',
-      subject: 'Solicitud de Auditoría de Datos de Marketing', mName: 'Nombre', mEmail: 'Correo', mInst: 'Institución', mType: 'Tipo', mStudents: 'Estudiantes', mCountries: 'Países / sedes' },
+    partnerQ: '¿Trabaja con colegios o universidades?', partnerCta: 'Sea nuestro aliado',
   },
 };
+
+// Small secondary link to the partners page under the audit form; deliberately quieter than the audit CTA.
+const PARTNER_BAND_CSS = `
+        .partner-band { text-align: center; padding: 1.25rem 1rem 3rem; color: var(--text-secondary); font-size: 0.95rem; }
+        .partner-band a { color: var(--accent-indigo); font-weight: 600; text-decoration: none; white-space: nowrap; }
+        .partner-band a:hover { text-decoration: underline; }
+`;
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
 const profile = (initials, name, p, s) => `
@@ -95,7 +95,6 @@ const profile = (initials, name, p, s) => `
 
 for (const lang of LANGS) {
   const s = STR[lang];
-  const f = s.f;
   const main = `
         <section class="hero">
             <div>
@@ -164,34 +163,18 @@ for (const lang of LANGS) {
         <section class="section-padding" id="audit">
             <div class="section-header"><h2>${s.formH}</h2><p>${s.formP}</p></div>
             <div class="contact-card">
-                <form id="audit-form" action="#">
-                    <div class="form-grid">
-                        <div class="form-group"><label for="name">${f.name}</label><input type="text" id="name" required placeholder="${esc(f.namePh)}"></div>
-                        <div class="form-group"><label for="email">${f.email}</label><input type="email" id="email" required placeholder="${esc(f.emailPh)}"></div>
-                        <div class="form-group"><label for="company">${f.inst}</label><input type="text" id="company" required placeholder="${esc(f.instPh)}"></div>
-                        <div class="form-group"><label for="itype">${f.type}</label><select id="itype">${f.types.map((x) => `<option>${esc(x)}</option>`).join('')}</select></div>
-                        <div class="form-group"><label for="students">${f.students}</label><select id="students">${f.sizes.map((x, i) => `<option${i === 1 ? ' selected' : ''}>${esc(x)}</option>`).join('')}</select></div>
-                        <div class="form-group"><label for="countries">${f.countries}</label><input type="text" id="countries" placeholder="${esc(f.countriesPh)}"></div>
-                        <div class="form-group full-width"><label for="details">${f.details}</label><textarea id="details" rows="4" placeholder="${esc(f.detailsPh)}"></textarea></div>
-                        <div class="form-group full-width" style="margin-top: 1rem;"><button type="submit" class="btn btn-primary" style="width: 100%;">${f.send}</button></div>
-                    </div>
-                </form>
+                ${requestForm(lang, 'client')}
             </div>
         </section>
+
+        <aside class="partner-band" aria-label="${s.partnerQ}">
+            <span>${s.partnerQ}</span> <a href="${paths.partners(lang)}">${s.partnerCta} &rarr;</a>
+        </aside>
 `;
-  // Audit request: opens the visitor's email client with the answers filled in (nothing is stored by the site).
-  const script = `
-        document.getElementById('audit-form').addEventListener('submit', function (e) {
-            e.preventDefault();
-            var v = function (id) { return document.getElementById(id).value.trim(); };
-            var body = [${JSON.stringify(f.mName)} + ': ' + v('name'), ${JSON.stringify(f.mEmail)} + ': ' + v('email'), ${JSON.stringify(f.mInst)} + ': ' + v('company'),
-                ${JSON.stringify(f.mType)} + ': ' + v('itype'), ${JSON.stringify(f.mStudents)} + ': ' + v('students'), ${JSON.stringify(f.mCountries)} + ': ' + v('countries'), '', v('details')].join('\\n');
-            window.location.href = 'mailto:info@minos.solutions?subject=' + encodeURIComponent(${JSON.stringify(f.subject)} + ' - ' + v('company')) + '&body=' + encodeURIComponent(body);
-        });`;
   const path = paths.home(lang);
   mkdirSync(join(root, path.slice(1)), { recursive: true });
   writeFileSync(join(root, path.slice(1), 'index.html'), page({
-    lang, path, altPath: paths.home(otherLang(lang)), current: 'home', title: s.title, description: s.desc, main, script, scripts: ['/assets/widgets.js'],
+    lang, path, altPath: paths.home(otherLang(lang)), current: 'home', title: s.title, description: s.desc, main, css: PARTNER_BAND_CSS, scripts: ['/assets/widgets.js', '/assets/forms.js'],
   }));
 }
 console.log('Home built in en + es.');

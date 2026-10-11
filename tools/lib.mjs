@@ -57,13 +57,15 @@ export const paths = {
   home: (l) => `/${l}/`,
   products: (l) => (l === 'en' ? '/en/products-and-solutions/' : '/es/productos-y-soluciones/'),
   blog: (l) => `/${l}/blog/`,
+  partners: (l) => (l === 'en' ? '/en/partners/' : '/es/aliados/'),
+  privacy: (l) => (l === 'en' ? '/en/privacy/' : '/es/privacidad/'),
 };
 export const otherLang = (l) => (l === 'en' ? 'es' : 'en');
 
 const LABELS = {
-  en: { home: 'Home', products: 'Products & Solutions', blog: 'Blog', audit: 'Request Audit', rights: 'All rights reserved.',
+  en: { home: 'Home', products: 'Products & Solutions', blog: 'Blog', partners: 'Partners', privacy: 'Privacy Notice', audit: 'Request Audit', rights: 'All rights reserved.',
     tagline: 'Marketing Mix Modeling for education institutions in Latin America.', switchTo: 'Switch to English', langName: 'English' },
-  es: { home: 'Inicio', products: 'Productos y soluciones', blog: 'Blog', audit: 'Solicitar auditoría', rights: 'Todos los derechos reservados.',
+  es: { home: 'Inicio', products: 'Productos y soluciones', blog: 'Blog', partners: 'Aliados', privacy: 'Aviso de Privacidad', audit: 'Solicitar auditoría', rights: 'Todos los derechos reservados.',
     tagline: 'Marketing Mix Modeling para instituciones educativas de América Latina.', switchTo: 'Cambiar a español', langName: 'Español' },
 };
 
@@ -112,6 +114,7 @@ export function page({ lang, path, altPath, title, description, noindex = false,
                 ${nav(paths.home(lang), L.home, 'home')}
                 ${nav(paths.products(lang), L.products, 'products')}
                 ${nav(paths.blog(lang), L.blog, 'blog')}
+                ${nav(paths.partners(lang), L.partners, 'partners')}
                 ${switcher}
                 <a href="${paths.home(lang)}#audit" class="btn btn-secondary" style="padding: 0.55rem 1.2rem; font-size: 0.85rem; border-radius: 8px; font-weight:700;">${L.audit}</a>
             </div>
@@ -126,6 +129,7 @@ ${main}
                     </div>
                     <div style="text-align: right; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-indigo); font-weight:600;">minos.solutions</div>
                 </div>
+                <nav class="footer-links" aria-label="${lang === 'es' ? 'Pie de página' : 'Footer'}">${nav(paths.partners(lang), L.partners, 'partners')}${nav(paths.privacy(lang), L.privacy, 'privacy')}<a href="mailto:info@minos.solutions" class="nav-link">info@minos.solutions</a></nav>
                 <div>&copy; 2026 Minos Consulting. ${L.rights}</div>
             </div>
         </footer>
@@ -135,6 +139,12 @@ ${main}
         document.querySelectorAll('[data-lang]').forEach(function (a) {
             a.addEventListener('click', function () { document.cookie = 'lang=' + a.dataset.lang + ';path=/;max-age=31536000;SameSite=Lax'; });
         });
+        // Keep campaign tags (utm_*) from the landing URL for this visit, so a form on another page can send them.
+        try {
+            var q = new URLSearchParams(location.search), u = {}, any = false;
+            ['source', 'medium', 'campaign', 'term', 'content'].forEach(function (k) { var v = q.get('utm_' + k); if (v) { u[k] = v.slice(0, 200); any = true; } });
+            if (any) sessionStorage.setItem('minos_utm', JSON.stringify(u));
+        } catch (e) { /* storage unavailable */ }
     </script>${scripts.map((u) => `\n    <script src="${u}" defer></script>`).join('')}${script ? `\n    <script>\n${script}\n    </script>` : ''}
 </body>
 </html>
@@ -152,6 +162,9 @@ export const baseCss = `
         .lang-switch .lang-current { color: var(--text-primary); }
         .lang-sep { opacity: 0.4; }
         @media (max-width: 760px) { .header-nav .nav-link { display: none; } .header-nav { gap: 0.75rem; } }
+        .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1.5rem; margin-bottom: 1.25rem; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; font-weight: 600; font-size: 0.85rem; }
+        .footer-links a:hover, .footer-links a[aria-current] { color: var(--accent-indigo); }
         .post { max-width: 760px; margin: 0 auto; padding: 1rem 0 4rem; }
         .post h1 { font-size: 2.6rem; font-weight: 800; line-height: 1.2; letter-spacing: -0.03em; margin: 0.5rem 0 1.5rem; }
         .post-body h2 { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.02em; margin: 2.5rem 0 0.75rem; }

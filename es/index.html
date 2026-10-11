@@ -646,6 +646,26 @@
             box-shadow: 0 0 10px rgba(99, 102, 241, 0.08);
         }
 
+        /* Website request forms (tools/forms.mjs + assets/forms.js) */
+        .form-grid > .full-width { grid-column: 1 / -1; }
+        .form-group .req { color: var(--accent-indigo); }
+        .check-group { border: 0; padding: 0; margin: 0; min-width: 0; }
+        .check-group legend { font-size: 0.85rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.6rem; padding: 0; }
+        .check-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.5rem 1rem; }
+        .form-group .check-item { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.92rem; font-weight: 500; color: var(--text-primary); cursor: pointer; line-height: 1.45; }
+        .form-group .check-item input { width: 1.1rem; height: 1.1rem; flex: 0 0 auto; margin-top: 0.15rem; padding: 0; accent-color: var(--accent-indigo); }
+        .consent .check-item { font-size: 0.88rem; color: var(--text-secondary); }
+        .consent a { color: var(--accent-indigo); font-weight: 600; }
+        .form-note { font-size: 0.78rem; color: var(--text-secondary); margin: -0.5rem 0 0; }
+        .hp-field { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+        .form-status { border-radius: 12px; padding: 1rem 1.25rem; font-size: 0.92rem; line-height: 1.6; background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; }
+        .form-status a { color: inherit; font-weight: 700; }
+        .form-success { text-align: center; padding: 2rem 1rem; }
+        .form-success:focus { outline: none; }
+        .form-success h3 { font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--text-primary); }
+        .form-success p { color: var(--text-secondary); }
+        .request-form button[disabled] { opacity: 0.6; cursor: wait; }
+
         /* Footer */
         footer {
             border-top: 1px solid var(--border-color);
@@ -684,6 +704,9 @@
         .lang-switch .lang-current { color: var(--text-primary); }
         .lang-sep { opacity: 0.4; }
         @media (max-width: 760px) { .header-nav .nav-link { display: none; } .header-nav { gap: 0.75rem; } }
+        .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1.5rem; margin-bottom: 1.25rem; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; font-weight: 600; font-size: 0.85rem; }
+        .footer-links a:hover, .footer-links a[aria-current] { color: var(--accent-indigo); }
         .post { max-width: 760px; margin: 0 auto; padding: 1rem 0 4rem; }
         .post h1 { font-size: 2.6rem; font-weight: 800; line-height: 1.2; letter-spacing: -0.03em; margin: 0.5rem 0 1.5rem; }
         .post-body h2 { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.02em; margin: 2.5rem 0 0.75rem; }
@@ -754,6 +777,10 @@
         .vneed { display: grid; grid-template-columns: 1.5rem 1fr auto; gap: 0.5rem; align-items: center; font-size: 0.88rem; padding: 0.45rem 0.7rem; border-radius: 10px; background: #f8fafc; border: 1px solid #e2e8f0; }
         .vneed em { font-style: normal; font-size: 0.72rem; font-weight: 700; color: var(--text-secondary); } .vneed-req { border-color: #c7d2fe; background: #eef2ff; } .vneed-req .vsym { color: var(--accent-indigo); } .vneed-no { opacity: 0.6; }
         @media (max-width: 520px) { .vbar { grid-template-columns: 1fr; gap: 0.2rem; } .vbar-v { text-align: left; } .viz-card { padding: 1.1rem; } }
+
+        .partner-band { text-align: center; padding: 1.25rem 1rem 3rem; color: var(--text-secondary); font-size: 0.95rem; }
+        .partner-band a { color: var(--accent-indigo); font-weight: 600; text-decoration: none; white-space: nowrap; }
+        .partner-band a:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
@@ -765,6 +792,7 @@
                 <a href="/es/" class="nav-link" aria-current="page">Inicio</a>
                 <a href="/es/productos-y-soluciones/" class="nav-link">Productos y soluciones</a>
                 <a href="/es/blog/" class="nav-link">Blog</a>
+                <a href="/es/aliados/" class="nav-link">Aliados</a>
                 <div class="lang-switch" role="group" aria-label="Language / Idioma"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
                     <a href="/en/" lang="en" hreflang="en" data-lang="en" title="English" aria-label="Switch to English">EN</a><span class="lang-sep" aria-hidden="true">/</span><span class="lang-current" lang="es" aria-current="true" title="Español">ES</span>
                 </div>
@@ -881,20 +909,36 @@
         <section class="section-padding" id="audit">
             <div class="section-header"><h2>Solicite la Auditoría de Datos de Marketing</h2><p>Cuéntenos sobre su institución y cómo invierte en admisiones. Le respondemos en un día hábil.</p></div>
             <div class="contact-card">
-                <form id="audit-form" action="#">
+                <form class="request-form" id="audit-form" action="#" data-lang="es" data-subject="Solicitud de Auditoría de Datos de Marketing">
+                    <input type="hidden" name="interest" value="client">
+                    <div class="hp-field" aria-hidden="true"><label for="cf-hp">Deje este campo vacío</label><input type="text" id="cf-hp" name="company_url" tabindex="-1" autocomplete="off"></div>
                     <div class="form-grid">
-                        <div class="form-group"><label for="name">Su nombre</label><input type="text" id="name" required placeholder="Nombre completo"></div>
-                        <div class="form-group"><label for="email">Correo de trabajo</label><input type="email" id="email" required placeholder="nombre@institucion.edu"></div>
-                        <div class="form-group"><label for="company">Institución o grupo</label><input type="text" id="company" required placeholder="Colegio, grupo o universidad"></div>
-                        <div class="form-group"><label for="itype">Tipo de institución</label><select id="itype"><option>Grupo de colegios K-12</option><option>Universidad privada</option><option>Instituto técnico / vocacional</option><option>Escuela de idiomas</option><option>Educación en línea / edtech</option><option>Otro</option></select></div>
-                        <div class="form-group"><label for="students">Número aproximado de estudiantes</label><select id="students"><option>Menos de 1.000</option><option selected>1.000 - 3.000</option><option>3.000 - 10.000</option><option>Más de 10.000</option></select></div>
-                        <div class="form-group"><label for="countries">Países / sedes</label><input type="text" id="countries" placeholder="p. ej. Colombia, 3 sedes"></div>
-                        <div class="form-group full-width"><label for="details">¿En qué canales invierte y qué le gustaría saber?</label><textarea id="details" rows="4" placeholder="p. ej. Meta y Google, radio, vallas, jornadas de puertas abiertas. Queremos saber dónde recortar o sumar presupuesto."></textarea></div>
-                        <div class="form-group full-width" style="margin-top: 1rem;"><button type="submit" class="btn btn-primary" style="width: 100%;">Enviar solicitud de auditoría</button></div>
+                        <div class="form-group"><label for="cf-name">Su nombre <span class="req" aria-hidden="true">*</span></label><input type="text" id="cf-name" name="name" required placeholder="Nombre completo" autocomplete="name" maxlength="120"></div>
+                        <div class="form-group"><label for="cf-email">Correo de trabajo <span class="req" aria-hidden="true">*</span></label><input type="email" id="cf-email" name="email" required placeholder="nombre@institucion.edu" autocomplete="email" maxlength="160"></div>
+                        <div class="form-group"><label for="cf-jobTitle">Cargo <span class="req" aria-hidden="true">*</span></label><input type="text" id="cf-jobTitle" name="jobTitle" required placeholder="p. ej. Director(a) de Mercadeo" autocomplete="organization-title" maxlength="120"></div>
+                        <div class="form-group"><label for="cf-organization">Institución o grupo <span class="req" aria-hidden="true">*</span></label><input type="text" id="cf-organization" name="organization" required placeholder="Colegio, grupo o universidad" autocomplete="organization" maxlength="160"></div>
+                        <div class="form-group"><label for="cf-institutionType">Tipo de institución <span class="req" aria-hidden="true">*</span></label><select id="cf-institutionType" name="institutionType" required><option value="" disabled selected>Seleccione…</option><option value="K12_SCHOOL">Colegio</option><option value="K12_GROUP">Grupo de colegios</option><option value="UNIVERSITY">Universidad privada</option><option value="VOCATIONAL">Instituto técnico / de idiomas</option><option value="ONLINE_EDTECH">Educación en línea / edtech</option><option value="OTHER">Otro</option></select></div>
+                        <div class="form-group"><label for="cf-area">Su área <span class="req" aria-hidden="true">*</span></label><select id="cf-area" name="area" required><option value="" disabled selected>Seleccione…</option><option value="MARKETING">Mercadeo</option><option value="ADMISSIONS">Admisiones</option><option value="EXECUTIVE">Dirección / gerencia</option><option value="DATA_BI">Datos / BI</option><option value="OTHER">Otra</option></select></div>
+                        <div class="form-group"><label for="cf-website">Sitio web</label><input type="text" id="cf-website" name="website" placeholder="p. ej. institucion.edu" autocomplete="url" inputmode="url" maxlength="200"></div>
+                        <div class="form-group"><label for="cf-country">País <span class="req" aria-hidden="true">*</span></label><select id="cf-country" name="country" required><option value="" disabled selected>Seleccione…</option><option value="Argentina">Argentina</option><option value="Bolivia">Bolivia</option><option value="Brazil">Brasil</option><option value="Chile">Chile</option><option value="Colombia">Colombia</option><option value="Costa Rica">Costa Rica</option><option value="Dominican Republic">República Dominicana</option><option value="Ecuador">Ecuador</option><option value="El Salvador">El Salvador</option><option value="Guatemala">Guatemala</option><option value="Honduras">Honduras</option><option value="Mexico">México</option><option value="Nicaragua">Nicaragua</option><option value="Panama">Panamá</option><option value="Paraguay">Paraguay</option><option value="Peru">Perú</option><option value="Uruguay">Uruguay</option><option value="Venezuela">Venezuela</option><option value="United States">Estados Unidos</option><option value="Spain">España</option><option value="Other">Otro</option></select></div>
+                        <div class="form-group"><label for="cf-city">Ciudad</label><input type="text" id="cf-city" name="city" autocomplete="address-level2" maxlength="120"></div>
+                        <div class="form-group"><label for="cf-phone">Teléfono / WhatsApp</label><input type="tel" id="cf-phone" name="phone" placeholder="Incluya el indicativo del país" autocomplete="tel" maxlength="40"></div>
+                        <div class="form-group"><label for="cf-studentRange">Número aproximado de estudiantes</label><select id="cf-studentRange" name="studentRange"><option value="UNDER_1000">Menos de 1.000</option><option value="FROM_1000_TO_3000" selected>1.000 - 3.000</option><option value="FROM_3000_TO_10000">3.000 - 10.000</option><option value="OVER_10000">Más de 10.000</option></select></div>
+                        <div class="form-group"><label for="cf-campusCount">Número de sedes</label><input type="number" id="cf-campusCount" name="campusCount" placeholder="p. ej. 3" min="1" max="1000" step="1" inputmode="numeric"></div>
+                        <fieldset class="form-group full-width check-group"><legend>¿En qué canales invierte para admisiones?</legend><div class="check-grid"><label class="check-item" for="cf-channels-0"><input type="checkbox" id="cf-channels-0" name="channels" value="SEARCH"><span>Google / anuncios de búsqueda</span></label><label class="check-item" for="cf-channels-1"><input type="checkbox" id="cf-channels-1" name="channels" value="SOCIAL"><span>Meta / TikTok / redes sociales</span></label><label class="check-item" for="cf-channels-2"><input type="checkbox" id="cf-channels-2" name="channels" value="DISPLAY_VIDEO"><span>Display / YouTube</span></label><label class="check-item" for="cf-channels-3"><input type="checkbox" id="cf-channels-3" name="channels" value="RADIO_TV"><span>Radio / TV</span></label><label class="check-item" for="cf-channels-4"><input type="checkbox" id="cf-channels-4" name="channels" value="OUTDOOR"><span>Vallas / publicidad exterior</span></label><label class="check-item" for="cf-channels-5"><input type="checkbox" id="cf-channels-5" name="channels" value="EVENTS"><span>Ferias / puertas abiertas / eventos</span></label><label class="check-item" for="cf-channels-6"><input type="checkbox" id="cf-channels-6" name="channels" value="OTHER"><span>Otro</span></label></div></fieldset>
+                        <div class="form-group full-width"><label for="cf-message">¿Qué le gustaría saber?</label><textarea id="cf-message" name="message" rows="4" maxlength="3000" placeholder="p. ej. Queremos saber qué canales traen matrículas y dónde recortar o sumar presupuesto."></textarea></div>
+                        <div class="form-group full-width consent"><label class="check-item" for="cf-consent"><input type="checkbox" id="cf-consent" name="consent" required><span class="consent-text">Acepto que Minos trate mis datos para responder a esta solicitud, según el <a href="/es/privacidad/" target="_blank" rel="noopener">Aviso de Privacidad</a>.</span> <span class="req" aria-hidden="true">*</span></label></div>
+                        <p class="form-note full-width">Los campos obligatorios están marcados con *</p>
+                        <div class="form-group full-width"><button type="submit" class="btn btn-primary" style="width: 100%;">Enviar solicitud de auditoría</button></div>
+                        <div class="form-status full-width" role="alert" aria-live="assertive" hidden></div>
                     </div>
                 </form>
             </div>
         </section>
+
+        <aside class="partner-band" aria-label="¿Trabaja con colegios o universidades?">
+            <span>¿Trabaja con colegios o universidades?</span> <a href="/es/aliados/">Sea nuestro aliado &rarr;</a>
+        </aside>
 
         <footer>
             <div class="container">
@@ -905,6 +949,7 @@
                     </div>
                     <div style="text-align: right; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-indigo); font-weight:600;">minos.solutions</div>
                 </div>
+                <nav class="footer-links" aria-label="Pie de página"><a href="/es/aliados/" class="nav-link">Aliados</a><a href="/es/privacidad/" class="nav-link">Aviso de Privacidad</a><a href="mailto:info@minos.solutions" class="nav-link">info@minos.solutions</a></nav>
                 <div>&copy; 2026 Minos Consulting. Todos los derechos reservados.</div>
             </div>
         </footer>
@@ -914,17 +959,14 @@
         document.querySelectorAll('[data-lang]').forEach(function (a) {
             a.addEventListener('click', function () { document.cookie = 'lang=' + a.dataset.lang + ';path=/;max-age=31536000;SameSite=Lax'; });
         });
+        // Keep campaign tags (utm_*) from the landing URL for this visit, so a form on another page can send them.
+        try {
+            var q = new URLSearchParams(location.search), u = {}, any = false;
+            ['source', 'medium', 'campaign', 'term', 'content'].forEach(function (k) { var v = q.get('utm_' + k); if (v) { u[k] = v.slice(0, 200); any = true; } });
+            if (any) sessionStorage.setItem('minos_utm', JSON.stringify(u));
+        } catch (e) { /* storage unavailable */ }
     </script>
     <script src="/assets/widgets.js" defer></script>
-    <script>
-
-        document.getElementById('audit-form').addEventListener('submit', function (e) {
-            e.preventDefault();
-            var v = function (id) { return document.getElementById(id).value.trim(); };
-            var body = ["Nombre" + ': ' + v('name'), "Correo" + ': ' + v('email'), "Institución" + ': ' + v('company'),
-                "Tipo" + ': ' + v('itype'), "Estudiantes" + ': ' + v('students'), "Países / sedes" + ': ' + v('countries'), '', v('details')].join('\n');
-            window.location.href = 'mailto:info@minos.solutions?subject=' + encodeURIComponent("Solicitud de Auditoría de Datos de Marketing" + ' - ' + v('company')) + '&body=' + encodeURIComponent(body);
-        });
-    </script>
+    <script src="/assets/forms.js" defer></script>
 </body>
 </html>

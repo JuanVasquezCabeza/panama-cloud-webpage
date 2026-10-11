@@ -631,6 +631,26 @@
             box-shadow: 0 0 10px rgba(99, 102, 241, 0.08);
         }
 
+        /* Website request forms (tools/forms.mjs + assets/forms.js) */
+        .form-grid > .full-width { grid-column: 1 / -1; }
+        .form-group .req { color: var(--accent-indigo); }
+        .check-group { border: 0; padding: 0; margin: 0; min-width: 0; }
+        .check-group legend { font-size: 0.85rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.6rem; padding: 0; }
+        .check-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.5rem 1rem; }
+        .form-group .check-item { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.92rem; font-weight: 500; color: var(--text-primary); cursor: pointer; line-height: 1.45; }
+        .form-group .check-item input { width: 1.1rem; height: 1.1rem; flex: 0 0 auto; margin-top: 0.15rem; padding: 0; accent-color: var(--accent-indigo); }
+        .consent .check-item { font-size: 0.88rem; color: var(--text-secondary); }
+        .consent a { color: var(--accent-indigo); font-weight: 600; }
+        .form-note { font-size: 0.78rem; color: var(--text-secondary); margin: -0.5rem 0 0; }
+        .hp-field { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+        .form-status { border-radius: 12px; padding: 1rem 1.25rem; font-size: 0.92rem; line-height: 1.6; background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; }
+        .form-status a { color: inherit; font-weight: 700; }
+        .form-success { text-align: center; padding: 2rem 1rem; }
+        .form-success:focus { outline: none; }
+        .form-success h3 { font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--text-primary); }
+        .form-success p { color: var(--text-secondary); }
+        .request-form button[disabled] { opacity: 0.6; cursor: wait; }
+
         /* Footer */
         footer {
             border-top: 1px solid var(--border-color);

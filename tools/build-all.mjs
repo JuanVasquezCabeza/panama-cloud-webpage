@@ -1,5 +1,5 @@
 // Rebuilds the whole site: node tools/build-all.mjs
-//   /en/ and /es/  home, products, blog (generators below)  +  / language entry page  +  sitemap.xml  +  robots.txt
+//   /en/ and /es/  home, products, blog, partners, privacy (generators below)  +  / language entry page  +  sitemap.xml  +  robots.txt
 // Reads the CRM (products only, read-only). Commit the generated files and push to deploy.
 import { rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -10,6 +10,8 @@ for (const d of ['en', 'es', 'blog', 'products-and-solutions']) rmSync(join(root
 await import('./build-home.mjs');
 await import('./build-products-page.mjs');
 await import('./build-blog.mjs');
+await import('./build-partners-page.mjs');
+await import('./build-privacy-page.mjs');
 
 // Root "/" is normally redirected by nginx (cookie, then Accept-Language). This static page is the fallback.
 writeFileSync(join(root, 'index.html'), `<!DOCTYPE html>

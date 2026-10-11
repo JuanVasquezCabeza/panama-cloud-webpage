@@ -135,6 +135,8 @@ Then commit the generated files and push (Coolify deploys). **Never edit `en/`, 
 | Home | `/en/` | `/es/` | `tools/build-home.mjs` (copy for both languages inside; uses the `saturation` and `readiness` widgets and statement-plus-evidence paragraphs) |
 | Products & Solutions | `/en/products-and-solutions/` | `/es/productos-y-soluciones/` | CRM `product` catalog (English, read-only) + `content/products.es.json` (Spanish by product code) |
 | Blog | `/en/blog/` | `/es/blog/` | `content/blog/reasons.json` (structure, titles, slugs, links between reasons) + `content/blog/<lang>/<slug>.md` |
+| Partners | `/en/partners/` | `/es/aliados/` | `tools/build-partners-page.mjs` (program copy from `minos-crm/docs/agents/partners.md` §1–3; never publish scoring, tiers, example companies or commission terms) |
+| Privacy Notice | `/en/privacy/` | `/es/privacidad/` | `tools/build-privacy-page.mjs` (DRAFT pending Juan's review; linked from the footer and every consent checkbox) |
 
 **Language UX:** header switcher (EN / ES) always jumps to the *equivalent* page in the other language, remembers the choice in a `lang` cookie, `<html lang>` + `hreflang` alternates + canonical on every page, `x-default` = `/`. nginx redirects only `/` (cookie, then Accept-Language, then English); deep links are never redirected. `/products-and-solutions/` (old URL) 301s to `/en/…`.
 
@@ -144,7 +146,7 @@ Then commit the generated files and push (Coolify deploys). **Never edit `en/`, 
 
 **Blog structure:** one pillar + six reasons, each reason linking to the related reasons with a one-sentence explanation (`links` in `reasons.json`). To add a reason: add it to `reasons.json` (both languages) and write both Markdown files.
 
-**Form:** the audit form opens the visitor's email client (mailto to info@minos.solutions); nothing is stored. Connecting it to the CRM is item #9 in `minos-crm/docs/backlog.md`.
+**Forms:** the home audit form and the partners form POST to the CRM; see section 9.
 
 ## 8. Blog writing format and interactive explainers
 
@@ -159,3 +161,32 @@ Then commit the generated files and push (Coolify deploys). **Never edit `en/`, 
 node tools/build-all.mjs && node tools/check-site.mjs && node tools/check-content.mjs && node tools/test-widgets.mjs
 ```
 `test-widgets` renders every widget in both languages over many states and simulates clicks/slider input with a fake DOM; it cannot judge layout, so look at the pages in a browser (`node tools/serve.mjs`) before publishing a new widget or layout change.
+
+## 9. Website forms → CRM
+
+Two forms, one shared markup module and one script:
+
+* **Home audit form** (`/en/#audit`, `/es/#audit`, `interest: "client"`) and **partners form** (`/en/partners/#partner-form`, `/es/aliados/#partner-form`, `interest: "partner"`).
+* Markup: `tools/forms.mjs` (labels in EN/ES; option **values** are API values and are never translated; countries are sent by English name). Styles: "Website request forms" block in `tools/site.css`.
+* Submit logic: `assets/forms.js` → `POST /api/website-request` (same origin, JSON). On 2xx the form is replaced by a thank-you message; on any error the visitor gets a prefilled `mailto:info@minos.solutions` link.
+* nginx (`nginx.conf`) proxies `location = /api/website-request` to the Twenty workflow webhook on `crm.minos.solutions`: POST only, 16k body limit, 5 requests/min per visitor (burst 3, keyed on `CF-Connecting-IP`, 429 when exceeded). The CRM hostname is resolved when nginx starts (no `resolver`), so if the CRM's IP changes nginx needs a restart/redeploy, and nginx refuses to start if the name cannot be resolved.
+* The CRM side (workflow, dedupe, field mapping, spam handling with `hp` / `elapsedMs`) is documented in `minos-crm/docs/website-form.md`.
+
+**Payload contract** (keep in sync with the CRM workflow; change both together):
+
+```
+{ interest: "client" | "partner",
+  name, email, jobTitle, organization, website, country, city, phone, message,   // strings, "" when empty
+  consent: true, consentText: "<exact consent sentence shown>", lang: "en" | "es", page: location.pathname,
+  utm: { source, medium, campaign, term, content },   // "" when absent; from the URL, else from earlier in the visit (sessionStorage "minos_utm")
+  hp: "<honeypot company_url, should be empty>", elapsedMs: <ms since the form was rendered>,
+  // client only
+  institutionType: K12_SCHOOL|K12_GROUP|UNIVERSITY|VOCATIONAL|ONLINE_EDTECH|OTHER, area: MARKETING|ADMISSIONS|EXECUTIVE|DATA_BI|OTHER,
+  studentRange: UNDER_1000|FROM_1000_TO_3000|FROM_3000_TO_10000|OVER_10000, campusCount: number | null,
+  channels: [SEARCH|SOCIAL|DISPLAY_VIDEO|RADIO_TV|OUTDOOR|EVENTS|OTHER],
+  // partner only
+  companyType: SIS_VENDOR|ADMISSIONS_CRM|MARKETING_AGENCY|TRAINING_EVENTS|ASSOCIATION|SCHOOL_MARKETPLACE|OTHER,
+  collaboration: [REFERRAL|RESELLER|INTEGRATION|CO_MARKETING], institutionsServed, countriesServed }
+```
+
+Required in the UI: name, email, jobTitle, organization, country, consent, plus institutionType and area (client) or companyType (partner). Adding a field = `tools/forms.mjs` + `assets/forms.js` `payload()` + this contract + the CRM workflow.

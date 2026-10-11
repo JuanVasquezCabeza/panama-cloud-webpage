@@ -120,4 +120,28 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://minos.solutions/es/blog/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://minos.solutions/"/>
   </url>
+  <url>
+    <loc>https://minos.solutions/en/partners/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://minos.solutions/en/partners/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://minos.solutions/es/aliados/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://minos.solutions/"/>
+  </url>
+  <url>
+    <loc>https://minos.solutions/es/aliados/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://minos.solutions/en/partners/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://minos.solutions/es/aliados/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://minos.solutions/"/>
+  </url>
+  <url>
+    <loc>https://minos.solutions/en/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://minos.solutions/en/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://minos.solutions/es/privacidad/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://minos.solutions/"/>
+  </url>
+  <url>
+    <loc>https://minos.solutions/es/privacidad/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://minos.solutions/en/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://minos.solutions/es/privacidad/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://minos.solutions/"/>
+  </url>
 </urlset>
