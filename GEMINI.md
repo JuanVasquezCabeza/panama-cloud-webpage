@@ -132,7 +132,7 @@ Then commit the generated files and push (Coolify deploys). **Never edit `en/`, 
 
 | Page | EN URL | ES URL | Source |
 | :--- | :--- | :--- | :--- |
-| Home | `/en/` | `/es/` | `tools/build-home.mjs` (copy for both languages inside), demo in `tools/home-demo.*` |
+| Home | `/en/` | `/es/` | `tools/build-home.mjs` (copy for both languages inside; uses the `saturation` and `readiness` widgets and statement-plus-evidence paragraphs) |
 | Products & Solutions | `/en/products-and-solutions/` | `/es/productos-y-soluciones/` | CRM `product` catalog (English, read-only) + `content/products.es.json` (Spanish by product code) |
 | Blog | `/en/blog/` | `/es/blog/` | `content/blog/reasons.json` (structure, titles, slugs, links between reasons) + `content/blog/<lang>/<slug>.md` |
 

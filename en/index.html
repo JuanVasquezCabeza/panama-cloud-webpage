@@ -794,6 +794,11 @@
             </div>
         </section>
 
+        <section class="section-padding" id="problem">
+            <div class="section-header"><h2>Why admissions budgets are hard to defend</h2></div>
+            <div class="post-body" style="max-width:760px;margin:0 auto;"><p><strong>Most educational institutions cannot say which part of their admissions budget brings students, and that is a measurement problem, not a marketing problem.</strong> The line “half the money I spend on advertising is wasted, but I don’t know which half” has been pinned on John Wanamaker for a century, although <a href="https://quoteinvestigator.com/2022/04/11/advertising/">Quote Investigator could not confirm he said it</a>. <a href="https://secure.businesswire.com/news/home/20250512782208/en/Gartner-2025-CMO-Spend-Survey-Reveals-Marketing-Budgets-Have-Flatlined-at-7.7-of-Overall-Company-Revenue">Gartner’s 2025 CMO survey</a> found marketing budgets flat at 7.7% of company revenue, with 59% of CMOs saying theirs was too small to execute their strategy. In <a href="https://newamerica.org/documents/9177/RNL_2022_CostRecruiting_Report.pdf">RNL’s 2022 report</a>, the median cost to recruit one undergraduate at US private four-year institutions rose from $2,114 to $2,795 in two years. When each enrollment costs more and budgets do not grow, knowing which channel works stops being optional.</p><p><strong>Marketing Mix Modeling answers it with data you already have, without following a single family.</strong> It relates weekly spend in each channel to leads, applications and enrollments, accounting for seasonality, delayed effects and saturation. Google’s open-source <a href="https://developers.google.com/meridian">Meridian</a> is built for “privacy-durable, advanced measurement”, and Meta’s <a href="https://github.com/facebookexperimental/Robyn">Robyn</a> presents modern MMM as “a privacy-safe solution”. <a href="https://www.kellogg.northwestern.edu/academics-research/research/detail/2019/a-comparison-of-approaches-to-advertising-measurement-evidence-from/">Gordon and colleagues</a> found across 15 Facebook experiments that observational methods often failed to reproduce randomized results, which is why the audit also looks at where small experiments can check the model.</p></div>
+        </section>
+
         <section class="section-padding" id="why">
             <div class="section-header"><h2>Why you need this</h2><p>Six reasons to measure your admissions marketing, each with its own guide. Start with the overview or jump to the one that matches your question.</p></div>
             <div class="grid-3">
@@ -838,65 +843,10 @@
         </section>
 
         <section class="section-padding" id="labs" style="border-bottom: 1px solid var(--border-color);">
-            <div class="container">
-                <div class="section-header"><h2>See diminishing returns in action</h2><p>The core idea behind a marketing mix model, in one interactive chart.</p></div>
-                <div class="labs-panel-container" style="max-width: 800px; margin: 0 auto;">
-                    <div class="lab-card">
-                            <div>
-                                <div class="pillar-num">Interactive demo</div>
-                                <h3 class="pillar-title" style="font-size: 1.5rem; margin-bottom: 0.75rem;">Why more spend stops bringing more students</h3>
-                                <p class="pillar-desc" style="font-size: 0.9rem; margin-bottom: 1.5rem;">
-                                    Illustrative numbers, not client data. Pick a channel and move the budget: every channel saturates, and the model finds the point where the next peso is no longer worth it.
-                                </p>
-                                
-                                <div class="calculator-controls">
-                                    <div style="display: flex; gap: 0.4rem; justify-content: center; margin-bottom: 0.5rem;">
-                                        <button class="btn mmm-btn" id="btn-social" style="padding: 0.4rem 0.6rem; font-size: 0.7rem; border-radius: 6px; font-weight:700; flex:1;" onclick="selectChannel('social')">Paid Social</button>
-                                        <button class="btn mmm-btn" id="btn-search" style="padding: 0.4rem 0.6rem; font-size: 0.7rem; border-radius: 6px; font-weight:700; flex:1;" onclick="selectChannel('search')">Search Ads</button>
-                                        <button class="btn mmm-btn" id="btn-brand" style="padding: 0.4rem 0.6rem; font-size: 0.7rem; border-radius: 6px; font-weight:700; flex:1;" onclick="selectChannel('brand')">TV &amp; Radio</button>
-                                    </div>
-
-                                    <div class="control-group">
-                                        <div class="control-header">
-                                            <span>Monthly Ad Spend</span>
-                                            <span id="spend-lbl" style="color:var(--accent-indigo); font-family:var(--font-mono); font-weight:700;">$30,000</span>
-                                        </div>
-                                        <input type="range" id="spend-input" min="0" max="100000" step="2500" value="30000">
-                                    </div>
-                                </div>
-
-                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1.5rem; border-top: 1px solid var(--border-color); padding-top: 1rem;">
-                                    <div>
-                                        <div style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 500;">Incremental tuition revenue</div>
-                                        <div id="metric-rev" style="font-size: 1.15rem; font-weight: 700; font-family: var(--font-mono); color: var(--text-primary);">$64,500</div>
-                                    </div>
-                                    <div>
-                                        <div style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 500;">Marginal ROI (Next $1)</div>
-                                        <div id="metric-mroi" style="font-size: 1.15rem; font-weight: 700; font-family: var(--font-mono); color: var(--accent-green);">2.15x</div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div style="display: flex; flex-direction: column; justify-content: center;">
-                                <svg id="mmm-graph" viewBox="0 0 300 135" style="width: 100%; height: auto; display: block; background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 12px; padding: 0.5rem 0.75rem 0.25rem 0.5rem;">
-                                    <line x1="35" y1="10" x2="290" y2="10" stroke="#cbd5e1" stroke-dasharray="3,3" stroke-width="0.5" />
-                                    <line x1="35" y1="40" x2="290" y2="40" stroke="#cbd5e1" stroke-dasharray="3,3" stroke-width="0.5" />
-                                    <line x1="35" y1="70" x2="290" y2="70" stroke="#cbd5e1" stroke-dasharray="3,3" stroke-width="0.5" />
-                                    <line x1="35" y1="100" x2="290" y2="100" stroke="#cbd5e1" stroke-dasharray="3,3" stroke-width="0.5" />
-                                    <path id="curve-path" d="" fill="none" stroke="var(--accent-indigo)" stroke-width="2.5" />
-                                    <circle id="pulsing-dot" cx="35" cy="110" r="5" fill="var(--accent-indigo)" style="filter: drop-shadow(0 2px 4px rgba(79, 70, 229, 0.3));" />
-                                    <line x1="35" y1="10" x2="35" y2="110" stroke="#94a3b8" stroke-width="1" />
-                                    <line x1="35" y1="110" x2="290" y2="110" stroke="#94a3b8" stroke-width="1" />
-                                    <text x="30" y="14" fill="#64748b" font-size="7" font-family="var(--font-mono)" text-anchor="end">$240k</text>
-                                    <text x="30" y="113" fill="#64748b" font-size="7" font-family="var(--font-mono)" text-anchor="end">$0</text>
-                                    <text x="35" y="119" fill="#64748b" font-size="7" font-family="var(--font-mono)">$0</text>
-                                    <text x="290" y="119" fill="#64748b" font-size="7" font-family="var(--font-mono)" text-anchor="end">$100k</text>
-                                    <text x="162" y="128" fill="#475569" font-size="7.5" font-weight="600" text-anchor="middle">Monthly Channel Ad Spend</text>
-                                    <text x="12" y="60" fill="#475569" font-size="7.5" font-weight="600" text-anchor="middle" transform="rotate(-90 12 60)">Tuition revenue</text>
-                                </svg>
-                            </div>
-                        </div>
-                </div>
+            <div class="section-header"><h2>See it for yourself</h2><p>Two short interactive explainers. The numbers are illustrative, not client data.</p></div>
+            <div style="max-width:800px;margin:0 auto;">
+                <div class="viz" data-widget="saturation" data-lang="en"></div>
+                <div class="viz" data-widget="readiness" data-lang="en"></div>
             </div>
         </section>
 
@@ -965,97 +915,9 @@
             a.addEventListener('click', function () { document.cookie = 'lang=' + a.dataset.lang + ';path=/;max-age=31536000;SameSite=Lax'; });
         });
     </script>
+    <script src="/assets/widgets.js" defer></script>
     <script>
-// ==========================================
-        // 1. MMM DIMINISHING RETURNS MODEL LOGIC
-        // ==========================================
-        const spendInput = document.getElementById('spend-input');
-        const spendLbl = document.getElementById('spend-lbl');
-        const metricRev = document.getElementById('metric-rev');
-        const metricMroi = document.getElementById('metric-mroi');
-        const curvePath = document.getElementById('curve-path');
-        const pulsingDot = document.getElementById('pulsing-dot');
 
-        const channels = {
-            social: { max_return: 130000, alpha: 0.000035 }, // Quick saturation, high early ROI
-            search: { max_return: 170000, alpha: 0.000018 }, // Moderate saturation, highly consistent
-            brand: { max_return: 240000, alpha: 0.000007 }   // High threshold, slow ramp-up, huge ceiling
-        };
-
-        let currentChannel = 'social';
-
-        function formatCurrency(amount) {
-            return '$' + amount.toLocaleString('en-US', { maximumFractionDigits: 0 });
-        }
-
-        function calculateMMM() {
-            const spend = parseFloat(spendInput.value);
-            const { max_return, alpha } = channels[currentChannel];
-
-            const revenue = max_return * (1 - Math.exp(-alpha * spend));
-            const marginalRoi = max_return * alpha * Math.exp(-alpha * spend);
-
-            spendLbl.textContent = formatCurrency(spend);
-            metricRev.textContent = formatCurrency(revenue);
-            metricMroi.textContent = marginalRoi.toFixed(2) + 'x';
-
-            if (marginalRoi >= 1.2) {
-                metricMroi.style.color = 'var(--accent-green)';
-            } else if (marginalRoi >= 1.0) {
-                metricMroi.style.color = '#d97706';
-            } else {
-                metricMroi.style.color = '#ef4444';
-            }
-
-            const xStart = 35;
-            const xRange = 255;
-            const yStart = 110;
-            const yRange = 100;
-            const maxValY = 240000;
-
-            let pathD = '';
-            const steps = 30;
-            for (let i = 0; i <= steps; i++) {
-                const sVal = (i / steps) * 100000;
-                const rVal = max_return * (1 - Math.exp(-alpha * sVal));
-
-                const xSvg = xStart + (sVal / 100000) * xRange;
-                const ySvg = yStart - (rVal / maxValY) * yRange;
-
-                if (i === 0) {
-                    pathD += `M ${xSvg} ${ySvg}`;
-                } else {
-                    pathD += ` L ${xSvg} ${ySvg}`;
-                }
-            }
-            curvePath.setAttribute('d', pathD);
-
-            const dotX = xStart + (spend / 100000) * xRange;
-            const dotY = yStart - (revenue / maxValY) * yRange;
-            pulsingDot.setAttribute('cx', dotX);
-            pulsingDot.setAttribute('cy', dotY);
-        }
-
-        function selectChannel(channelId) {
-            currentChannel = channelId;
-            const buttons = ['social', 'search', 'brand'];
-            buttons.forEach(id => {
-                const btn = document.getElementById('btn-' + id);
-                if (id === channelId) {
-                    btn.style.background = 'var(--accent-indigo)';
-                    btn.style.color = '#ffffff';
-                    btn.style.borderColor = 'var(--accent-indigo)';
-                } else {
-                    btn.style.background = '#ffffff';
-                    btn.style.color = 'var(--text-primary)';
-                    btn.style.borderColor = 'var(--border-color)';
-                }
-            });
-            calculateMMM();
-        }
-
-        spendInput.addEventListener('input', calculateMMM);
-        window.addEventListener('DOMContentLoaded', function () { selectChannel('social'); });
         document.getElementById('audit-form').addEventListener('submit', function (e) {
             e.preventDefault();
             var v = function (id) { return document.getElementById(id).value.trim(); };

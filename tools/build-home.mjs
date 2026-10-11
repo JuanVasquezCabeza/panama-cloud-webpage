@@ -4,8 +4,6 @@ import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { root, page, paths, otherLang, LANGS } from './lib.mjs';
 
-const demoHtml = readFileSync(join(root, 'tools', 'home-demo.html'), 'utf8');
-const demoJs = readFileSync(join(root, 'tools', 'home-demo.js'), 'utf8');
 const REASONS = JSON.parse(readFileSync(join(root, 'content', 'blog', 'reasons.json'), 'utf8'));
 
 const STR = {
@@ -28,11 +26,12 @@ const STR = {
       { tag: 'Step 03 · After the audit', t: 'MMM Refresh & Scenario Planning', p: 'Keeps the model current each admissions cycle and re-plans the budget as results come in.', li: [] },
     ],
     seeAll: 'See all details',
-    demoH: 'See diminishing returns in action', demoP: 'The core idea behind a marketing mix model, in one interactive chart.',
-    demo: { demo_tag: 'Interactive demo', demo_title: 'Why more spend stops bringing more students',
-      demo_desc: 'Illustrative numbers, not client data. Pick a channel and move the budget: every channel saturates, and the model finds the point where the next peso is no longer worth it.',
-      ch_social: 'Paid Social', ch_search: 'Search Ads', ch_tv: 'TV &amp; Radio', lbl_spend: 'Monthly Ad Spend', lbl_rev: 'Incremental tuition revenue',
-      lbl_mroi: 'Marginal ROI (Next $1)', axis_x: 'Monthly Channel Ad Spend', axis_y: 'Tuition revenue' },
+    probH: 'Why admissions budgets are hard to defend',
+    probP: [
+      '<strong>Most educational institutions cannot say which part of their admissions budget brings students, and that is a measurement problem, not a marketing problem.</strong> The line “half the money I spend on advertising is wasted, but I don’t know which half” has been pinned on John Wanamaker for a century, although <a href="https://quoteinvestigator.com/2022/04/11/advertising/">Quote Investigator could not confirm he said it</a>. <a href="https://secure.businesswire.com/news/home/20250512782208/en/Gartner-2025-CMO-Spend-Survey-Reveals-Marketing-Budgets-Have-Flatlined-at-7.7-of-Overall-Company-Revenue">Gartner’s 2025 CMO survey</a> found marketing budgets flat at 7.7% of company revenue, with 59% of CMOs saying theirs was too small to execute their strategy. In <a href="https://newamerica.org/documents/9177/RNL_2022_CostRecruiting_Report.pdf">RNL’s 2022 report</a>, the median cost to recruit one undergraduate at US private four-year institutions rose from $2,114 to $2,795 in two years. When each enrollment costs more and budgets do not grow, knowing which channel works stops being optional.',
+      '<strong>Marketing Mix Modeling answers it with data you already have, without following a single family.</strong> It relates weekly spend in each channel to leads, applications and enrollments, accounting for seasonality, delayed effects and saturation. Google’s open-source <a href="https://developers.google.com/meridian">Meridian</a> is built for “privacy-durable, advanced measurement”, and Meta’s <a href="https://github.com/facebookexperimental/Robyn">Robyn</a> presents modern MMM as “a privacy-safe solution”. <a href="https://www.kellogg.northwestern.edu/academics-research/research/detail/2019/a-comparison-of-approaches-to-advertising-measurement-evidence-from/">Gordon and colleagues</a> found across 15 Facebook experiments that observational methods often failed to reproduce randomized results, which is why the audit also looks at where small experiments can check the model.',
+    ],
+    widgetsH: 'See it for yourself', widgetsP: 'Two short interactive explainers. The numbers are illustrative, not client data.',
     teamH: 'Our Leadership Team', teamP: 'Commercial and technical leadership behind Minos’ marketing measurement work in Latin America.',
     ulises: { role: 'Chief Technology Officer & Head of AI/Cloud Engineering', bio: 'Veteran tech leader specializing in secure, high-throughput data and cloud platforms, and in putting machine learning into production, the engineering foundation behind our models.', skills: 'Technical Expertise', badges: ['AWS', 'GCP', 'Terraform', 'Docker / K8s', 'Machine Learning', 'Distributed DBs'] },
     diego: { role: 'Sales Director', bio: 'Leads Minos’ client relationships and commercial strategy, helping institutions scope the right starting point for measuring and improving their admissions marketing.', skills: 'Commercial Expertise', badges: ['Client Partnerships', 'Commercial Strategy', 'Solution Scoping', 'Education Market'] },
@@ -62,11 +61,12 @@ const STR = {
       { tag: 'Paso 03 · Después de la auditoría', t: 'Actualización de MMM y Planeación de Escenarios', p: 'Mantiene el modelo vigente en cada ciclo de admisiones y replantea el presupuesto a medida que llegan resultados.', li: [] },
     ],
     seeAll: 'Ver todos los detalles',
-    demoH: 'Vea los rendimientos decrecientes en acción', demoP: 'La idea central de un modelo de mezcla de marketing, en un gráfico interactivo.',
-    demo: { demo_tag: 'Demo interactiva', demo_title: 'Por qué más inversión deja de traer más estudiantes',
-      demo_desc: 'Cifras ilustrativas, no son datos de clientes. Elija un canal y mueva el presupuesto: todos los canales se saturan, y el modelo encuentra el punto donde el siguiente peso ya no vale la pena.',
-      ch_social: 'Redes pagas', ch_search: 'Búsqueda paga', ch_tv: 'TV y radio', lbl_spend: 'Inversión mensual', lbl_rev: 'Ingreso incremental por pensiones',
-      lbl_mroi: 'ROI marginal (próximo $1)', axis_x: 'Inversión mensual en el canal', axis_y: 'Ingreso por pensiones' },
+    probH: 'Por qué es difícil defender un presupuesto de admisiones',
+    probP: [
+      '<strong>La mayoría de las instituciones educativas no puede decir qué parte de su presupuesto de admisiones trae estudiantes, y eso es un problema de medición, no de mercadeo.</strong> La frase «la mitad del dinero que gasto en publicidad se desperdicia, pero no sé cuál mitad» se le atribuye desde hace un siglo a John Wanamaker, aunque <a href="https://quoteinvestigator.com/2022/04/11/advertising/">Quote Investigator no pudo confirmar que la haya dicho</a>. La <a href="https://secure.businesswire.com/news/home/20250512782208/en/Gartner-2025-CMO-Spend-Survey-Reveals-Marketing-Budgets-Have-Flatlined-at-7.7-of-Overall-Company-Revenue">encuesta CMO de Gartner de 2025</a> encontró presupuestos de marketing estancados en 7,7 % de los ingresos, y 59 % de los CMO dijo que el suyo era demasiado pequeño para ejecutar su estrategia. En el <a href="https://newamerica.org/documents/9177/RNL_2022_CostRecruiting_Report.pdf">informe de RNL de 2022</a>, el costo mediano de reclutar a un estudiante de pregrado en instituciones privadas de cuatro años de EE. UU. pasó de USD 2.114 a USD 2.795 en dos años. Cuando cada matrícula cuesta más y los presupuestos no crecen, saber qué canal funciona deja de ser opcional.',
+      '<strong>El Marketing Mix Modeling lo responde con datos que usted ya tiene, sin seguir a ninguna familia.</strong> Relaciona la inversión semanal de cada canal con los leads, solicitudes y matrículas, teniendo en cuenta la estacionalidad, los efectos rezagados y la saturación. <a href="https://developers.google.com/meridian">Meridian</a>, la herramienta de código abierto de Google, fue creada para una medición avanzada y «privacy-durable», y <a href="https://github.com/facebookexperimental/Robyn">Robyn</a>, de Meta, presenta el MMM moderno como «una solución respetuosa de la privacidad». <a href="https://www.kellogg.northwestern.edu/academics-research/research/detail/2019/a-comparison-of-approaches-to-advertising-measurement-evidence-from/">Gordon y colegas</a> encontraron, en 15 experimentos de Facebook, que los métodos observacionales con frecuencia no reproducían los resultados aleatorizados, por eso la auditoría también busca dónde pequeños experimentos pueden verificar el modelo.',
+    ],
+    widgetsH: 'Compruébelo usted mismo', widgetsP: 'Dos explicaciones interactivas cortas. Las cifras son ilustrativas, no son datos de clientes.',
     teamH: 'Nuestro equipo directivo', teamP: 'El liderazgo comercial y técnico detrás del trabajo de medición de marketing de Minos en América Latina.',
     ulises: { role: 'Director de Tecnología (CTO) y Líder de Ingeniería de IA y Nube', bio: 'Líder tecnológico con trayectoria en plataformas de datos y nube seguras y de alto rendimiento, y en llevar el aprendizaje automático a producción: la base de ingeniería detrás de nuestros modelos.', skills: 'Experiencia técnica', badges: ['AWS', 'GCP', 'Terraform', 'Docker / K8s', 'Machine Learning', 'Bases de datos distribuidas'] },
     diego: { role: 'Director Comercial', bio: 'Lidera las relaciones con clientes y la estrategia comercial de Minos, y ayuda a las instituciones a definir el punto de partida adecuado para medir y mejorar su mercadeo de admisiones.', skills: 'Experiencia comercial', badges: ['Alianzas con clientes', 'Estrategia comercial', 'Definición de alcance', 'Mercado educativo'] },
@@ -96,7 +96,6 @@ const profile = (initials, name, p, s) => `
 for (const lang of LANGS) {
   const s = STR[lang];
   const f = s.f;
-  const demo = demoHtml.replace(/\{\{(\w+)\}\}/g, (_, k) => { if (!(k in s.demo)) throw new Error('demo key ' + k); return s.demo[k]; });
   const main = `
         <section class="hero">
             <div>
@@ -118,6 +117,11 @@ for (const lang of LANGS) {
                 </div>
                 <ul class="bullet-list" style="margin-bottom:0;">${s.qList.map((x) => `<li>${x}</li>`).join('')}</ul>
             </div>
+        </section>
+
+        <section class="section-padding" id="problem">
+            <div class="section-header"><h2>${s.probH}</h2></div>
+            <div class="post-body" style="max-width:760px;margin:0 auto;">${s.probP.map((p) => `<p>${p}</p>`).join('')}</div>
         </section>
 
         <section class="section-padding" id="why">
@@ -144,11 +148,10 @@ for (const lang of LANGS) {
         </section>
 
         <section class="section-padding" id="labs" style="border-bottom: 1px solid var(--border-color);">
-            <div class="container">
-                <div class="section-header"><h2>${s.demoH}</h2><p>${s.demoP}</p></div>
-                <div class="labs-panel-container" style="max-width: 800px; margin: 0 auto;">
-                    ${demo.trim()}
-                </div>
+            <div class="section-header"><h2>${s.widgetsH}</h2><p>${s.widgetsP}</p></div>
+            <div style="max-width:800px;margin:0 auto;">
+                <div class="viz" data-widget="saturation" data-lang="${lang}"></div>
+                <div class="viz" data-widget="readiness" data-lang="${lang}"></div>
             </div>
         </section>
 
@@ -177,9 +180,7 @@ for (const lang of LANGS) {
         </section>
 `;
   // Audit request: opens the visitor's email client with the answers filled in (nothing is stored by the site).
-  const script = `${demoJs}
-        spendInput.addEventListener('input', calculateMMM);
-        window.addEventListener('DOMContentLoaded', function () { selectChannel('social'); });
+  const script = `
         document.getElementById('audit-form').addEventListener('submit', function (e) {
             e.preventDefault();
             var v = function (id) { return document.getElementById(id).value.trim(); };
@@ -190,7 +191,7 @@ for (const lang of LANGS) {
   const path = paths.home(lang);
   mkdirSync(join(root, path.slice(1)), { recursive: true });
   writeFileSync(join(root, path.slice(1), 'index.html'), page({
-    lang, path, altPath: paths.home(otherLang(lang)), current: 'home', title: s.title, description: s.desc, main, script,
+    lang, path, altPath: paths.home(otherLang(lang)), current: 'home', title: s.title, description: s.desc, main, script, scripts: ['/assets/widgets.js'],
   }));
 }
 console.log('Home built in en + es.');
