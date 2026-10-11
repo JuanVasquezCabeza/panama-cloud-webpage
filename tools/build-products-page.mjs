@@ -167,7 +167,7 @@ ${segs.length ? `
                 <div class="footer-grid">
                     <div style="text-align: left;">
                         <a href="/" class="logo"><span class="logo-mark"></span>minos.solutions</a>
-                        <div class="footer-tagline">Engineering Intelligence & Growth Flywheels for Modern Enterprises.</div>
+                        <div class="footer-tagline">Marketing Mix Modeling for education institutions in Latin America.</div>
                     </div>
                     <div style="text-align: right; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-indigo); font-weight:600;">minos.solutions</div>
                 </div>
