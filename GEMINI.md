@@ -114,3 +114,12 @@ SSH into the server and inspect the running Docker container resources:
 docker stats --no-stream
 ```
 *(Verify that the webpage container is occupying less than 10MB of RAM under active load).*
+
+---
+
+## 7. Products & Solutions page (`/products-and-solutions/`)
+
+* **Generated from the CRM.** `products-and-solutions/index.html` is built by `node tools/build-products-page.mjs` from the Twenty `product` catalog (`crm.minos.solutions`, see `minos-crm/docs/products.md`). **Do not edit it by hand**: change the product in the CRM, re-run the script and commit the result.
+* The script is read-only (GET), reads `TWENTY_API_KEY` from the env or `../minos-crm/.env`, and reuses the `<style>` block of `index.html`, so site-wide style changes carry over on the next run.
+* Publication rules: `RETIRED` products are hidden; `ACTIVE` shows "Available now" with a CTA; `DRAFT` shows "After the audit" with no CTA. Prices, `deliveryApproach`, `successCriteria` and any text starting with `TO DEFINE` are never published. Never name Cognita (not citable).
+* The Dockerfile copies the page and nginx uses `absolute_redirect off`.
