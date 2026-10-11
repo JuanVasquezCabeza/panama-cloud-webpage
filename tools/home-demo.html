@@ -1,0 +1,55 @@
+<div class="lab-card">
+                            <div>
+                                <div class="pillar-num">{{demo_tag}}</div>
+                                <h3 class="pillar-title" style="font-size: 1.5rem; margin-bottom: 0.75rem;">{{demo_title}}</h3>
+                                <p class="pillar-desc" style="font-size: 0.9rem; margin-bottom: 1.5rem;">
+                                    {{demo_desc}}
+                                </p>
+                                
+                                <div class="calculator-controls">
+                                    <div style="display: flex; gap: 0.4rem; justify-content: center; margin-bottom: 0.5rem;">
+                                        <button class="btn mmm-btn" id="btn-social" style="padding: 0.4rem 0.6rem; font-size: 0.7rem; border-radius: 6px; font-weight:700; flex:1;" onclick="selectChannel('social')">{{ch_social}}</button>
+                                        <button class="btn mmm-btn" id="btn-search" style="padding: 0.4rem 0.6rem; font-size: 0.7rem; border-radius: 6px; font-weight:700; flex:1;" onclick="selectChannel('search')">{{ch_search}}</button>
+                                        <button class="btn mmm-btn" id="btn-brand" style="padding: 0.4rem 0.6rem; font-size: 0.7rem; border-radius: 6px; font-weight:700; flex:1;" onclick="selectChannel('brand')">{{ch_tv}}</button>
+                                    </div>
+
+                                    <div class="control-group">
+                                        <div class="control-header">
+                                            <span>{{lbl_spend}}</span>
+                                            <span id="spend-lbl" style="color:var(--accent-indigo); font-family:var(--font-mono); font-weight:700;">$30,000</span>
+                                        </div>
+                                        <input type="range" id="spend-input" min="0" max="100000" step="2500" value="30000">
+                                    </div>
+                                </div>
+
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1.5rem; border-top: 1px solid var(--border-color); padding-top: 1rem;">
+                                    <div>
+                                        <div style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 500;">{{lbl_rev}}</div>
+                                        <div id="metric-rev" style="font-size: 1.15rem; font-weight: 700; font-family: var(--font-mono); color: var(--text-primary);">$64,500</div>
+                                    </div>
+                                    <div>
+                                        <div style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 500;">{{lbl_mroi}}</div>
+                                        <div id="metric-mroi" style="font-size: 1.15rem; font-weight: 700; font-family: var(--font-mono); color: var(--accent-green);">2.15x</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; flex-direction: column; justify-content: center;">
+                                <svg id="mmm-graph" viewBox="0 0 300 135" style="width: 100%; height: auto; display: block; background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 12px; padding: 0.5rem 0.75rem 0.25rem 0.5rem;">
+                                    <line x1="35" y1="10" x2="290" y2="10" stroke="#cbd5e1" stroke-dasharray="3,3" stroke-width="0.5" />
+                                    <line x1="35" y1="40" x2="290" y2="40" stroke="#cbd5e1" stroke-dasharray="3,3" stroke-width="0.5" />
+                                    <line x1="35" y1="70" x2="290" y2="70" stroke="#cbd5e1" stroke-dasharray="3,3" stroke-width="0.5" />
+                                    <line x1="35" y1="100" x2="290" y2="100" stroke="#cbd5e1" stroke-dasharray="3,3" stroke-width="0.5" />
+                                    <path id="curve-path" d="" fill="none" stroke="var(--accent-indigo)" stroke-width="2.5" />
+                                    <circle id="pulsing-dot" cx="35" cy="110" r="5" fill="var(--accent-indigo)" style="filter: drop-shadow(0 2px 4px rgba(79, 70, 229, 0.3));" />
+                                    <line x1="35" y1="10" x2="35" y2="110" stroke="#94a3b8" stroke-width="1" />
+                                    <line x1="35" y1="110" x2="290" y2="110" stroke="#94a3b8" stroke-width="1" />
+                                    <text x="30" y="14" fill="#64748b" font-size="7" font-family="var(--font-mono)" text-anchor="end">$240k</text>
+                                    <text x="30" y="113" fill="#64748b" font-size="7" font-family="var(--font-mono)" text-anchor="end">$0</text>
+                                    <text x="35" y="119" fill="#64748b" font-size="7" font-family="var(--font-mono)">$0</text>
+                                    <text x="290" y="119" fill="#64748b" font-size="7" font-family="var(--font-mono)" text-anchor="end">$100k</text>
+                                    <text x="162" y="128" fill="#475569" font-size="7.5" font-weight="600" text-anchor="middle">{{axis_x}}</text>
+                                    <text x="12" y="60" fill="#475569" font-size="7.5" font-weight="600" text-anchor="middle" transform="rotate(-90 12 60)">{{axis_y}}</text>
+                                </svg>
+                            </div>
+                        </div>

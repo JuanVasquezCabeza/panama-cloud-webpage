@@ -1,26 +1,66 @@
-// Generates products-and-solutions/index.html from the Minos CRM product catalog (Twenty, `product` object).
-// Run locally, then commit the result:  node tools/build-products-page.mjs
-// Auth and layout live in tools/lib.mjs. Read-only (GET only). The key never enters the page.
-import { writeFileSync, mkdirSync } from 'node:fs';
+// Generates the Products & Solutions page in English (/en/products-and-solutions/) and Spanish
+// (/es/productos-y-soluciones/). Products come from the Minos CRM (English, read-only); the Spanish copy for
+// each product code lives in content/products.es.json. Run via `node tools/build-all.mjs`.
+import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
-import { root, esc, crmList, page } from './lib.mjs';
+import { root, esc, crmList, page, paths, otherLang, LANGS } from './lib.mjs';
 
 // Internal placeholders and empty fields in the CRM are never published.
 const pub = (s) => (s && !/^\s*TO DEFINE/i.test(s) ? s.trim() : '');
 const bullets = (s) => pub(s).split(/;\s*/).map((x) => x.trim().replace(/\.$/, '')).filter(Boolean);
 
+const es = JSON.parse(readFileSync(join(root, 'content', 'products.es.json'), 'utf8'));
+
 const SEGMENTS = {
-  K12_GROUP: 'K-12 school groups', UNIVERSITY: 'Private universities', VOCATIONAL: 'Vocational & technical institutes',
-  LANGUAGE: 'Language schools', EDTECH: 'Online & edtech',
+  en: { K12_GROUP: 'K-12 school groups', UNIVERSITY: 'Private universities', VOCATIONAL: 'Vocational & technical institutes', LANGUAGE: 'Language schools', EDTECH: 'Online & edtech' },
+  es: { K12_GROUP: 'Grupos de colegios K-12', UNIVERSITY: 'Universidades privadas', VOCATIONAL: 'Institutos técnicos y vocacionales', LANGUAGE: 'Escuelas de idiomas', EDTECH: 'Educación en línea y edtech' },
 };
 const TYPES = {
-  AUDIT: 'Audit', MMM_IMPLEMENTATION: 'Implementation', MMM_REFRESH: 'Ongoing', ADDON: 'Add-on',
-  TRAINING: 'Training', PARTNER_PROGRAM: 'Partner program',
+  en: { AUDIT: 'Audit', MMM_IMPLEMENTATION: 'Implementation', MMM_REFRESH: 'Ongoing', ADDON: 'Add-on', TRAINING: 'Training', PARTNER_PROGRAM: 'Partner program' },
+  es: { AUDIT: 'Auditoría', MMM_IMPLEMENTATION: 'Implementación', MMM_REFRESH: 'Continuo', ADDON: 'Complemento', TRAINING: 'Capacitación', PARTNER_PROGRAM: 'Programa de aliados' },
 };
 
-const all = (await crmList('products')).filter((p) => p.status !== 'RETIRED');
+const STR = {
+  en: {
+    badge: 'Marketing Mix Modeling for education',
+    h1: 'Know which marketing channels actually bring you students.',
+    lead: 'We help schools, school groups and universities in Latin America measure what each admissions channel contributes to enrollment, and decide where the next peso of budget should go.',
+    ctaAudit: 'Request the Marketing Data Audit', ctaHow: 'See how we work',
+    whyH: 'Why you need this',
+    whyP: 'You spend across many channels and can’t tell which ones bring students. A marketing mix model answers that with your own data. Each reason has its own guide.',
+    whyAll: 'Read the full guide', read: 'Read the guide',
+    journeyH: 'From first audit to a living model',
+    journeyP: 'Start with a short audit of your budget and data. It ends with a clear recommendation and an implementation plan, so you decide on the full model with evidence.',
+    step: 'Step', now: 'Available now', next: 'After the audit', why: 'Why it matters.', get: 'What you get', need: 'What we need from you', weeks: 'weeks', reqThis: 'Request this audit',
+    whoH: 'Built for institutions that compete for enrollment',
+    whoP: 'If tuition funds your institution and you pay for admissions marketing, this applies to you. No minimum data maturity: assessing it is part of the audit.',
+    startH: 'Start with the audit', startP: 'Tell us about your institution and how you invest in admissions. We’ll come back to you within one business day.',
+    title: 'Products & Solutions | Minos Solutions',
+    desc: 'Marketing Mix Modeling for education institutions in Latin America: find out which channels bring students and how to allocate your admissions budget.',
+  },
+  es: {
+    badge: 'Marketing Mix Modeling para educación',
+    h1: 'Sepa qué canales de marketing realmente le traen estudiantes.',
+    lead: 'Ayudamos a colegios, grupos de colegios y universidades de América Latina a medir qué aporta cada canal de admisiones a la matrícula, y a decidir a dónde debe ir el próximo peso del presupuesto.',
+    ctaAudit: 'Solicitar la Auditoría de Datos de Marketing', ctaHow: 'Vea cómo trabajamos',
+    whyH: 'Por qué lo necesita',
+    whyP: 'Usted invierte en muchos canales y no puede saber cuáles le traen estudiantes. Un modelo de mezcla de marketing lo responde con sus propios datos. Cada razón tiene su propia guía.',
+    whyAll: 'Lea la guía completa', read: 'Leer la guía',
+    journeyH: 'De la primera auditoría a un modelo vivo',
+    journeyP: 'Empiece con una auditoría corta de su presupuesto y sus datos. Termina con una recomendación clara y un plan de implementación, para que decida sobre el modelo completo con evidencia.',
+    step: 'Paso', now: 'Disponible ahora', next: 'Después de la auditoría', why: 'Por qué importa.', get: 'Qué recibe', need: 'Qué necesitamos de usted', weeks: 'semanas', reqThis: 'Solicitar esta auditoría',
+    whoH: 'Para instituciones que compiten por matrículas',
+    whoP: 'Si las pensiones financian a su institución y usted invierte en mercadeo de admisiones, esto aplica para usted. No se exige un nivel mínimo de datos: evaluarlo es parte de la auditoría.',
+    startH: 'Empiece por la auditoría', startP: 'Cuéntenos sobre su institución y cómo invierte en admisiones. Le respondemos en un día hábil.',
+    title: 'Productos y soluciones | Minos Solutions',
+    desc: 'Marketing Mix Modeling para instituciones educativas de América Latina: descubra qué canales traen estudiantes y cómo asignar su presupuesto de admisiones.',
+  },
+};
 
-// Order by the upsell path (nextProductId), starting from products nobody points to; leftovers at the end.
+// "Why you need this": the six reasons, each linking to its blog node (see content/blog/<lang>/).
+const REASONS = JSON.parse(readFileSync(join(root, 'content', 'blog', 'reasons.json'), 'utf8'));
+
+const all = (await crmList('products')).filter((p) => p.status !== 'RETIRED');
 const byId = new Map(all.map((p) => [p.id, p]));
 const pointedTo = new Set(all.map((p) => p.nextProductId).filter(Boolean));
 const ordered = [];
@@ -29,77 +69,70 @@ for (const start of all.filter((p) => !pointedTo.has(p.id))) {
 }
 for (const p of all) if (!ordered.includes(p)) ordered.push(p);
 
-const card = (p, i) => {
-  const live = p.status === 'ACTIVE';
-  const dl = bullets(p.deliverables);
-  const data = pub(p.dataRequirements);
-  const weeks = p.durationWeeks ? `<span class="tech-badge">${esc(p.durationWeeks)} weeks</span>` : '';
-  return `
-                <article class="pillar-card product-card${live ? '' : ' is-next'}" id="${esc((p.code || p.name).toLowerCase())}">
-                    <div>
-                        <div class="pillar-num">Step ${i + 1} · ${esc(TYPES[p.productType] || 'Service')} · ${live ? 'Available now' : 'After the audit'}</div>
-                        <h3 class="pillar-title">${esc(p.name)}</h3>
-                        ${pub(p.summary) ? `<p class="pillar-desc">${esc(pub(p.summary))}</p>` : ''}
-                        ${pub(p.valueProposition) ? `<p class="pillar-desc"><strong>Why it matters.</strong> ${esc(pub(p.valueProposition))}</p>` : ''}
-                        ${dl.length ? `<div class="mini-title">What you get</div><ul class="bullet-list">${dl.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}
-                        ${data ? `<div class="mini-title">What we need from you</div><p class="pillar-desc">${esc(data)}</p>` : ''}
-                    </div>
-                    <div class="badge-list" style="margin-top:0;">${weeks}</div>
-                    ${live ? `<a href="/#audit" class="btn btn-primary" style="margin-top:1.5rem;">Request this audit</a>` : ''}
-                </article>`;
-};
-
-const segs = [...new Set(ordered.flatMap((p) => p.targetSegments || []))].filter((s) => SEGMENTS[s]);
+// Localised view of a product. Spanish must exist for every published product, or the build fails.
+function view(p, lang) {
+  if (lang === 'en') return { name: p.name, summary: pub(p.summary), value: pub(p.valueProposition), deliverables: p.deliverables, data: pub(p.dataRequirements) };
+  const t = es[p.code];
+  if (!t) throw new Error(`No Spanish copy for product ${p.code} in content/products.es.json`);
+  return { name: t.name, summary: t.summary, value: t.valueProposition, deliverables: t.deliverables, data: t.dataRequirements };
+}
 
 const css = `
-        .page-hero { padding: 3rem 0 2rem; max-width: 820px; }
-        .page-hero h1 { font-size: 3.1rem; font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 1.25rem; }
-        .page-hero p { color: var(--text-secondary); font-size: 1.15rem; margin-bottom: 2rem; }
         .mini-title { font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; color: var(--text-secondary); margin: 1.25rem 0 0.6rem; font-weight: 600; }
         .product-card.is-next { background: #fbfcfe; border-style: dashed; }
-        .benefit { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 1.75rem; box-shadow: var(--shadow-sm); }
-        .benefit h3 { font-size: 1.05rem; margin-bottom: 0.5rem; }
-        .benefit p { color: var(--text-secondary); font-size: 0.92rem; }
         .cta-band { text-align: center; }
         .cta-band .btn-group { justify-content: center; }
-        @media (max-width: 640px) { .page-hero h1 { font-size: 2.25rem; } }
 `;
 
-// "Why you need this": one card per reason. The blog pillar and nodes (tools/build-blog.mjs) go deeper on each.
-const benefits = [
-  ['Which channels bring students', 'The contribution and return of every channel to leads, applications and enrollments, including offline: TV, radio, outdoor, fairs and open days.'],
-  ['Where more spend stops paying', 'Saturation curves per channel show where extra budget no longer buys extra enrollments.'],
-  ['What to do with next year’s budget', 'Reallocation scenarios and an optimizer answer: if we move budget from X to Y, how many more students do we get?'],
-  ['A forecast leadership can use', 'An enrollment forecast for a given budget ties marketing spend to the intake target.'],
-  ['Privacy-safe by design', 'Works on aggregate data, with no user tracking, so cookie loss and platform-reported ROAS stop being a problem.'],
-  ['Built around the admissions cycle', 'The model accounts for carry-over effects, seasonality and the timing of intakes, per campus or program.'],
-];
-
-const main = `
+for (const lang of LANGS) {
+  const s = STR[lang];
+  const card = (p, i) => {
+    const v = view(p, lang);
+    const live = p.status === 'ACTIVE';
+    const dl = bullets(v.deliverables);
+    const weeks = p.durationWeeks ? `<span class="tech-badge">${esc(p.durationWeeks)} ${s.weeks}</span>` : '';
+    return `
+                <article class="pillar-card product-card${live ? '' : ' is-next'}" id="${esc((p.code || p.name).toLowerCase())}">
+                    <div>
+                        <div class="pillar-num">${s.step} ${i + 1} · ${esc(TYPES[lang][p.productType] || '')} · ${live ? s.now : s.next}</div>
+                        <h3 class="pillar-title">${esc(v.name)}</h3>
+                        ${v.summary ? `<p class="pillar-desc">${esc(v.summary)}</p>` : ''}
+                        ${v.value ? `<p class="pillar-desc"><strong>${s.why}</strong> ${esc(v.value)}</p>` : ''}
+                        ${dl.length ? `<div class="mini-title">${s.get}</div><ul class="bullet-list">${dl.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}
+                        ${v.data ? `<div class="mini-title">${s.need}</div><p class="pillar-desc">${esc(v.data)}</p>` : ''}
+                    </div>
+                    <div class="badge-list" style="margin-top:0;">${weeks}</div>
+                    ${live ? `<a href="${paths.home(lang)}#audit" class="btn btn-primary" style="margin-top:1.5rem;">${s.reqThis}</a>` : ''}
+                </article>`;
+  };
+  const segs = [...new Set(ordered.flatMap((p) => p.targetSegments || []))].filter((k) => SEGMENTS[lang][k]);
+  const pillarUrl = `/${lang}/blog/${REASONS.pillar.slug[lang]}/`;
+  const main = `
         <section class="page-hero">
-            <div class="badge">Marketing Mix Modeling for education</div>
-            <h1>Know which marketing channels actually bring you students.</h1>
-            <p>We help schools, school groups and universities in Latin America measure what each admissions channel contributes to enrollment, and decide where the next peso of budget should go.</p>
+            <div class="badge">${s.badge}</div>
+            <h1>${s.h1}</h1>
+            <p>${s.lead}</p>
             <div class="btn-group">
-                <a href="/#audit" class="btn btn-primary">Request the Marketing Data Audit</a>
-                <a href="#journey" class="btn btn-secondary">See how we work</a>
+                <a href="${paths.home(lang)}#audit" class="btn btn-primary">${s.ctaAudit}</a>
+                <a href="#journey" class="btn btn-secondary">${s.ctaHow}</a>
             </div>
         </section>
 
         <section class="section-padding" id="outcomes">
             <div class="section-header">
-                <h2>What changes when you measure it</h2>
-                <p>You spend across many channels and can’t tell which ones bring students. A marketing mix model answers that with your own data.</p>
+                <h2>${s.whyH}</h2>
+                <p>${s.whyP}</p>
             </div>
-            <div class="grid-3">${benefits.map(([t, d]) => `
-                <div class="benefit"><h3>${esc(t)}</h3><p>${esc(d)}</p></div>`).join('')}
+            <div class="grid-3">${REASONS.reasons.map((r) => `
+                <a class="reason-card" href="/${lang}/blog/${r.slug[lang]}/"><div class="pillar-num">${r.n}</div><h3>${esc(r.title[lang])}</h3><p>${esc(r.card[lang])}</p><span style="color:var(--accent-indigo);font-weight:600;font-size:0.85rem;">${s.read} &rarr;</span></a>`).join('')}
             </div>
+            <div style="text-align:center;margin-top:2rem;"><a href="${pillarUrl}" class="btn btn-secondary">${s.whyAll}</a></div>
         </section>
 
         <section class="section-padding" id="journey">
             <div class="section-header">
-                <h2>From first audit to a living model</h2>
-                <p>Start with a short audit of your budget and data. It ends with a clear recommendation and an implementation plan, so you decide on the full model with evidence.</p>
+                <h2>${s.journeyH}</h2>
+                <p>${s.journeyP}</p>
             </div>
             <div class="grid-3">${ordered.map(card).join('\n')}
             </div>
@@ -107,25 +140,24 @@ const main = `
 ${segs.length ? `
         <section class="section-padding" id="who" style="padding-top:0;">
             <div class="section-header">
-                <h2>Built for institutions that compete for enrollment</h2>
-                <p>If tuition funds your institution and you pay for admissions marketing, this applies to you. No minimum data maturity: assessing it is part of the audit.</p>
+                <h2>${s.whoH}</h2>
+                <p>${s.whoP}</p>
             </div>
-            <div class="badge-list" style="justify-content:center;">${segs.map((s) => `<span class="tech-badge" style="font-size:0.9rem;padding:0.5rem 1rem;">${esc(SEGMENTS[s])}</span>`).join('')}</div>
+            <div class="badge-list" style="justify-content:center;">${segs.map((k) => `<span class="tech-badge" style="font-size:0.9rem;padding:0.5rem 1rem;">${esc(SEGMENTS[lang][k])}</span>`).join('')}</div>
         </section>
 ` : ''}
         <section class="section-padding cta-band" id="start" style="border-top:1px solid var(--border-color);">
             <div class="section-header">
-                <h2>Start with the audit</h2>
-                <p>Tell us about your institution and how you invest in admissions. We’ll come back to you within one business day.</p>
+                <h2>${s.startH}</h2>
+                <p>${s.startP}</p>
             </div>
-            <div class="btn-group"><a href="/#audit" class="btn btn-primary">Request the Marketing Data Audit</a></div>
+            <div class="btn-group"><a href="${paths.home(lang)}#audit" class="btn btn-primary">${s.ctaAudit}</a></div>
         </section>
 `;
-
-mkdirSync(join(root, 'products-and-solutions'), { recursive: true });
-writeFileSync(join(root, 'products-and-solutions', 'index.html'), page({
-  lang: 'en', current: 'products', title: 'Products & Solutions | Minos Solutions',
-  description: 'Marketing Mix Modeling for education institutions in Latin America: find out which channels bring students and how to allocate your admissions budget.',
-  css, main,
-}));
-console.log(`Wrote products-and-solutions/index.html from ${ordered.length} CRM products: ${ordered.map((p) => `${p.code}(${p.status})`).join(' -> ')}`);
+  const path = paths.products(lang);
+  mkdirSync(join(root, path.slice(1)), { recursive: true });
+  writeFileSync(join(root, path.slice(1), 'index.html'), page({
+    lang, path, altPath: paths.products(otherLang(lang)), current: 'products', title: s.title, description: s.desc, css, main,
+  }));
+}
+console.log(`Products page (en + es) from ${ordered.length} CRM products: ${ordered.map((p) => `${p.code}(${p.status})`).join(' -> ')}`);

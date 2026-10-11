@@ -1,0 +1,42 @@
+{
+  "_note": "Structure of the blog: one pillar and six reason nodes, in English and Spanish. Bodies are Markdown in content/blog/<lang>/<slug>.md. Every entry must exist in both languages or the build fails. Independent of the CRM.",
+  "pillar": {
+    "slug": { "en": "why-your-institution-needs-mmm", "es": "por-que-necesita-mmm-su-institucion-educativa" },
+    "title": { "en": "Why your educational institution needs Marketing Mix Modeling", "es": "Por qué su institución educativa necesita Marketing Mix Modeling" },
+    "summary": { "en": "Six reasons to measure which admissions channels bring students, and how to split your budget better.", "es": "Seis razones para medir qué canales de admisiones traen estudiantes y cómo repartir mejor el presupuesto." }
+  },
+  "reasons": [
+    { "n": 1,
+      "slug": { "en": "which-channels-bring-students", "es": "que-canales-traen-estudiantes" },
+      "title": { "en": "Which channels actually bring in students?", "es": "¿Qué canales traen realmente estudiantes?" },
+      "card": { "en": "Why last click can’t tell you which channels bring students, and what can.", "es": "Por qué el último clic no responde qué canales traen estudiantes, y qué sí lo hace." } },
+    { "n": 2,
+      "slug": { "en": "when-more-spend-stops-paying", "es": "cuando-mas-inversion-deja-de-rendir" },
+      "title": { "en": "When spending more stops bringing more students", "es": "Cuándo invertir más deja de traer más estudiantes" },
+      "card": { "en": "Saturation curves show where the next dollar is no longer worth it.", "es": "Las curvas de saturación muestran dónde el siguiente peso ya no vale la pena." } },
+    { "n": 3,
+      "slug": { "en": "how-to-split-your-admissions-budget", "es": "como-repartir-el-presupuesto-de-admisiones" },
+      "title": { "en": "How to split next year’s admissions budget", "es": "Cómo repartir el presupuesto de admisiones del próximo año" },
+      "card": { "en": "From gut feeling and last year’s numbers to scenarios with expected enrollments.", "es": "De la intuición y las cifras del año pasado a escenarios con matrículas esperadas." } },
+    { "n": 4,
+      "slug": { "en": "enrollment-forecast-for-leadership", "es": "pronostico-de-matriculas-para-la-direccion" },
+      "title": { "en": "An enrollment forecast leadership can use", "es": "Un pronóstico de matrículas que la dirección pueda usar" },
+      "card": { "en": "Tying the marketing budget to the intake target.", "es": "Conectar el presupuesto de mercadeo con la meta de ingreso de estudiantes." } },
+    { "n": 5,
+      "slug": { "en": "measuring-without-cookies-or-tracking-families", "es": "medir-sin-cookies-ni-rastrear-familias" },
+      "title": { "en": "Measuring without cookies or tracking families", "es": "Medir sin cookies y sin rastrear a las familias" },
+      "card": { "en": "Aggregate-data measurement for when user tracking is no longer reliable.", "es": "Medición con datos agregados cuando el seguimiento de usuarios ya no es confiable." } },
+    { "n": 6,
+      "slug": { "en": "admissions-cycle-and-mmm", "es": "ciclo-de-admisiones-y-mmm" },
+      "title": { "en": "The admissions cycle: why timing changes everything", "es": "El ciclo de admisiones: por qué el momento lo cambia todo" },
+      "card": { "en": "Lagged effects and seasonality: what you spend today enrolls months later.", "es": "Efectos rezagados y estacionalidad: lo que hoy se invierte se matricula meses después." } }
+  ],
+  "links": [
+    { "from": 1, "to": 2, "text": { "en": "Once you know what each channel contributes, you can see where spend is already saturated.", "es": "Cuando sabe cuánto aporta cada canal, puede ver en cuáles la inversión ya está saturada." } },
+    { "from": 2, "to": 3, "text": { "en": "Knowing where spend saturates tells you where to take budget from and where to put it.", "es": "Saber dónde se satura la inversión indica de dónde mover presupuesto y hacia dónde." } },
+    { "from": 3, "to": 4, "text": { "en": "Every possible budget split becomes an enrollment forecast you can defend.", "es": "Cada reparto posible del presupuesto se convierte en un pronóstico de matrículas que se puede defender." } },
+    { "from": 5, "to": 1, "text": { "en": "Without cookies or tracking, click-based attribution fails; MMM measures contribution from aggregate data.", "es": "Sin cookies ni rastreo, la atribución por clics falla; el MMM mide el aporte con datos agregados." } },
+    { "from": 6, "to": 1, "text": { "en": "The lagged effects of the admissions cycle make last click lie about which channel convinced the family.", "es": "Los efectos rezagados del ciclo de admisiones hacen que el último clic mienta sobre qué canal convenció." } },
+    { "from": 6, "to": 4, "text": { "en": "Seasonality shapes the enrollment forecast.", "es": "La estacionalidad define la forma del pronóstico de matrículas." } }
+  ]
+}

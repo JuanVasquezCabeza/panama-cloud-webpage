@@ -1,125 +1,119 @@
-// Generates /blog/ (index, pillar page and reason nodes) from the Minos CRM `contentAsset` + `contentLink`
-// records plus the article bodies in content/blog/<slug>.md.   Run: node tools/build-blog.mjs
-//
-// CRM = structure (title, summary, type, order, status, product, pillar, links between nodes).
-// Markdown = the body text. A page is built when its .md exists and status is PUBLISHED or DRAFT.
-//   PUBLISHED -> indexed, linked from other pages.   DRAFT -> built with noindex + banner, not linked ("Próximamente").
-import { existsSync, readFileSync, writeFileSync, mkdirSync, rmSync, readdirSync } from 'node:fs';
+// Generates the blog in English (/en/blog/) and Spanish (/es/blog/): index, pillar page and six reason nodes.
+// Structure and cross-links: content/blog/reasons.json. Bodies: content/blog/<lang>/<slug>.md.
+// Every page must exist in both languages or the build fails. Independent of the CRM. Run via `node tools/build-all.mjs`.
+import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
-import { root, esc, crmList, md, page } from './lib.mjs';
+import { root, esc, md, page, paths, otherLang, LANGS } from './lib.mjs';
 
-const [assets, links, products] = await Promise.all([
-  crmList('contentAssets'), crmList('contentLinks'), crmList('products'),
-]);
+const R = JSON.parse(readFileSync(join(root, 'content', 'blog', 'reasons.json'), 'utf8'));
+const pillar = { n: 0, slug: R.pillar.slug, title: R.pillar.title, card: R.pillar.summary };
+const nodes = R.reasons;
+const byN = new Map([pillar, ...nodes].map((a) => [a.n, a]));
 
-const bodyFile = (a) => join(root, 'content', 'blog', `${a.slug}.md`);
-const built = (a) => ['PUBLISHED', 'DRAFT'].includes(a.status) && existsSync(bodyFile(a));
-const live = (a) => a.status === 'PUBLISHED' && existsSync(bodyFile(a));
-const url = (a) => `/blog/${a.slug}/`;
-const byId = new Map(assets.map((a) => [a.id, a]));
-const pillar = assets.find((a) => a.contentType === 'PILLAR');
-const nodes = assets.filter((a) => a.contentType === 'NODE').sort((a, b) => a.reasonOrder - b.reasonOrder);
-const productOf = (a) => products.find((p) => p.id === a.productId);
+const STR = {
+  en: {
+    blog: 'Blog', guide: 'Guide', reasonOf: (n, t) => `Reason ${n} of ${t}`, reason: (n) => `Reason ${n}`,
+    reasons: (t) => `The ${t} reasons`, relatedPillar: 'How they relate to each other',
+    connects: 'How this connects with the other reasons', backToPillar: (t) => `← The ${t} reasons`,
+    ctaH: 'Start with the audit',
+    ctaP: 'We review how your admissions budget is split today and what data you have, and give you a recommendation and a plan to implement MMM.',
+    ctaBtn: 'Learn about the budget and data audit',
+    idxH: 'Measuring admissions better', idxP: 'Guides on Marketing Mix Modeling for schools, school groups and universities in Latin America.',
+    idxTitle: 'Blog | Minos Solutions', idxDesc: 'Guides on Marketing Mix Modeling and admissions measurement for education institutions in Latin America.',
+  },
+  es: {
+    blog: 'Blog', guide: 'Guía', reasonOf: (n, t) => `Razón ${n} de ${t}`, reason: (n) => `Razón ${n}`,
+    reasons: (t) => `Las ${t} razones`, relatedPillar: 'Cómo se relacionan entre sí',
+    connects: 'Cómo se conecta con las otras razones', backToPillar: (t) => `← Las ${t} razones`,
+    ctaH: 'Empiece por la auditoría',
+    ctaP: 'Revisamos cómo se reparte hoy su presupuesto de admisiones y qué datos tiene, y le entregamos una recomendación y un plan para implementar MMM.',
+    ctaBtn: 'Conozca la auditoría de presupuesto y datos',
+    idxH: 'Medir mejor las admisiones', idxP: 'Guías sobre Marketing Mix Modeling para colegios, grupos de colegios y universidades de América Latina.',
+    idxTitle: 'Blog | Minos Solutions', idxDesc: 'Guías sobre Marketing Mix Modeling y medición de admisiones para instituciones educativas de América Latina.',
+  },
+};
 
-const ref = (a) => (live(a) ? `<a href="${url(a)}">${esc(a.name)}</a>` : `${esc(a.name)} <span class="soon">próximamente</span>`);
+const url = (a, lang) => `/${lang}/blog/${a.slug[lang]}/`;
+const write = (path, html) => { mkdirSync(join(root, path.slice(1)), { recursive: true }); writeFileSync(join(root, path.slice(1), 'index.html'), html); };
+const body = (a, lang) => {
+  const f = join(root, 'content', 'blog', lang, `${a.slug[lang]}.md`);
+  if (!existsSync(f)) throw new Error(`Missing article: ${f}`);
+  return md(readFileSync(f, 'utf8'));
+};
 
-function connections(a) {
-  const rel = links.filter((l) => l.fromAssetId === a.id || l.toAssetId === a.id)
-    .map((l) => ({ other: byId.get(l.fromAssetId === a.id ? l.toAssetId : l.fromAssetId), text: l.relationship }))
-    .filter((r) => r.other);
+function connections(a, lang, s) {
+  const rel = R.links.filter((l) => l.from === a.n || l.to === a.n)
+    .map((l) => ({ other: byN.get(l.from === a.n ? l.to : l.from), text: l.text[lang] }));
   if (!rel.length) return '';
   return `
             <aside class="connect">
-                <h2>Cómo se conecta con las otras razones</h2>
-                <ul>${rel.map((r) => `<li>${ref(r.other)}<br>${esc(r.text)}</li>`).join('')}</ul>
+                <h2>${s.connects}</h2>
+                <ul>${rel.map((r) => `<li><a href="${url(r.other, lang)}">${esc(r.other.title[lang])}</a><br>${esc(r.text)}</li>`).join('')}</ul>
             </aside>`;
 }
 
-function cta(a) {
-  const p = productOf(a);
-  const href = p ? `/products-and-solutions/#${esc((p.code || '').toLowerCase())}` : '/products-and-solutions/';
-  return `
+const cta = (lang, s) => `
             <div class="cta-box">
-                <h2>Empiece por la auditoría</h2>
-                <p>Revisamos cómo se reparte hoy su presupuesto de admisiones y qué datos tiene, y le entregamos una recomendación y un plan para implementar MMM.</p>
-                <a href="${href}" class="btn btn-primary">Conozca la auditoría de presupuesto y datos</a>
+                <h2>${s.ctaH}</h2>
+                <p>${s.ctaP}</p>
+                <a href="${paths.products(lang)}#mmm-audit" class="btn btn-primary">${s.ctaBtn}</a>
             </div>`;
-}
 
-const draftBanner = (a) => (a.status === 'DRAFT' ? '<div class="draft-banner">Borrador: esta página aún no está publicada ni enlazada desde el blog.</div>' : '');
-const meta = (a) => ({ lang: 'es', current: 'blog', noindex: a.status === 'DRAFT', title: `${a.name} | Minos Solutions`, description: a.summary || '' });
-const write = (rel, html) => { mkdirSync(join(root, rel), { recursive: true }); writeFileSync(join(root, rel, 'index.html'), html); };
+for (const lang of LANGS) {
+  const s = STR[lang];
+  const alt = otherLang(lang);
+  const total = nodes.length;
+  const mk = (a, extra) => ({ lang, current: 'blog', path: url(a, lang), altPath: url(a, alt), title: `${a.title[lang]} | Minos Solutions`, description: a.card[lang], ...extra });
 
-// Start clean so retired/renamed pages do not linger.
-rmSync(join(root, 'blog'), { recursive: true, force: true });
-const out = [];
-
-// ---- Pillar
-if (pillar && built(pillar)) {
-  const body = md(readFileSync(bodyFile(pillar), 'utf8'));
-  const cards = nodes.map((n) => {
-    const inner = `<div class="pillar-num">Razón ${n.reasonOrder}</div><h3>${esc(n.name)}</h3><p>${esc(n.summary)}</p>${live(n) ? '' : '<span class="soon">próximamente</span>'}`;
-    return live(n) ? `<a class="reason-card" href="${url(n)}">${inner}</a>` : `<div class="reason-card">${inner}</div>`;
-  }).join('\n                ');
-  const map = links.map((l) => [byId.get(l.fromAssetId), byId.get(l.toAssetId), l.relationship]).filter(([f, t]) => f && t)
-    .map(([f, t, text]) => `<li>${ref(f)} &rarr; ${ref(t)}<br>${esc(text)}</li>`).join('');
-  write(`blog/${pillar.slug}`, page({
-    ...meta(pillar),
+  // Pillar
+  const cards = nodes.map((n) => `<a class="reason-card" href="${url(n, lang)}"><div class="pillar-num">${s.reason(n.n)}</div><h3>${esc(n.title[lang])}</h3><p>${esc(n.card[lang])}</p></a>`).join('\n                ');
+  const map = R.links.map((l) => `<li><a href="${url(byN.get(l.from), lang)}">${esc(byN.get(l.from).title[lang])}</a> &rarr; <a href="${url(byN.get(l.to), lang)}">${esc(byN.get(l.to).title[lang])}</a><br>${esc(l.text[lang])}</li>`).join('');
+  write(url(pillar, lang), page(mk(pillar, {
     main: `
         <article class="post">
-            <div class="crumbs"><a href="/blog/">Blog</a></div>
-            ${draftBanner(pillar)}
-            <div class="badge">Guía</div>
-            <h1>${esc(pillar.name)}</h1>
-            <div class="post-body">${body}</div>
-            <h2 style="font-size:1.6rem;font-weight:800;letter-spacing:-0.02em;margin:2.5rem 0 1.25rem;">Las ${nodes.length} razones</h2>
+            <div class="crumbs"><a href="${paths.blog(lang)}">${s.blog}</a></div>
+            <div class="badge">${s.guide}</div>
+            <h1>${esc(pillar.title[lang])}</h1>
+            <div class="post-body">${body(pillar, lang)}</div>
+            <h2 style="font-size:1.6rem;font-weight:800;letter-spacing:-0.02em;margin:2.5rem 0 1.25rem;">${s.reasons(total)}</h2>
             <div class="grid-3" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;">
                 ${cards}
             </div>
             <aside class="connect">
-                <h2>Cómo se relacionan entre sí</h2>
+                <h2>${s.relatedPillar}</h2>
                 <ul>${map}</ul>
-            </aside>${cta(pillar)}
+            </aside>${cta(lang, s)}
         </article>`,
-  }));
-  out.push(url(pillar));
-}
+  })));
 
-// ---- Nodes
-for (const n of nodes.filter(built)) {
-  const body = md(readFileSync(bodyFile(n), 'utf8'));
-  const crumbs = `<a href="/blog/">Blog</a>${pillar && live(pillar) ? ` &rsaquo; <a href="${url(pillar)}">${esc(pillar.name)}</a>` : ''}`;
-  write(`blog/${n.slug}`, page({
-    ...meta(n),
-    main: `
+  // Nodes
+  for (const n of nodes) {
+    write(url(n, lang), page(mk(n, {
+      main: `
         <article class="post">
-            <div class="crumbs">${crumbs}</div>
-            ${draftBanner(n)}
-            <div class="badge">Razón ${n.reasonOrder} de ${nodes.length}</div>
-            <h1>${esc(n.name)}</h1>
-            <div class="post-body">${body}</div>${connections(n)}
-            ${pillar && live(pillar) ? `<p><a class="btn btn-secondary" href="${url(pillar)}">&larr; Las ${nodes.length} razones</a></p>` : ''}${cta(n)}
+            <div class="crumbs"><a href="${paths.blog(lang)}">${s.blog}</a> &rsaquo; <a href="${url(pillar, lang)}">${esc(pillar.title[lang])}</a></div>
+            <div class="badge">${s.reasonOf(n.n, total)}</div>
+            <h1>${esc(n.title[lang])}</h1>
+            <div class="post-body">${body(n, lang)}</div>${connections(n, lang, s)}
+            <p><a class="btn btn-secondary" href="${url(pillar, lang)}">${s.backToPillar(total)}</a></p>${cta(lang, s)}
         </article>`,
-  }));
-  out.push(url(n));
-}
+    })));
+  }
 
-// ---- Index (published pages only)
-const published = [pillar, ...nodes].filter((a) => a && live(a));
-write('blog', page({
-  lang: 'es', current: 'blog', title: 'Blog | Minos Solutions',
-  description: 'Guías sobre Marketing Mix Modeling y medición de admisiones para instituciones educativas de América Latina.',
-  main: `
-        <section class="page-hero" style="padding:3rem 0 2rem;max-width:820px;">
-            <div class="badge">Blog</div>
-            <h1 style="font-size:3rem;font-weight:800;line-height:1.15;letter-spacing:-0.03em;margin-bottom:1rem;">Medir mejor las admisiones</h1>
-            <p style="color:var(--text-secondary);font-size:1.15rem;">Guías sobre Marketing Mix Modeling para colegios, grupos de colegios y universidades de América Latina.</p>
+  // Index
+  write(paths.blog(lang), page({
+    lang, current: 'blog', path: paths.blog(lang), altPath: paths.blog(alt), title: s.idxTitle, description: s.idxDesc,
+    main: `
+        <section class="page-hero">
+            <div class="badge">${s.blog}</div>
+            <h1>${s.idxH}</h1>
+            <p>${s.idxP}</p>
         </section>
         <section style="padding-bottom:5rem;">
-            ${published.length ? `<div class="grid-3" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.25rem;">${published.map((a) => `
-                <a class="reason-card" href="${url(a)}"><div class="pillar-num">${a.contentType === 'PILLAR' ? 'Guía' : `Razón ${a.reasonOrder}`}</div><h3>${esc(a.name)}</h3><p>${esc(a.summary)}</p></a>`).join('')}
-            </div>` : '<p style="color:var(--text-secondary);">Muy pronto publicaremos las primeras guías.</p>'}
+            <div class="grid-3" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.25rem;">${[pillar, ...nodes].map((a) => `
+                <a class="reason-card" href="${url(a, lang)}"><div class="pillar-num">${a.n === 0 ? s.guide : s.reason(a.n)}</div><h3>${esc(a.title[lang])}</h3><p>${esc(a.card[lang])}</p></a>`).join('')}
+            </div>
         </section>`,
-}));
-
-console.log(`Built ${out.length} article pages: ${out.join(', ') || '(none)'}; index lists ${published.length} published.`);
+  }));
+}
+console.log(`Blog built in ${LANGS.join(' + ')}: 1 pillar + ${nodes.length} nodes + index per language.`);

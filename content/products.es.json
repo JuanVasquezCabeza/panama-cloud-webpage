@@ -1,0 +1,23 @@
+{
+  "_note": "Spanish marketing copy for the CRM products, keyed by product code. The CRM itself stays English-only; the website reads it and never writes to it.",
+  "MMM-AUDIT": {
+    "name": "Auditoría de Presupuesto y Datos de Marketing",
+    "summary": "El paso previo al MMM: cómo se reparte hoy el presupuesto de admisiones, qué datos existen y un plan para implementar el modelo.",
+    "valueProposition": "Muestra a dónde va el dinero de marketing para matrículas y si los datos permiten construir un modelo de mezcla de marketing, y termina con un plan de implementación concreto.",
+    "deliverables": "Revisión de la asignación actual del presupuesto por canal; inventario y evaluación de los datos de marketing y matrículas; recomendación; plan de implementación del MMM",
+    "dataRequirements": "Inversión por canal y periodo; leads, solicitudes y matrículas del mismo periodo (lo que exista: la madurez de los datos se evalúa en la auditoría)."
+  },
+  "MMM-IMPL": {
+    "name": "Implementación de MMM para Matrículas",
+    "summary": "Un modelo de mezcla de marketing que mide cómo cada canal genera leads, solicitudes y matrículas, por sede o programa.",
+    "valueProposition": "Aporte y retorno de cada canal (digital y tradicional), curvas de saturación, escenarios de reasignación del presupuesto con un optimizador y un pronóstico de matrículas para un presupuesto dado; con datos agregados, sin rastreo de usuarios.",
+    "deliverables": "Modelo ajustado con efectos rezagados, saturación y estacionalidad; aporte y retorno por canal; escenarios de reasignación; pronóstico de matrículas; entrega y transferencia",
+    "dataRequirements": "Alrededor de 2 o más años de inversión por canal y de leads o matrículas, y 3 o más canales (preferible, no obligatorio)."
+  },
+  "MMM-REFRESH": {
+    "name": "Actualización de MMM y Planeación de Escenarios",
+    "summary": "Actualización recurrente del modelo y apoyo en escenarios de presupuesto, alineado al ciclo de admisiones.",
+    "valueProposition": "Mantiene el modelo vigente en cada ciclo de admisiones y replantea el presupuesto a medida que llegan resultados.",
+    "deliverables": ""
+  }
+}
