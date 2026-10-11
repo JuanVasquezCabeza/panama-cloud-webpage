@@ -33,6 +33,7 @@ for (const f of pages) {
   const visible = html.replace(/<style>[\s\S]*?<\/style>/g, '').replace(/<script>[\s\S]*?<\/script>/g, '').replace(/<[^>]*>/g, ' ');
   if (lang === 'en' && /[¿¡ñáéíóú]/.test(visible.replace(/Múnera/g, ''))) bad(`${f}: Spanish characters in an English page`);
   if (lang === 'es' && /\b(Request|Learn about|Read the guide)\b/.test(visible)) bad(`${f}: English UI text in a Spanish page`);
+  if (html.includes("data-widget=") && !html.includes("/assets/widgets.js")) bad(`${f}: uses widgets but does not load /assets/widgets.js`);
   for (const s of html.matchAll(/<script>([\s\S]*?)<\/script>/g)) { try { new Function(s[1]); } catch (e) { bad(`${f}: script error ${e.message}`); } }
 }
 console.log(`${pages.length} pages, ${links} internal links, ${problems} problems`);

@@ -1,25 +1,17 @@
-Every admissions manager has lived this: the first campaign on a channel works wonderfully, so the next year the budget doubles, and the results barely move. That is not bad luck or a weak creative. It is **diminishing returns**, and every channel has them.
+**Every channel has a ceiling, and your average cost per enrollment will not tell you when you reach it.** Take an illustrative paid social channel: the first $20,000 a month brings 100 enrollments ($200 each), the next $20,000 brings 60 more ($333 each), and the next $20,000 only 36 ($556 each). Yet the average cost across the whole $60,000 is about $306, a number that looks perfectly acceptable. This is why reports that show only the average keep funding channels long after they stopped paying. The demo below lets you walk along that curve for four stylised channels.
 
-## Why the next peso is worth less than the last
+{{widget:saturation}}
 
-A channel reaches only so many people who are actually considering your school: the families in your area, with the right budget, looking at the right time. The first investment reaches the easiest ones. The next one reaches the same people again, or people who are less interested. Spend keeps going up, but each additional enrollment gets more expensive.
+## Diminishing returns are among the best-documented facts in advertising
 
-> Illustrative example, not data from any client. Imagine a paid social channel. The first USD 20,000 a month brings 100 applications (USD 200 each). Going to USD 40,000 brings 160 in total, so the extra 20,000 bought 60 more (USD 333 each). At USD 60,000 the total is 190, and the third block bought only 30 more (USD 667 each). The *average* cost per application looks acceptable the whole time; the *marginal* cost is what grew.
+**Advertising elasticities are well below one, which is diminishing returns written as a number.** In their meta-analysis of 56 studies, [Sethuraman, Tellis and Briesch](https://www.gwern.net/doc/economics/advertising/2011-sethuraman.pdf) found an average short-term advertising elasticity of 0.12: a 10% increase in advertising raises sales by around 1.2%, not 10%. The long-term figure was 0.24, still far from proportional. Modeling tools are built around this fact: Meta’s [Robyn](https://github.com/facebookexperimental/Robyn) lets users explore adstock rates and saturation curves, and [Meridian](https://developers.google.com/meridian) lets teams calibrate MMMs with experiments, across channels.
 
-## Average cost hides the problem
+**Saturation is a property of the audience, not of the creative.** Only so many families in your area are actually considering a school like yours, and the first dollars reach the easiest ones. Blake, Nosko and Tadelis saw the same thing at eBay: [new and infrequent users were positively influenced by non-brand search ads](https://www.nber.org/papers/w20171), but frequent users, whose behavior was not influenced by ads, accounted for most of the advertising spend, so average returns were negative. Spending more on people who have already decided buys nothing. A better design or a new message can move the curve, but it cannot remove the ceiling.
 
-Most reports show the average cost per lead or per enrollment. It moves slowly and looks fine long after the channel has saturated. The number that matters for deciding where to put the next peso is the **marginal** one: what the next block of investment will actually bring.
+## The number that matters is the marginal one
 
-MMM estimates a **response curve for each channel**: the relationship between how much you invest and what you get back. It also shows where you are on that curve today: still climbing, bending, or flat.
+**To decide where the next peso goes, you need the return of the next peso, not the average of all the previous ones.** Different channels sit at different points of their curves: a heavily funded channel may be flat while a small one is still climbing. With budgets flat at 7.7% of revenue and 59% of CMOs saying they are too small, per [Gartner’s 2025 survey](https://secure.businesswire.com/news/home/20250512782208/en/Gartner-2025-CMO-Spend-Survey-Reveals-Marketing-Budgets-Have-Flatlined-at-7.7-of-Overall-Company-Revenue), every dollar has to go where it still pays. Try it: add the same extra budget to four channels that start at different levels.
 
-## What this changes in practice
+{{widget:extra_budget}}
 
-- You can stop adding to channels that already plateaued, instead of discovering it after the intake closes.
-- You can find channels that are still on the steep part of the curve, where each extra peso still pays well.
-- You can tell when a channel is not underperforming but simply **over-funded**.
-
-One caution: curves are specific to each channel, campus and moment, and the model learns them from how your spend changed over time. If a channel always receives exactly the same investment, there isn’t enough variation to know its curve. That is one of the things the initial audit checks.
-
-## Where this leads
-
-Knowing where spend saturates is not an end in itself: it tells you where to take budget from, and where to put it. That is the subject of the next guide, on splitting your admissions budget. And it only works once you know what each channel really contributes, as explained in the first guide of this series.
+**A curve is only as good as the variation behind it, so check it with a test.** The model learns each channel’s curve from how your spend changed over time; if a channel always gets the same amount, there is not enough movement to know its shape. That is one of the things the initial audit checks. When a decision is large, a small experiment settles it: [Google’s geo experiments](https://research.google/pubs/measuring-ad-effectiveness-using-geo-experiments/) randomly assign regions to control or treatment, and the result can be fed back into the model, as [Meridian supports](https://developers.google.com/meridian). Knowing where spend saturates then tells you where to take budget from, and where to put it, which is the subject of the next guide.

@@ -711,6 +711,49 @@
         .page-hero h1 { font-size: 3.1rem; font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 1.25rem; }
         .page-hero p { color: var(--text-secondary); font-size: 1.15rem; margin-bottom: 2rem; }
         @media (max-width: 640px) { .page-hero h1 { font-size: 2.25rem; } .post h1 { font-size: 2rem; } }
+        /* Opening statement of each paragraph: bold + highlighter */
+        .post-body p > strong:first-child { font-weight: 800; color: var(--text-primary); background: linear-gradient(transparent 58%, rgba(99,102,241,0.2) 58%); padding: 0 0.1em; }
+        /* Interactive explainers (assets/widgets.js) */
+        .viz { margin: 2rem 0; }
+        .viz-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 20px; padding: 1.5rem; box-shadow: var(--shadow-md); }
+        .viz-tag { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent-indigo); font-weight: 700; }
+        .viz-head h3 { font-size: 1.2rem; margin: 0.25rem 0 0.4rem; letter-spacing: -0.02em; }
+        .viz-head p { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.55; margin: 0 0 1rem; }
+        .viz-ctrls { display: grid; gap: 0.9rem; margin-bottom: 1rem; }
+        .vc-h { display: flex; justify-content: space-between; gap: 1rem; font-size: 0.82rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.3rem; }
+        .vc-h output { font-family: var(--font-mono); color: var(--accent-indigo); font-weight: 700; white-space: nowrap; }
+        .vc input[type=range] { width: 100%; }
+        .vc-check { display: flex; gap: 0.5rem; align-items: center; font-size: 0.88rem; }
+        .seg { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+        .seg button { border: 1px solid var(--border-color); background: #fff; color: var(--text-primary); border-radius: 8px; padding: 0.4rem 0.8rem; font-size: 0.82rem; font-weight: 600; cursor: pointer; font-family: inherit; }
+        .seg button[aria-pressed="true"] { background: var(--accent-indigo); border-color: var(--accent-indigo); color: #fff; }
+        .seg button:focus-visible, .vnode:focus-visible, .vbtn:focus-visible { outline: 3px solid rgba(79,70,229,0.45); outline-offset: 2px; }
+        .vbtn { padding: 0.5rem 1rem; font-size: 0.85rem; margin-right: 0.5rem; }
+        .vq { display: flex; justify-content: space-between; align-items: center; gap: 1rem; font-size: 0.9rem; flex-wrap: wrap; }
+        .vq > span { flex: 1 1 260px; }
+        .viz-svg { width: 100%; height: auto; display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; }
+        .vt { font: 9px var(--font-mono); fill: #64748b; } .vl { font: 600 9.5px var(--font-sans); fill: #475569; }
+        .vtiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.75rem; margin: 1rem 0 0.5rem; }
+        .vtile { background: #f1f5f9; border-radius: 12px; padding: 0.75rem 0.9rem; display: flex; flex-direction: column; gap: 0.2rem; }
+        .vtile span { font-size: 0.72rem; color: var(--text-secondary); font-weight: 600; line-height: 1.3; }
+        .vtile b { font-family: var(--font-mono); font-size: 1.15rem; }
+        .vbars { display: flex; flex-direction: column; gap: 0.55rem; margin: 0.5rem 0; }
+        .vbar { display: grid; grid-template-columns: minmax(110px, 190px) 1fr auto; gap: 0.6rem; align-items: center; font-size: 0.82rem; }
+        .vbar-t { background: #e2e8f0; border-radius: 6px; height: 14px; overflow: hidden; } .vbar-t i { display: block; height: 100%; border-radius: 6px; }
+        .vbar-v { font-family: var(--font-mono); font-weight: 700; font-size: 0.78rem; min-width: 5.5rem; text-align: right; }
+        .vleg { display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.78rem; color: var(--text-secondary); margin: 0.5rem 0; } .vleg i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 0.35rem; }
+        .viz-take { background: rgba(99,102,241,0.07); border-left: 3px solid var(--accent-indigo); border-radius: 0 10px 10px 0; padding: 0.75rem 1rem; margin: 0.75rem 0 0; font-size: 0.92rem; line-height: 1.55; color: #334155; }
+        .viz-note { font-size: 0.72rem; color: var(--text-secondary); margin: 0.9rem 0 0; }
+        .vlist { margin-top: 0.75rem; font-size: 0.9rem; } .vlist ul { margin: 0.4rem 0 0.75rem 1.2rem; } .vlist li { margin-bottom: 0.4rem; color: #334155; } .vsub { display: block; font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; color: var(--text-secondary); margin-top: 0.6rem; }
+        .vprog { height: 10px; background: #e2e8f0; border-radius: 6px; overflow: hidden; margin: 0.5rem 0; } .vprog i { display: block; height: 100%; }
+        .vpill { display: inline-block; font-size: 0.78rem; font-weight: 700; border-radius: 999px; padding: 0.2rem 0.7rem; margin-top: 0.5rem; }
+        .vpill0 { background: #d1fae5; color: #065f46; } .vpill1 { background: #fef3c7; color: #92400e; } .vpill2 { background: #fee2e2; color: #991b1b; }
+        .vnode { cursor: pointer; } .vnode:hover circle { fill: #eef2ff; }
+        .vdots { display: grid; grid-template-columns: repeat(20, 1fr); gap: 4px; margin: 0.5rem 0; } .vdot { aspect-ratio: 1; border-radius: 50%; background: #e2e8f0; display: block; } .vdot.on { background: var(--accent-indigo); }
+        .vneeds { display: flex; flex-direction: column; gap: 0.4rem; margin: 0.5rem 0; }
+        .vneed { display: grid; grid-template-columns: 1.5rem 1fr auto; gap: 0.5rem; align-items: center; font-size: 0.88rem; padding: 0.45rem 0.7rem; border-radius: 10px; background: #f8fafc; border: 1px solid #e2e8f0; }
+        .vneed em { font-style: normal; font-size: 0.72rem; font-weight: 700; color: var(--text-secondary); } .vneed-req { border-color: #c7d2fe; background: #eef2ff; } .vneed-req .vsym { color: var(--accent-indigo); } .vneed-no { opacity: 0.6; }
+        @media (max-width: 520px) { .vbar { grid-template-columns: 1fr; gap: 0.2rem; } .vbar-v { text-align: left; } .viz-card { padding: 1.1rem; } }
 </style>
 </head>
 <body>
@@ -733,19 +776,15 @@
             <div class="crumbs"><a href="/es/blog/">Blog</a> &rsaquo; <a href="/es/blog/por-que-necesita-mmm-su-institucion-educativa/">Por qué su institución educativa necesita Marketing Mix Modeling</a></div>
             <div class="badge">Razón 4 de 6</div>
             <h1>Un pronóstico de matrículas que la dirección pueda usar</h1>
-            <div class="post-body"><p>Rectores, directores financieros y juntas directivas hacen cada año una pregunta sencilla: <strong>¿vamos a llegar a la meta de ingreso de estudiantes y qué hace falta para lograrlo?</strong> Mercadeo suele responder con actividad (campañas, impresiones, leads), no con el número que importa: cuántos estudiantes se van a matricular.</p>
-<h2>Por qué la respuesta habitual se queda corta</h2>
-<p>Los leads no son matrículas, y la tasa de conversión del año pasado no dice nada de lo que pasa cuando cambia la mezcla de canales. Un reporte del embudo puede decir lo que ya está dentro de él, pero no lo que haría un presupuesto distinto, y cuando el embudo se ve flaco ya queda poco tiempo para reaccionar.</p>
+            <div class="post-body"><p><strong>La dirección pide un número, y la respuesta honesta es un rango con una probabilidad.</strong> Rectores, directores financieros y juntas directivas hacen la misma pregunta cada año: ¿vamos a llegar a la meta de ingreso de estudiantes y qué hace falta? Mercadeo suele responder con actividad (campañas, impresiones, leads) en lugar del número que importa. La presión es real: la <a href="https://secure.businesswire.com/news/home/20250512782208/en/Gartner-2025-CMO-Spend-Survey-Reveals-Marketing-Budgets-Have-Flatlined-at-7.7-of-Overall-Company-Revenue">encuesta CMO de Gartner de 2025</a> encontró que 59 % de los CMO decía que su presupuesto era demasiado pequeño para ejecutar su estrategia, y su responsable de investigación advirtió que los presupuestos estancados pueden enfrentar recortes durante el año. Un pronóstico con rango es la forma de defender un presupuesto bajo esa presión.</p>
+<p><strong>Los leads no son matrículas, y la tasa de conversión del año pasado dice poco sobre la mezcla del próximo.</strong> Un reporte del embudo muestra lo que ya está dentro de él, no lo que haría un presupuesto distinto. Cuando el embudo se ve flaco, queda poco tiempo para reaccionar. Los costos también se mueven: en los <a href="https://newamerica.org/documents/9177/RNL_2022_CostRecruiting_Report.pdf">informes de RNL</a>, el costo mediano de reclutar a un estudiante de pregrado en instituciones privadas de cuatro años de EE. UU. pasó de USD 2.114 en 2020 a USD 2.795 en 2022, un aumento de 32 %. Suponer que el costo por matrícula se queda quieto es justamente el supuesto que se rompe.</p>
 <h2>Qué le da un pronóstico del modelo</h2>
-<p>Como el modelo relaciona la inversión por canal con las matrículas, cualquier escenario de presupuesto se puede convertir en un <strong>pronóstico de matrículas esperadas</strong>, con un rango:</p>
-<ul><li>Dado el presupuesto aprobado, ¿cuántas matrículas debemos esperar y qué tan lejos está eso de la meta?</li><li>Si falta, ¿cuánto presupuesto adicional cierra la brecha y en qué canales?</li><li>Si se recorta el presupuesto, ¿cuánto ingreso de estudiantes estamos cediendo?</li></ul>
-<blockquote>Ejemplo ilustrativo, no corresponde a datos de ningún cliente. La meta es 600 estudiantes nuevos. Con el presupuesto previsto, el modelo espera entre 540 y 610, y lo más probable es 575. La dirección ve que la meta está en riesgo y pregunta qué cierra la brecha: el modelo muestra que mover parte del presupuesto y sumar un monto moderado llevaría el valor probable a 600.</blockquote>
-<h2>Alerta temprana, no solo un informe</h2>
-<p>Como los efectos del marketing tardan en verse (vea la guía sobre el ciclo de admisiones), un pronóstico actualizado con cada mes de resultados muestra con meses de anticipación si el ingreso va por buen camino. Eso es tiempo para ajustar la mezcla mientras todavía cambia el resultado.</p>
+<p><strong>Como el modelo relaciona la inversión por canal con las matrículas, cualquier escenario de presupuesto se convierte en un pronóstico con rango.</strong> Dado el presupuesto aprobado, ¿cuántas matrículas debemos esperar y qué tan lejos está eso de la meta? Si falta, ¿cuánto más cierra la brecha y en qué canales? Si se recorta el presupuesto, ¿cuánto ingreso estamos cediendo? Pruébelo abajo: defina la meta y el presupuesto, y lea la probabilidad de alcanzarla. Los números son ilustrativos.</p>
+<div class="viz" data-widget="forecast" data-lang="es"></div>
+<p><strong>Un pronóstico vale más cuando llega temprano.</strong> Los efectos del marketing tardan: en el <a href="https://www.gwern.net/doc/economics/advertising/2011-sethuraman.pdf">metaanálisis de Sethuraman, Tellis y Briesch</a> la elasticidad publicitaria de largo plazo (0,24) fue el doble de la de corto plazo (0,12). Por eso las señales aparecen meses antes de que cierre el ingreso, y un pronóstico actualizado con cada mes de resultados muestra si el ciclo va por buen camino cuando todavía hay tiempo de cambiar la mezcla. Avance por el ciclo abajo y observe cómo se estrecha el rango mientras se cierra la ventana para actuar.</p>
+<div class="viz" data-widget="warning" data-lang="es"></div>
 <h2>Lo que un pronóstico no es</h2>
-<p>No es una garantía. Es una estimación calibrada con un rango, y mejora a medida que se suman ciclos de datos. Presentarlo así lo hace más creíble ante una junta, no menos.</p>
-<h2>Dónde se conecta</h2>
-<p>Este es el final de la cadena: saber qué aporta cada canal, dónde se satura y cómo repartir el presupuesto lleva a un pronóstico que la dirección puede aprobar. La forma de ese pronóstico, con sus picos y valles, viene de la estacionalidad de las admisiones, que se explica en la guía sobre el ciclo de admisiones.</p></div>
+<p><strong>Un pronóstico es una estimación calibrada, no una garantía, y presentarlo así lo hace más creíble, no menos.</strong> Los errores de medición son reales, incluso en las mayores plataformas, como mostraron <a href="https://www.kellogg.northwestern.edu/academics-research/research/detail/2019/a-comparison-of-approaches-to-advertising-measurement-evidence-from/">Gordon y colegas</a> en 15 experimentos de Facebook. Un rango con una probabilidad declarada le dice a una junta qué tan seguro está usted, y mejora a medida que se suman ciclos de admisiones. Pequeños experimentos, como los <a href="https://research.google/pubs/measuring-ad-effectiveness-using-geo-experiments/">experimentos geográficos de Google</a>, pueden verificar el modelo donde la decisión es grande. Este es el final de la cadena: aporte, saturación y asignación llevan a un pronóstico que la dirección puede aprobar, y su forma, con sus picos y valles, viene de la estacionalidad de las admisiones.</p></div>
             <aside class="connect">
                 <h2>Cómo se conecta con las otras razones</h2>
                 <ul><li><a href="/es/blog/como-repartir-el-presupuesto-de-admisiones/">Cómo repartir el presupuesto de admisiones del próximo año</a><br>Cada reparto posible del presupuesto se convierte en un pronóstico de matrículas que se puede defender.</li><li><a href="/es/blog/ciclo-de-admisiones-y-mmm/">El ciclo de admisiones: por qué el momento lo cambia todo</a><br>La estacionalidad define la forma del pronóstico de matrículas.</li></ul>
@@ -776,5 +815,6 @@
             a.addEventListener('click', function () { document.cookie = 'lang=' + a.dataset.lang + ';path=/;max-age=31536000;SameSite=Lax'; });
         });
     </script>
+    <script src="/assets/widgets.js" defer></script>
 </body>
 </html>

@@ -1,33 +1,17 @@
-Si le pregunta a su equipo de mercadeo qué canales traen estudiantes, probablemente recibirá una respuesta basada en un reporte: «Google nos trajo el 60 % de las solicitudes». Es una respuesta ordenada y precisa, y muy probablemente **engañosa**.
+**El canal que se lleva el crédito en sus reportes suele ser el que cerró la decisión, no el que la abrió.** Una familia decide durante meses: una cuña de radio, una valla cerca de casa, la opinión de una amiga, una jornada de puertas abiertas y, al final, una búsqueda con el nombre del colegio. Las reglas de último clic le dan a esa búsqueda final el 100 % del crédito. Blake, Nosko y Tadelis probaron una versión de esto en eBay: [apagaron los anuncios pagos de búsqueda para consultas de marca](https://www.nber.org/papers/w20171) en parte del mercado y encontraron que casi todos los clics y ventas perdidos se recuperaban por la búsqueda orgánica, así que los clics pagos de marca no tenían un beneficio medible en el corto plazo. eBay es un nombre conocido por todos y un colegio no, así que pruebe antes de suponer lo mismo, pero la lección se mantiene: las búsquedas con su nombre suelen capturar demanda creada en otro lugar.
 
-## El problema del último clic
+{{widget:attribution}}
 
-Casi todas las plataformas atribuyen el resultado al último contacto antes de la acción. Piense en cómo decide una familia: escucha la cuña de radio en el trayecto al trabajo, ve una valla cerca de casa, una amiga le habla del colegio, y semanas después **busca el nombre del colegio en Google** y llena el formulario. En el reporte, todo el mérito es de la búsqueda.
+## Un reporte preciso no es lo mismo que uno correcto
 
-> Ejemplo ilustrativo, no corresponde a datos de ningún cliente. Un colegio con tres sedes invierte en Meta, Google, radio, vallas y ferias. El reporte de Google muestra que el 60 % de las solicitudes vino de búsqueda. Pero la búsqueda de la *marca* del colegio solo existe porque la radio y las vallas ya habían generado conocimiento. Si el colegio recortara la radio por «no mostrar resultados», las búsquedas de marca caerían unas semanas después, y nadie sabría por qué.
+**Los tableros de las plataformas dan números limpios y precisos que aun así pueden estar lejos de la verdad.** Gordon, Zettelmeyer, Bhargava y Chapsky compararon métodos de medición observacionales con experimentos aleatorizados en [15 pruebas publicitarias de Facebook](https://www.kellogg.northwestern.edu/academics-research/research/detail/2019/a-comparison-of-approaches-to-advertising-measurement-evidence-from/) publicadas en Marketing Science. Encontraron que los métodos observacionales con frecuencia no reproducían los resultados experimentales, incluso después de controlar por abundantes datos demográficos y de comportamiento. La razón es intuitiva en admisiones: las familias que hacen clic en su anuncio ya estaban más interesadas en su colegio que las que no. La queja de Wanamaker, [quienquiera que la haya dicho primero](https://quoteinvestigator.com/2022/04/11/advertising/), ha durado porque el problema ha durado.
 
-El último clic premia al canal que **cierra** y castiga a los que **abren**. Por eso suele inflar la búsqueda de marca y subestimar el medio tradicional, justo donde muchas instituciones educativas invierten una parte importante.
+**Lo que no deja clic suele ser lo que está funcionando.** La radio, las vallas, las ferias y las jornadas de puertas abiertas no se pueden seguir, así que un reporte basado en clics muestra que no aportan nada. Recortarlas parece entonces gratis, hasta que el efecto aparece semanas después en el volumen de búsquedas y en las solicitudes, como muestra la siguiente demo. El efecto de largo plazo de la publicidad es mayor que el de corto: [Sethuraman, Tellis y Briesch](https://www.gwern.net/doc/economics/advertising/2011-sethuraman.pdf) ubican la elasticidad promedio de largo plazo en 0,24 frente a 0,12 en el corto, de modo que juzgar un canal por el mes en que corrió es juzgarlo por la mitad de su efecto.
 
-## Lo que hace distinto el MMM
+{{widget:halo}}
 
-El Marketing Mix Modeling no sigue personas: mira **la relación entre cuánto se invirtió en cada canal y cuántas solicitudes y matrículas hubo**, semana a semana, durante uno o varios ciclos. Si cada vez que sube la inversión en radio, sube un tiempo después el volumen de búsquedas de la marca y las visitas a la página de admisiones, el modelo lo detecta y le atribuye a la radio la parte que le corresponde.
+## Qué hace distinto el MMM
 
-El resultado es una respuesta que ningún reporte de plataforma puede darle:
+**El Marketing Mix Modeling mira la relación entre inversión y resultados en el tiempo, no los clics individuales.** Usa totales semanales o mensuales: cuánto se invirtió en cada canal y cuántos leads, solicitudes y matrículas siguieron. Con ellos estima qué aporta cada canal, qué habría pasado de todos modos y el retorno por peso. [Meridian](https://developers.google.com/meridian), de Google, y [Robyn](https://github.com/facebookexperimental/Robyn), de Meta, son implementaciones de código abierto, y la documentación de Robyn destaca la exploración de tasas de adstock y curvas de saturación, las dos ideas que hacen que el método se ajuste a la publicidad real. Meridian también permite calibrar el modelo con resultados de experimentos, de modo que los números se verifican contra algo distinto del propio modelo.
 
-- **El aporte de cada canal** a leads, solicitudes y matrículas, incluidos los medios sin clic (radio, vallas, ferias, jornadas de puertas abiertas).
-- **La parte que habría llegado de todos modos**, por reputación, recomendación y demanda de la zona.
-- **El retorno por peso invertido** en cada canal, comparable entre canales y entre sedes o programas.
-
-## Qué se necesita para empezar
-
-Menos de lo que parece. En términos generales:
-
-1. Inversión por canal y por periodo (semanal o mensual).
-2. Leads, solicitudes y matrículas de los mismos periodos.
-3. Idealmente, dos o más ciclos de admisiones y al menos tres canales.
-
-Si no tiene todo esto, no es un obstáculo: revisar qué datos existen y qué tan utilizables son es parte de la auditoría inicial.
-
-## Qué sigue después de saber qué canal aporta
-
-Conocer el aporte de cada canal es solo el comienzo. La siguiente pregunta es obvia: **¿en cuáles ya estamos gastando más de lo que rinde?** Eso lo veremos en la siguiente guía, donde explicamos las curvas de saturación. Y como medir sin rastrear a las familias ya no es opcional, también le explicamos cómo funciona la medición con datos agregados.
+**Necesita menos datos de lo que la mayoría de los equipos espera.** En términos generales: inversión por canal y periodo; leads, solicitudes y matrículas de los mismos periodos; e idealmente dos o más ciclos de admisiones y al menos tres canales. Google presenta Meridian como una medición que se adapta a los profesionales de marketing «donde están», y el mismo espíritu aplica aquí: si los datos están incompletos, la auditoría evalúa qué es utilizable en lugar de descartarlo. La siguiente pregunta, una vez que sabe qué aporta cada canal, es en cuáles ya está gastando más de lo que rinden.

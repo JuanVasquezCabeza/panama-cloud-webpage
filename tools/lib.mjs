@@ -25,13 +25,15 @@ export async function crmList(object, key = object) {
 }
 
 // Minimal Markdown: ##/### headings, paragraphs, - and 1. lists, > quotes, **bold**, *italic*, [text](url).
-export function md(src) {
+export function md(src, opts = {}) {
   const inline = (s) => esc(s)
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
     .replace(/(^|[^*])\*(?!\s)(.+?)\*/g, '$1<em>$2</em>')
     .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, '<a href="$2">$1</a>');
   return src.replace(/\r\n/g, '\n').trim().split(/\n{2,}/).map((b) => {
     const lines = b.split('\n');
+    const wm = b.trim().match(/^\{\{widget:(\w+)\}\}$/);
+    if (wm) return `<div class="viz" data-widget="${wm[1]}" data-lang="${opts.lang || 'en'}"${opts.widgetAttrs ? opts.widgetAttrs(wm[1]) : ''}></div>`;
     if (/^### /.test(b)) return `<h3>${inline(b.slice(4))}</h3>`;
     if (/^## /.test(b)) return `<h2>${inline(b.slice(3))}</h2>`;
     if (lines.every((l) => /^- /.test(l))) return `<ul>${lines.map((l) => `<li>${inline(l.slice(2))}</li>`).join('')}</ul>`;
@@ -71,7 +73,7 @@ const siteCss = readFileSync(join(root, 'tools', 'site.css'), 'utf8');
 export const registry = [];
 
 // Full HTML document. `path` is this page's URL, `altPath` the equivalent page in the other language.
-export function page({ lang, path, altPath, title, description, noindex = false, current = '', css = '', main, script = '' }) {
+export function page({ lang, path, altPath, title, description, noindex = false, current = '', css = '', main, script = '', scripts = [] }) {
   const L = LABELS[lang];
   const alt = otherLang(lang);
   const enPath = lang === 'en' ? path : altPath;
@@ -133,7 +135,7 @@ ${main}
         document.querySelectorAll('[data-lang]').forEach(function (a) {
             a.addEventListener('click', function () { document.cookie = 'lang=' + a.dataset.lang + ';path=/;max-age=31536000;SameSite=Lax'; });
         });
-    </script>${script ? `\n    <script>\n${script}\n    </script>` : ''}
+    </script>${scripts.map((u) => `\n    <script src="${u}" defer></script>`).join('')}${script ? `\n    <script>\n${script}\n    </script>` : ''}
 </body>
 </html>
 `;
@@ -177,4 +179,47 @@ export const baseCss = `
         .page-hero h1 { font-size: 3.1rem; font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 1.25rem; }
         .page-hero p { color: var(--text-secondary); font-size: 1.15rem; margin-bottom: 2rem; }
         @media (max-width: 640px) { .page-hero h1 { font-size: 2.25rem; } .post h1 { font-size: 2rem; } }
+        /* Opening statement of each paragraph: bold + highlighter */
+        .post-body p > strong:first-child { font-weight: 800; color: var(--text-primary); background: linear-gradient(transparent 58%, rgba(99,102,241,0.2) 58%); padding: 0 0.1em; }
+        /* Interactive explainers (assets/widgets.js) */
+        .viz { margin: 2rem 0; }
+        .viz-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 20px; padding: 1.5rem; box-shadow: var(--shadow-md); }
+        .viz-tag { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent-indigo); font-weight: 700; }
+        .viz-head h3 { font-size: 1.2rem; margin: 0.25rem 0 0.4rem; letter-spacing: -0.02em; }
+        .viz-head p { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.55; margin: 0 0 1rem; }
+        .viz-ctrls { display: grid; gap: 0.9rem; margin-bottom: 1rem; }
+        .vc-h { display: flex; justify-content: space-between; gap: 1rem; font-size: 0.82rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.3rem; }
+        .vc-h output { font-family: var(--font-mono); color: var(--accent-indigo); font-weight: 700; white-space: nowrap; }
+        .vc input[type=range] { width: 100%; }
+        .vc-check { display: flex; gap: 0.5rem; align-items: center; font-size: 0.88rem; }
+        .seg { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+        .seg button { border: 1px solid var(--border-color); background: #fff; color: var(--text-primary); border-radius: 8px; padding: 0.4rem 0.8rem; font-size: 0.82rem; font-weight: 600; cursor: pointer; font-family: inherit; }
+        .seg button[aria-pressed="true"] { background: var(--accent-indigo); border-color: var(--accent-indigo); color: #fff; }
+        .seg button:focus-visible, .vnode:focus-visible, .vbtn:focus-visible { outline: 3px solid rgba(79,70,229,0.45); outline-offset: 2px; }
+        .vbtn { padding: 0.5rem 1rem; font-size: 0.85rem; margin-right: 0.5rem; }
+        .vq { display: flex; justify-content: space-between; align-items: center; gap: 1rem; font-size: 0.9rem; flex-wrap: wrap; }
+        .vq > span { flex: 1 1 260px; }
+        .viz-svg { width: 100%; height: auto; display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; }
+        .vt { font: 9px var(--font-mono); fill: #64748b; } .vl { font: 600 9.5px var(--font-sans); fill: #475569; }
+        .vtiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.75rem; margin: 1rem 0 0.5rem; }
+        .vtile { background: #f1f5f9; border-radius: 12px; padding: 0.75rem 0.9rem; display: flex; flex-direction: column; gap: 0.2rem; }
+        .vtile span { font-size: 0.72rem; color: var(--text-secondary); font-weight: 600; line-height: 1.3; }
+        .vtile b { font-family: var(--font-mono); font-size: 1.15rem; }
+        .vbars { display: flex; flex-direction: column; gap: 0.55rem; margin: 0.5rem 0; }
+        .vbar { display: grid; grid-template-columns: minmax(110px, 190px) 1fr auto; gap: 0.6rem; align-items: center; font-size: 0.82rem; }
+        .vbar-t { background: #e2e8f0; border-radius: 6px; height: 14px; overflow: hidden; } .vbar-t i { display: block; height: 100%; border-radius: 6px; }
+        .vbar-v { font-family: var(--font-mono); font-weight: 700; font-size: 0.78rem; min-width: 5.5rem; text-align: right; }
+        .vleg { display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.78rem; color: var(--text-secondary); margin: 0.5rem 0; } .vleg i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 0.35rem; }
+        .viz-take { background: rgba(99,102,241,0.07); border-left: 3px solid var(--accent-indigo); border-radius: 0 10px 10px 0; padding: 0.75rem 1rem; margin: 0.75rem 0 0; font-size: 0.92rem; line-height: 1.55; color: #334155; }
+        .viz-note { font-size: 0.72rem; color: var(--text-secondary); margin: 0.9rem 0 0; }
+        .vlist { margin-top: 0.75rem; font-size: 0.9rem; } .vlist ul { margin: 0.4rem 0 0.75rem 1.2rem; } .vlist li { margin-bottom: 0.4rem; color: #334155; } .vsub { display: block; font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; color: var(--text-secondary); margin-top: 0.6rem; }
+        .vprog { height: 10px; background: #e2e8f0; border-radius: 6px; overflow: hidden; margin: 0.5rem 0; } .vprog i { display: block; height: 100%; }
+        .vpill { display: inline-block; font-size: 0.78rem; font-weight: 700; border-radius: 999px; padding: 0.2rem 0.7rem; margin-top: 0.5rem; }
+        .vpill0 { background: #d1fae5; color: #065f46; } .vpill1 { background: #fef3c7; color: #92400e; } .vpill2 { background: #fee2e2; color: #991b1b; }
+        .vnode { cursor: pointer; } .vnode:hover circle { fill: #eef2ff; }
+        .vdots { display: grid; grid-template-columns: repeat(20, 1fr); gap: 4px; margin: 0.5rem 0; } .vdot { aspect-ratio: 1; border-radius: 50%; background: #e2e8f0; display: block; } .vdot.on { background: var(--accent-indigo); }
+        .vneeds { display: flex; flex-direction: column; gap: 0.4rem; margin: 0.5rem 0; }
+        .vneed { display: grid; grid-template-columns: 1.5rem 1fr auto; gap: 0.5rem; align-items: center; font-size: 0.88rem; padding: 0.45rem 0.7rem; border-radius: 10px; background: #f8fafc; border: 1px solid #e2e8f0; }
+        .vneed em { font-style: normal; font-size: 0.72rem; font-weight: 700; color: var(--text-secondary); } .vneed-req { border-color: #c7d2fe; background: #eef2ff; } .vneed-req .vsym { color: var(--accent-indigo); } .vneed-no { opacity: 0.6; }
+        @media (max-width: 520px) { .vbar { grid-template-columns: 1fr; gap: 0.2rem; } .vbar-v { text-align: left; } .viz-card { padding: 1.1rem; } }
 `;

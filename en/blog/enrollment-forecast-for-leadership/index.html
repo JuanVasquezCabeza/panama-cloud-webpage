@@ -711,6 +711,49 @@
         .page-hero h1 { font-size: 3.1rem; font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 1.25rem; }
         .page-hero p { color: var(--text-secondary); font-size: 1.15rem; margin-bottom: 2rem; }
         @media (max-width: 640px) { .page-hero h1 { font-size: 2.25rem; } .post h1 { font-size: 2rem; } }
+        /* Opening statement of each paragraph: bold + highlighter */
+        .post-body p > strong:first-child { font-weight: 800; color: var(--text-primary); background: linear-gradient(transparent 58%, rgba(99,102,241,0.2) 58%); padding: 0 0.1em; }
+        /* Interactive explainers (assets/widgets.js) */
+        .viz { margin: 2rem 0; }
+        .viz-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 20px; padding: 1.5rem; box-shadow: var(--shadow-md); }
+        .viz-tag { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent-indigo); font-weight: 700; }
+        .viz-head h3 { font-size: 1.2rem; margin: 0.25rem 0 0.4rem; letter-spacing: -0.02em; }
+        .viz-head p { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.55; margin: 0 0 1rem; }
+        .viz-ctrls { display: grid; gap: 0.9rem; margin-bottom: 1rem; }
+        .vc-h { display: flex; justify-content: space-between; gap: 1rem; font-size: 0.82rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.3rem; }
+        .vc-h output { font-family: var(--font-mono); color: var(--accent-indigo); font-weight: 700; white-space: nowrap; }
+        .vc input[type=range] { width: 100%; }
+        .vc-check { display: flex; gap: 0.5rem; align-items: center; font-size: 0.88rem; }
+        .seg { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+        .seg button { border: 1px solid var(--border-color); background: #fff; color: var(--text-primary); border-radius: 8px; padding: 0.4rem 0.8rem; font-size: 0.82rem; font-weight: 600; cursor: pointer; font-family: inherit; }
+        .seg button[aria-pressed="true"] { background: var(--accent-indigo); border-color: var(--accent-indigo); color: #fff; }
+        .seg button:focus-visible, .vnode:focus-visible, .vbtn:focus-visible { outline: 3px solid rgba(79,70,229,0.45); outline-offset: 2px; }
+        .vbtn { padding: 0.5rem 1rem; font-size: 0.85rem; margin-right: 0.5rem; }
+        .vq { display: flex; justify-content: space-between; align-items: center; gap: 1rem; font-size: 0.9rem; flex-wrap: wrap; }
+        .vq > span { flex: 1 1 260px; }
+        .viz-svg { width: 100%; height: auto; display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; }
+        .vt { font: 9px var(--font-mono); fill: #64748b; } .vl { font: 600 9.5px var(--font-sans); fill: #475569; }
+        .vtiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.75rem; margin: 1rem 0 0.5rem; }
+        .vtile { background: #f1f5f9; border-radius: 12px; padding: 0.75rem 0.9rem; display: flex; flex-direction: column; gap: 0.2rem; }
+        .vtile span { font-size: 0.72rem; color: var(--text-secondary); font-weight: 600; line-height: 1.3; }
+        .vtile b { font-family: var(--font-mono); font-size: 1.15rem; }
+        .vbars { display: flex; flex-direction: column; gap: 0.55rem; margin: 0.5rem 0; }
+        .vbar { display: grid; grid-template-columns: minmax(110px, 190px) 1fr auto; gap: 0.6rem; align-items: center; font-size: 0.82rem; }
+        .vbar-t { background: #e2e8f0; border-radius: 6px; height: 14px; overflow: hidden; } .vbar-t i { display: block; height: 100%; border-radius: 6px; }
+        .vbar-v { font-family: var(--font-mono); font-weight: 700; font-size: 0.78rem; min-width: 5.5rem; text-align: right; }
+        .vleg { display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.78rem; color: var(--text-secondary); margin: 0.5rem 0; } .vleg i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 0.35rem; }
+        .viz-take { background: rgba(99,102,241,0.07); border-left: 3px solid var(--accent-indigo); border-radius: 0 10px 10px 0; padding: 0.75rem 1rem; margin: 0.75rem 0 0; font-size: 0.92rem; line-height: 1.55; color: #334155; }
+        .viz-note { font-size: 0.72rem; color: var(--text-secondary); margin: 0.9rem 0 0; }
+        .vlist { margin-top: 0.75rem; font-size: 0.9rem; } .vlist ul { margin: 0.4rem 0 0.75rem 1.2rem; } .vlist li { margin-bottom: 0.4rem; color: #334155; } .vsub { display: block; font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; color: var(--text-secondary); margin-top: 0.6rem; }
+        .vprog { height: 10px; background: #e2e8f0; border-radius: 6px; overflow: hidden; margin: 0.5rem 0; } .vprog i { display: block; height: 100%; }
+        .vpill { display: inline-block; font-size: 0.78rem; font-weight: 700; border-radius: 999px; padding: 0.2rem 0.7rem; margin-top: 0.5rem; }
+        .vpill0 { background: #d1fae5; color: #065f46; } .vpill1 { background: #fef3c7; color: #92400e; } .vpill2 { background: #fee2e2; color: #991b1b; }
+        .vnode { cursor: pointer; } .vnode:hover circle { fill: #eef2ff; }
+        .vdots { display: grid; grid-template-columns: repeat(20, 1fr); gap: 4px; margin: 0.5rem 0; } .vdot { aspect-ratio: 1; border-radius: 50%; background: #e2e8f0; display: block; } .vdot.on { background: var(--accent-indigo); }
+        .vneeds { display: flex; flex-direction: column; gap: 0.4rem; margin: 0.5rem 0; }
+        .vneed { display: grid; grid-template-columns: 1.5rem 1fr auto; gap: 0.5rem; align-items: center; font-size: 0.88rem; padding: 0.45rem 0.7rem; border-radius: 10px; background: #f8fafc; border: 1px solid #e2e8f0; }
+        .vneed em { font-style: normal; font-size: 0.72rem; font-weight: 700; color: var(--text-secondary); } .vneed-req { border-color: #c7d2fe; background: #eef2ff; } .vneed-req .vsym { color: var(--accent-indigo); } .vneed-no { opacity: 0.6; }
+        @media (max-width: 520px) { .vbar { grid-template-columns: 1fr; gap: 0.2rem; } .vbar-v { text-align: left; } .viz-card { padding: 1.1rem; } }
 </style>
 </head>
 <body>
@@ -733,19 +776,15 @@
             <div class="crumbs"><a href="/en/blog/">Blog</a> &rsaquo; <a href="/en/blog/why-your-institution-needs-mmm/">Why your educational institution needs Marketing Mix Modeling</a></div>
             <div class="badge">Reason 4 of 6</div>
             <h1>An enrollment forecast leadership can use</h1>
-            <div class="post-body"><p>Rectors, CFOs and boards ask a simple question every year: <strong>will we reach the intake target, and what does it take?</strong> Marketing usually answers with activity (campaigns, impressions, leads), not with the number that matters: how many students will enroll.</p>
-<h2>Why the usual answer falls short</h2>
-<p>Leads are not enrollments, and last year’s conversion rate says nothing about what happens when the mix of channels changes. A pipeline report can tell you what is already in the funnel, but not what a different budget would do to it, and by the time the funnel looks thin there is little time left to react.</p>
+            <div class="post-body"><p><strong>Leadership asks for a number, and the honest answer is a range with a probability.</strong> Rectors, CFOs and boards ask the same question every year: will we reach the intake target, and what does it take? Marketing usually answers with activity (campaigns, impressions, leads) instead of the number that matters. The pressure is real: <a href="https://secure.businesswire.com/news/home/20250512782208/en/Gartner-2025-CMO-Spend-Survey-Reveals-Marketing-Budgets-Have-Flatlined-at-7.7-of-Overall-Company-Revenue">Gartner’s 2025 CMO survey</a> found 59% of CMOs saying their budget was too small to execute their strategy, and its research lead warned that flat budgets may face in-year cuts. A forecast with a range is how you defend a budget under that pressure.</p>
+<p><strong>Leads are not enrollments, and last year’s conversion rate says little about next year’s mix.</strong> A pipeline report shows what is already in the funnel, not what a different budget would do to it. By the time the funnel looks thin, there is little time left to react. Costs also move: in <a href="https://newamerica.org/documents/9177/RNL_2022_CostRecruiting_Report.pdf">RNL’s reports</a>, the median cost to recruit an undergraduate at US private four-year institutions went from $2,114 in 2020 to $2,795 in 2022, up 32%. An assumption that cost per enrollment stays put is exactly the one that breaks.</p>
 <h2>What a forecast from the model gives you</h2>
-<p>Because the model links spend by channel to enrollments, any budget scenario can be turned into an <strong>expected enrollment forecast</strong>, with a range:</p>
-<ul><li>Given the approved budget, how many enrollments should we expect, and how far from the target is that?</li><li>If we are short, how much additional budget closes the gap, and in which channels?</li><li>If the budget is cut, how much intake are we giving up?</li></ul>
-<blockquote>Illustrative example, not data from any client. The target is 600 new students. With the planned budget the model expects between 540 and 610, most likely 575. Leadership sees that the target is at risk and asks what closes the gap: the model shows that moving part of the budget and adding a modest amount would bring the likely value to 600.</blockquote>
-<h2>Early warning, not just a report</h2>
-<p>Since marketing effects take time (see the guide on the admissions cycle), a forecast updated with each month of results shows months ahead whether the intake is on track. That is time to adjust the mix while it still changes the outcome.</p>
+<p><strong>Because the model links spend by channel to enrollments, any budget scenario becomes a forecast with a range.</strong> Given the approved budget, how many enrollments should we expect, and how far is that from the target? If we are short, how much more closes the gap, and in which channels? If the budget is cut, how much intake are we giving up? Try it below: set the target and the budget, and read the probability of reaching it. The numbers are illustrative.</p>
+<div class="viz" data-widget="forecast" data-lang="en"></div>
+<p><strong>A forecast is most valuable when it arrives early.</strong> Marketing effects take time: in the <a href="https://www.gwern.net/doc/economics/advertising/2011-sethuraman.pdf">Sethuraman, Tellis and Briesch meta-analysis</a> the long-term advertising elasticity (0.24) was double the short-term one (0.12). So signals appear months before intake closes, and a forecast refreshed with each month of results shows whether the cycle is on track while there is still time to change the mix. Move through the cycle below and notice how the range narrows while the window to act closes.</p>
+<div class="viz" data-widget="warning" data-lang="en"></div>
 <h2>What a forecast is not</h2>
-<p>It is not a guarantee. It is a calibrated estimate with a range, and it improves as more cycles of data are added. Presenting it that way makes it more credible with a board, not less.</p>
-<h2>Where this connects</h2>
-<p>This is the end of the chain: knowing what each channel contributes, where it saturates, and how to split the budget leads to a forecast that leadership can approve. The shape of that forecast, with its peaks and valleys, comes from the seasonality of admissions, explained in the guide on the admissions cycle.</p></div>
+<p><strong>A forecast is a calibrated estimate, not a guarantee, and presenting it that way makes it more credible, not less.</strong> Measurement errors are real, even at the biggest platforms, as <a href="https://www.kellogg.northwestern.edu/academics-research/research/detail/2019/a-comparison-of-approaches-to-advertising-measurement-evidence-from/">Gordon and colleagues</a> showed in 15 Facebook experiments. A range with a stated probability tells a board how sure you are, and it improves as more admissions cycles are added. Small experiments, such as <a href="https://research.google/pubs/measuring-ad-effectiveness-using-geo-experiments/">Google’s geo experiments</a>, can check the model where the decision is big. This is the end of the chain: contribution, saturation and allocation lead to a forecast leadership can approve, and its shape, with its peaks and valleys, comes from the seasonality of admissions.</p></div>
             <aside class="connect">
                 <h2>How this connects with the other reasons</h2>
                 <ul><li><a href="/en/blog/how-to-split-your-admissions-budget/">How to split next year’s admissions budget</a><br>Every possible budget split becomes an enrollment forecast you can defend.</li><li><a href="/en/blog/admissions-cycle-and-mmm/">The admissions cycle: why timing changes everything</a><br>Seasonality shapes the enrollment forecast.</li></ul>
@@ -776,5 +815,6 @@
             a.addEventListener('click', function () { document.cookie = 'lang=' + a.dataset.lang + ';path=/;max-age=31536000;SameSite=Lax'; });
         });
     </script>
+    <script src="/assets/widgets.js" defer></script>
 </body>
 </html>

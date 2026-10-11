@@ -145,3 +145,17 @@ Then commit the generated files and push (Coolify deploys). **Never edit `en/`, 
 **Blog structure:** one pillar + six reasons, each reason linking to the related reasons with a one-sentence explanation (`links` in `reasons.json`). To add a reason: add it to `reasons.json` (both languages) and write both Markdown files.
 
 **Form:** the audit form opens the visitor's email client (mailto to info@minos.solutions); nothing is stored. Connecting it to the CRM is item #9 in `minos-crm/docs/backlog.md`.
+
+## 8. Blog writing format and interactive explainers
+
+**Paragraph format (enforced by `node tools/check-content.mjs`):** every body paragraph opens with a **bold statement** (the claim, rendered with a highlighter underline), followed by 3 to 5 supporting sentences with evidence and citations (inline links to the author/brand/study). Headings (`##`) and illustrative-example blockquotes (`>`) are the only exceptions.
+
+**Citations:** only cite what was verified. Current verified sources: Binet & Field / IPA (60:40, 996 campaigns) + Ritson's caveat; Gordon, Zettelmeyer, Bhargava & Chapsky 2019 (Marketing Science, 15 Facebook experiments); Blake, Nosko & Tadelis (eBay paid search, NBER/Econometrica); Sethuraman, Tellis & Briesch 2011 (JMR; elasticity 0.12 short-term, 0.24 long-term); Flurry ATT opt-in (early 2021: ~12% worldwide, ~4% US) + EFF on ATT; Google Meridian (docs quotes: "privacy-durable", calibrate with experiments); Meta Robyn (README: privacy-safe, adstock and saturation curves, trend & season decomposition, budget allocation); Vaver & Koehler (Google geo experiments); Gartner 2025 CMO Spend Survey (7.7% of revenue, 59% too small, paid media 30.6%, 39% cutting agency budgets); RNL 2022 Cost of Recruiting (US private four-year median $2,795, up from $2,114); Broadbent 1979 (adstock); Quote Investigator on Wanamaker (attribution unconfirmed). Any new claim must be checked first; mark US data as such.
+
+**Widgets:** 2 to 3 per article, same widgets in EN and ES (same order). Put `{{widget:name}}` on its own line in the Markdown. All logic and both languages' texts live in `assets/widgets.js` (15 widgets: readiness, value, map, attribution, halo, saturation, extra_budget, sandbox, cut, forecast, warning, visibility, needs, carryover, season). Numbers are stylised and labelled illustrative. Add a widget by defining `T.en.<name>`, `T.es.<name>` and `W.<name>` (defaults, controls, render), then run `node tools/test-widgets.mjs`.
+
+**Checks before every push:**
+```bash
+node tools/build-all.mjs && node tools/check-site.mjs && node tools/check-content.mjs && node tools/test-widgets.mjs
+```
+`test-widgets` renders every widget in both languages over many states and simulates clicks/slider input with a fake DOM; it cannot judge layout, so look at the pages in a browser (`node tools/serve.mjs`) before publishing a new widget or layout change.

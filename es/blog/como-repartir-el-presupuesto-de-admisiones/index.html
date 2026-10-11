@@ -711,6 +711,49 @@
         .page-hero h1 { font-size: 3.1rem; font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 1.25rem; }
         .page-hero p { color: var(--text-secondary); font-size: 1.15rem; margin-bottom: 2rem; }
         @media (max-width: 640px) { .page-hero h1 { font-size: 2.25rem; } .post h1 { font-size: 2rem; } }
+        /* Opening statement of each paragraph: bold + highlighter */
+        .post-body p > strong:first-child { font-weight: 800; color: var(--text-primary); background: linear-gradient(transparent 58%, rgba(99,102,241,0.2) 58%); padding: 0 0.1em; }
+        /* Interactive explainers (assets/widgets.js) */
+        .viz { margin: 2rem 0; }
+        .viz-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 20px; padding: 1.5rem; box-shadow: var(--shadow-md); }
+        .viz-tag { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent-indigo); font-weight: 700; }
+        .viz-head h3 { font-size: 1.2rem; margin: 0.25rem 0 0.4rem; letter-spacing: -0.02em; }
+        .viz-head p { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.55; margin: 0 0 1rem; }
+        .viz-ctrls { display: grid; gap: 0.9rem; margin-bottom: 1rem; }
+        .vc-h { display: flex; justify-content: space-between; gap: 1rem; font-size: 0.82rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.3rem; }
+        .vc-h output { font-family: var(--font-mono); color: var(--accent-indigo); font-weight: 700; white-space: nowrap; }
+        .vc input[type=range] { width: 100%; }
+        .vc-check { display: flex; gap: 0.5rem; align-items: center; font-size: 0.88rem; }
+        .seg { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+        .seg button { border: 1px solid var(--border-color); background: #fff; color: var(--text-primary); border-radius: 8px; padding: 0.4rem 0.8rem; font-size: 0.82rem; font-weight: 600; cursor: pointer; font-family: inherit; }
+        .seg button[aria-pressed="true"] { background: var(--accent-indigo); border-color: var(--accent-indigo); color: #fff; }
+        .seg button:focus-visible, .vnode:focus-visible, .vbtn:focus-visible { outline: 3px solid rgba(79,70,229,0.45); outline-offset: 2px; }
+        .vbtn { padding: 0.5rem 1rem; font-size: 0.85rem; margin-right: 0.5rem; }
+        .vq { display: flex; justify-content: space-between; align-items: center; gap: 1rem; font-size: 0.9rem; flex-wrap: wrap; }
+        .vq > span { flex: 1 1 260px; }
+        .viz-svg { width: 100%; height: auto; display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; }
+        .vt { font: 9px var(--font-mono); fill: #64748b; } .vl { font: 600 9.5px var(--font-sans); fill: #475569; }
+        .vtiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.75rem; margin: 1rem 0 0.5rem; }
+        .vtile { background: #f1f5f9; border-radius: 12px; padding: 0.75rem 0.9rem; display: flex; flex-direction: column; gap: 0.2rem; }
+        .vtile span { font-size: 0.72rem; color: var(--text-secondary); font-weight: 600; line-height: 1.3; }
+        .vtile b { font-family: var(--font-mono); font-size: 1.15rem; }
+        .vbars { display: flex; flex-direction: column; gap: 0.55rem; margin: 0.5rem 0; }
+        .vbar { display: grid; grid-template-columns: minmax(110px, 190px) 1fr auto; gap: 0.6rem; align-items: center; font-size: 0.82rem; }
+        .vbar-t { background: #e2e8f0; border-radius: 6px; height: 14px; overflow: hidden; } .vbar-t i { display: block; height: 100%; border-radius: 6px; }
+        .vbar-v { font-family: var(--font-mono); font-weight: 700; font-size: 0.78rem; min-width: 5.5rem; text-align: right; }
+        .vleg { display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.78rem; color: var(--text-secondary); margin: 0.5rem 0; } .vleg i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 0.35rem; }
+        .viz-take { background: rgba(99,102,241,0.07); border-left: 3px solid var(--accent-indigo); border-radius: 0 10px 10px 0; padding: 0.75rem 1rem; margin: 0.75rem 0 0; font-size: 0.92rem; line-height: 1.55; color: #334155; }
+        .viz-note { font-size: 0.72rem; color: var(--text-secondary); margin: 0.9rem 0 0; }
+        .vlist { margin-top: 0.75rem; font-size: 0.9rem; } .vlist ul { margin: 0.4rem 0 0.75rem 1.2rem; } .vlist li { margin-bottom: 0.4rem; color: #334155; } .vsub { display: block; font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; color: var(--text-secondary); margin-top: 0.6rem; }
+        .vprog { height: 10px; background: #e2e8f0; border-radius: 6px; overflow: hidden; margin: 0.5rem 0; } .vprog i { display: block; height: 100%; }
+        .vpill { display: inline-block; font-size: 0.78rem; font-weight: 700; border-radius: 999px; padding: 0.2rem 0.7rem; margin-top: 0.5rem; }
+        .vpill0 { background: #d1fae5; color: #065f46; } .vpill1 { background: #fef3c7; color: #92400e; } .vpill2 { background: #fee2e2; color: #991b1b; }
+        .vnode { cursor: pointer; } .vnode:hover circle { fill: #eef2ff; }
+        .vdots { display: grid; grid-template-columns: repeat(20, 1fr); gap: 4px; margin: 0.5rem 0; } .vdot { aspect-ratio: 1; border-radius: 50%; background: #e2e8f0; display: block; } .vdot.on { background: var(--accent-indigo); }
+        .vneeds { display: flex; flex-direction: column; gap: 0.4rem; margin: 0.5rem 0; }
+        .vneed { display: grid; grid-template-columns: 1.5rem 1fr auto; gap: 0.5rem; align-items: center; font-size: 0.88rem; padding: 0.45rem 0.7rem; border-radius: 10px; background: #f8fafc; border: 1px solid #e2e8f0; }
+        .vneed em { font-style: normal; font-size: 0.72rem; font-weight: 700; color: var(--text-secondary); } .vneed-req { border-color: #c7d2fe; background: #eef2ff; } .vneed-req .vsym { color: var(--accent-indigo); } .vneed-no { opacity: 0.6; }
+        @media (max-width: 520px) { .vbar { grid-template-columns: 1fr; gap: 0.2rem; } .vbar-v { text-align: left; } .viz-card { padding: 1.1rem; } }
 </style>
 </head>
 <body>
@@ -733,20 +776,16 @@
             <div class="crumbs"><a href="/es/blog/">Blog</a> &rsaquo; <a href="/es/blog/por-que-necesita-mmm-su-institucion-educativa/">Por qué su institución educativa necesita Marketing Mix Modeling</a></div>
             <div class="badge">Razón 3 de 6</div>
             <h1>Cómo repartir el presupuesto de admisiones del próximo año</h1>
-            <div class="post-body"><p>Cuando llega el momento de definir el presupuesto de admisiones del próximo año, la mayoría de las instituciones usa uno de tres métodos: el presupuesto del año pasado más o menos un porcentaje, lo que sugiera el reporte que más se escucha, o lo que parece hacer la competencia. Ninguno responde la pregunta que importa: <strong>si movemos dinero de aquí hacia allá, ¿cuántos estudiantes más matriculamos?</strong></p>
-<h2>Qué necesita realmente una decisión de presupuesto</h2>
-<p>Para repartir bien un presupuesto se necesitan tres cosas a la vez: qué aporta cada canal (primera guía), dónde se satura cada uno (segunda guía) y cuánto dinero total hay, con restricciones reales: no se puede dejar la presencia de marca en cero, una sede nueva necesita un presupuesto mínimo de lanzamiento, una feria se reserva con un año de anticipación.</p>
+            <div class="post-body"><p><strong>La mayoría de los presupuestos de admisiones se define por costumbre, y la costumbre es un método que nadie puede auditar.</strong> Las reglas habituales son el presupuesto del año pasado más o menos un porcentaje, lo que sugiera el reporte que más se escucha, o lo que parece hacer la competencia. La <a href="https://secure.businesswire.com/news/home/20250512782208/en/Gartner-2025-CMO-Spend-Survey-Reveals-Marketing-Budgets-Have-Flatlined-at-7.7-of-Overall-Company-Revenue">encuesta CMO de Gartner de 2025</a> encontró presupuestos de marketing estancados en 7,7 % de los ingresos por segundo año, así que para la mayoría de los equipos la pregunta ya no es cuánto dinero nuevo reciben, sino qué tan bien reparten el que tienen. Solo los medios pagos fueron 30,6 % de esos presupuestos, lo que hace del reparto entre canales la palanca más grande del plan. Un reparto por costumbre deja esa palanca sin usar.</p>
 <h2>Escenarios en lugar de opiniones</h2>
-<p>Con el modelo ajustado, se le pueden hacer preguntas de «qué pasaría si». Por ejemplo:</p>
-<ul><li>¿Qué pasa si mantenemos el presupuesto total, pero pasamos una parte de búsqueda a radio?</li><li>¿Qué pasa si recortan el presupuesto en 10 %? ¿Dónde sale más barato el recorte en matrículas?</li><li>¿Qué pasa si hay 15 % adicional? ¿Dónde rinde mejor?</li></ul>
-<blockquote>Ejemplo ilustrativo, no corresponde a datos de ningún cliente. Un grupo de colegios gasta lo mismo que el año pasado. El modelo sugiere mover 15 % de búsqueda hacia radio y jornadas de puertas abiertas, y estima un rango de 20 a 45 matrículas adicionales, con 30 como valor más probable. El rango importa tanto como el número: le dice a la dirección qué tan seguro está el modelo.</blockquote>
-<p>Un <strong>optimizador</strong> va un paso más allá: dado el presupuesto total y sus restricciones, propone el reparto que maximiza las matrículas esperadas, para compararlo con el actual.</p>
+<p><strong>Un modelo ajustado permite preguntar «¿y si…?» y obtener un número, con un rango, en lugar de una opinión.</strong> ¿Y si mantenemos el total pero movemos una parte de redes a radio? ¿Y si recibimos 15 % más, o 10 % menos? <a href="https://github.com/facebookexperimental/Robyn">Robyn</a>, de Meta, incluye optimización basada en gradiente para la asignación del presupuesto, que es exactamente este paso: dadas las curvas de respuesta, propone el reparto que maximiza el resultado. Abajo, un presupuesto mensual de USD 100k parte de una mezcla por costumbre (65 % redes, 20 % búsqueda, 10 % radio, 5 % jornadas de puertas abiertas). Arrástrelo, o pida el mejor reparto, y mire el rango tanto como el número.</p>
+<div class="viz" data-widget="sandbox" data-lang="es"></div>
+<p><strong>El mejor reparto iguala el retorno del último dólar en cada canal.</strong> Es el principio equimarginal habitual de la asignación de recursos: si el siguiente dólar de un canal rinde más que el de otro, mover dinero del segundo al primero todavía ayuda. También explica por qué las reglas empíricas se quedan cortas. El <a href="https://ipa.co.uk/media/14463/long_and_short_of_it_presentation_final_030424.pdf">equilibrio 60:40 entre construcción de marca y activación</a> de Binet y Field, sacado de 996 campañas del IPA, es un punto de partida útil, y <a href="https://www.marketingweek.com/ritson-brand-building-boost-short-term-sales/">Mark Ritson recuerda</a> que es un promedio de muchas categorías y situaciones. Sus propias curvas deben afinarlo.</p>
 <h2>Sea honesto con la incertidumbre</h2>
-<p>Un modelo estima; no promete. La buena práctica es mostrar rangos, no números únicos, y <strong>probar antes de mover todo</strong>: aplicar el cambio primero en una sede o en una región y comparar. El resultado vuelve al modelo y hace más precisa la siguiente recomendación.</p>
-<h2>Qué obtiene</h2>
-<p>Una decisión que se puede explicar: qué canales crecen, cuáles se reducen, por qué y qué esperar. En lugar de defender un presupuesto con «es lo que hicimos el año pasado», lo defiende con escenarios y rangos.</p>
-<h2>A dónde lleva esto</h2>
-<p>Cada reparto posible del presupuesto se convierte en un pronóstico de matrículas. Eso es lo que la dirección quiere ver cuando aprueba el presupuesto, y es el tema de la siguiente guía. El razonamiento empieza antes: saber dónde se satura la inversión (segunda guía) es lo que indica de dónde sacar presupuesto.</p></div>
+<p><strong>Un modelo estima; no promete, así que muestre rangos y pruebe antes de mover todo.</strong> Medir es difícil incluso para las plataformas: <a href="https://www.kellogg.northwestern.edu/academics-research/research/detail/2019/a-comparison-of-approaches-to-advertising-measurement-evidence-from/">Gordon y colegas</a> mostraron en 15 experimentos de Facebook que las estimaciones observacionales con frecuencia se alejaban de lo que encontraban las pruebas aleatorizadas. Una buena práctica es aplicar un cambio primero en una sede o región, con la lógica de los <a href="https://research.google/pubs/measuring-ad-effectiveness-using-geo-experiments/">experimentos geográficos de Google</a>, donde las regiones se asignan al azar a control o tratamiento, y luego devolver el resultado al modelo. Meridian permite justamente eso: <a href="https://developers.google.com/meridian">calibrar los MMM con experimentos</a>. Cada prueba hace más precisa la siguiente recomendación.</p>
+<p><strong>Un recorte es el momento en que un modelo se paga solo.</strong> Gartner encontró que 39 % de los CMO planeaba reducir presupuestos de agencias en 2025, y su responsable de investigación advirtió que los presupuestos estancados pueden enfrentar recortes durante el año. Recortar todo por igual es lo habitual, y rara vez es lo más barato en matrículas. La demo de abajo compara un recorte parejo con uno guiado por el retorno marginal, con el mismo ahorro.</p>
+<div class="viz" data-widget="cut" data-lang="es"></div>
+<p><strong>Lo que obtiene es una decisión que puede explicar.</strong> Qué canales crecen, cuáles se reducen, por qué y qué esperar, con un rango. En lugar de defender un presupuesto con «es lo que hicimos el año pasado», lo defiende con escenarios. Y cada reparto posible se convierte en un pronóstico de matrículas, que es lo que la dirección pide cuando aprueba el presupuesto, el tema de la siguiente guía.</p></div>
             <aside class="connect">
                 <h2>Cómo se conecta con las otras razones</h2>
                 <ul><li><a href="/es/blog/cuando-mas-inversion-deja-de-rendir/">Cuándo invertir más deja de traer más estudiantes</a><br>Saber dónde se satura la inversión indica de dónde mover presupuesto y hacia dónde.</li><li><a href="/es/blog/pronostico-de-matriculas-para-la-direccion/">Un pronóstico de matrículas que la dirección pueda usar</a><br>Cada reparto posible del presupuesto se convierte en un pronóstico de matrículas que se puede defender.</li></ul>
@@ -777,5 +816,6 @@
             a.addEventListener('click', function () { document.cookie = 'lang=' + a.dataset.lang + ';path=/;max-age=31536000;SameSite=Lax'; });
         });
     </script>
+    <script src="/assets/widgets.js" defer></script>
 </body>
 </html>

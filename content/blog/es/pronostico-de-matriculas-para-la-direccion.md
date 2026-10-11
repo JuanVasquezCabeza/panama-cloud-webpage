@@ -1,27 +1,17 @@
-Rectores, directores financieros y juntas directivas hacen cada año una pregunta sencilla: **¿vamos a llegar a la meta de ingreso de estudiantes y qué hace falta para lograrlo?** Mercadeo suele responder con actividad (campañas, impresiones, leads), no con el número que importa: cuántos estudiantes se van a matricular.
+**La dirección pide un número, y la respuesta honesta es un rango con una probabilidad.** Rectores, directores financieros y juntas directivas hacen la misma pregunta cada año: ¿vamos a llegar a la meta de ingreso de estudiantes y qué hace falta? Mercadeo suele responder con actividad (campañas, impresiones, leads) en lugar del número que importa. La presión es real: la [encuesta CMO de Gartner de 2025](https://secure.businesswire.com/news/home/20250512782208/en/Gartner-2025-CMO-Spend-Survey-Reveals-Marketing-Budgets-Have-Flatlined-at-7.7-of-Overall-Company-Revenue) encontró que 59 % de los CMO decía que su presupuesto era demasiado pequeño para ejecutar su estrategia, y su responsable de investigación advirtió que los presupuestos estancados pueden enfrentar recortes durante el año. Un pronóstico con rango es la forma de defender un presupuesto bajo esa presión.
 
-## Por qué la respuesta habitual se queda corta
-
-Los leads no son matrículas, y la tasa de conversión del año pasado no dice nada de lo que pasa cuando cambia la mezcla de canales. Un reporte del embudo puede decir lo que ya está dentro de él, pero no lo que haría un presupuesto distinto, y cuando el embudo se ve flaco ya queda poco tiempo para reaccionar.
+**Los leads no son matrículas, y la tasa de conversión del año pasado dice poco sobre la mezcla del próximo.** Un reporte del embudo muestra lo que ya está dentro de él, no lo que haría un presupuesto distinto. Cuando el embudo se ve flaco, queda poco tiempo para reaccionar. Los costos también se mueven: en los [informes de RNL](https://newamerica.org/documents/9177/RNL_2022_CostRecruiting_Report.pdf), el costo mediano de reclutar a un estudiante de pregrado en instituciones privadas de cuatro años de EE. UU. pasó de USD 2.114 en 2020 a USD 2.795 en 2022, un aumento de 32 %. Suponer que el costo por matrícula se queda quieto es justamente el supuesto que se rompe.
 
 ## Qué le da un pronóstico del modelo
 
-Como el modelo relaciona la inversión por canal con las matrículas, cualquier escenario de presupuesto se puede convertir en un **pronóstico de matrículas esperadas**, con un rango:
+**Como el modelo relaciona la inversión por canal con las matrículas, cualquier escenario de presupuesto se convierte en un pronóstico con rango.** Dado el presupuesto aprobado, ¿cuántas matrículas debemos esperar y qué tan lejos está eso de la meta? Si falta, ¿cuánto más cierra la brecha y en qué canales? Si se recorta el presupuesto, ¿cuánto ingreso estamos cediendo? Pruébelo abajo: defina la meta y el presupuesto, y lea la probabilidad de alcanzarla. Los números son ilustrativos.
 
-- Dado el presupuesto aprobado, ¿cuántas matrículas debemos esperar y qué tan lejos está eso de la meta?
-- Si falta, ¿cuánto presupuesto adicional cierra la brecha y en qué canales?
-- Si se recorta el presupuesto, ¿cuánto ingreso de estudiantes estamos cediendo?
+{{widget:forecast}}
 
-> Ejemplo ilustrativo, no corresponde a datos de ningún cliente. La meta es 600 estudiantes nuevos. Con el presupuesto previsto, el modelo espera entre 540 y 610, y lo más probable es 575. La dirección ve que la meta está en riesgo y pregunta qué cierra la brecha: el modelo muestra que mover parte del presupuesto y sumar un monto moderado llevaría el valor probable a 600.
+**Un pronóstico vale más cuando llega temprano.** Los efectos del marketing tardan: en el [metaanálisis de Sethuraman, Tellis y Briesch](https://www.gwern.net/doc/economics/advertising/2011-sethuraman.pdf) la elasticidad publicitaria de largo plazo (0,24) fue el doble de la de corto plazo (0,12). Por eso las señales aparecen meses antes de que cierre el ingreso, y un pronóstico actualizado con cada mes de resultados muestra si el ciclo va por buen camino cuando todavía hay tiempo de cambiar la mezcla. Avance por el ciclo abajo y observe cómo se estrecha el rango mientras se cierra la ventana para actuar.
 
-## Alerta temprana, no solo un informe
-
-Como los efectos del marketing tardan en verse (vea la guía sobre el ciclo de admisiones), un pronóstico actualizado con cada mes de resultados muestra con meses de anticipación si el ingreso va por buen camino. Eso es tiempo para ajustar la mezcla mientras todavía cambia el resultado.
+{{widget:warning}}
 
 ## Lo que un pronóstico no es
 
-No es una garantía. Es una estimación calibrada con un rango, y mejora a medida que se suman ciclos de datos. Presentarlo así lo hace más creíble ante una junta, no menos.
-
-## Dónde se conecta
-
-Este es el final de la cadena: saber qué aporta cada canal, dónde se satura y cómo repartir el presupuesto lleva a un pronóstico que la dirección puede aprobar. La forma de ese pronóstico, con sus picos y valles, viene de la estacionalidad de las admisiones, que se explica en la guía sobre el ciclo de admisiones.
+**Un pronóstico es una estimación calibrada, no una garantía, y presentarlo así lo hace más creíble, no menos.** Los errores de medición son reales, incluso en las mayores plataformas, como mostraron [Gordon y colegas](https://www.kellogg.northwestern.edu/academics-research/research/detail/2019/a-comparison-of-approaches-to-advertising-measurement-evidence-from/) en 15 experimentos de Facebook. Un rango con una probabilidad declarada le dice a una junta qué tan seguro está usted, y mejora a medida que se suman ciclos de admisiones. Pequeños experimentos, como los [experimentos geográficos de Google](https://research.google/pubs/measuring-ad-effectiveness-using-geo-experiments/), pueden verificar el modelo donde la decisión es grande. Este es el final de la cadena: aporte, saturación y asignación llevan a un pronóstico que la dirección puede aprobar, y su forma, con sus picos y valles, viene de la estacionalidad de las admisiones.

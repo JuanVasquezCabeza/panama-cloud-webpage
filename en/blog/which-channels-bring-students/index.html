@@ -711,6 +711,49 @@
         .page-hero h1 { font-size: 3.1rem; font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 1.25rem; }
         .page-hero p { color: var(--text-secondary); font-size: 1.15rem; margin-bottom: 2rem; }
         @media (max-width: 640px) { .page-hero h1 { font-size: 2.25rem; } .post h1 { font-size: 2rem; } }
+        /* Opening statement of each paragraph: bold + highlighter */
+        .post-body p > strong:first-child { font-weight: 800; color: var(--text-primary); background: linear-gradient(transparent 58%, rgba(99,102,241,0.2) 58%); padding: 0 0.1em; }
+        /* Interactive explainers (assets/widgets.js) */
+        .viz { margin: 2rem 0; }
+        .viz-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 20px; padding: 1.5rem; box-shadow: var(--shadow-md); }
+        .viz-tag { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent-indigo); font-weight: 700; }
+        .viz-head h3 { font-size: 1.2rem; margin: 0.25rem 0 0.4rem; letter-spacing: -0.02em; }
+        .viz-head p { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.55; margin: 0 0 1rem; }
+        .viz-ctrls { display: grid; gap: 0.9rem; margin-bottom: 1rem; }
+        .vc-h { display: flex; justify-content: space-between; gap: 1rem; font-size: 0.82rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.3rem; }
+        .vc-h output { font-family: var(--font-mono); color: var(--accent-indigo); font-weight: 700; white-space: nowrap; }
+        .vc input[type=range] { width: 100%; }
+        .vc-check { display: flex; gap: 0.5rem; align-items: center; font-size: 0.88rem; }
+        .seg { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+        .seg button { border: 1px solid var(--border-color); background: #fff; color: var(--text-primary); border-radius: 8px; padding: 0.4rem 0.8rem; font-size: 0.82rem; font-weight: 600; cursor: pointer; font-family: inherit; }
+        .seg button[aria-pressed="true"] { background: var(--accent-indigo); border-color: var(--accent-indigo); color: #fff; }
+        .seg button:focus-visible, .vnode:focus-visible, .vbtn:focus-visible { outline: 3px solid rgba(79,70,229,0.45); outline-offset: 2px; }
+        .vbtn { padding: 0.5rem 1rem; font-size: 0.85rem; margin-right: 0.5rem; }
+        .vq { display: flex; justify-content: space-between; align-items: center; gap: 1rem; font-size: 0.9rem; flex-wrap: wrap; }
+        .vq > span { flex: 1 1 260px; }
+        .viz-svg { width: 100%; height: auto; display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; }
+        .vt { font: 9px var(--font-mono); fill: #64748b; } .vl { font: 600 9.5px var(--font-sans); fill: #475569; }
+        .vtiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.75rem; margin: 1rem 0 0.5rem; }
+        .vtile { background: #f1f5f9; border-radius: 12px; padding: 0.75rem 0.9rem; display: flex; flex-direction: column; gap: 0.2rem; }
+        .vtile span { font-size: 0.72rem; color: var(--text-secondary); font-weight: 600; line-height: 1.3; }
+        .vtile b { font-family: var(--font-mono); font-size: 1.15rem; }
+        .vbars { display: flex; flex-direction: column; gap: 0.55rem; margin: 0.5rem 0; }
+        .vbar { display: grid; grid-template-columns: minmax(110px, 190px) 1fr auto; gap: 0.6rem; align-items: center; font-size: 0.82rem; }
+        .vbar-t { background: #e2e8f0; border-radius: 6px; height: 14px; overflow: hidden; } .vbar-t i { display: block; height: 100%; border-radius: 6px; }
+        .vbar-v { font-family: var(--font-mono); font-weight: 700; font-size: 0.78rem; min-width: 5.5rem; text-align: right; }
+        .vleg { display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.78rem; color: var(--text-secondary); margin: 0.5rem 0; } .vleg i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 0.35rem; }
+        .viz-take { background: rgba(99,102,241,0.07); border-left: 3px solid var(--accent-indigo); border-radius: 0 10px 10px 0; padding: 0.75rem 1rem; margin: 0.75rem 0 0; font-size: 0.92rem; line-height: 1.55; color: #334155; }
+        .viz-note { font-size: 0.72rem; color: var(--text-secondary); margin: 0.9rem 0 0; }
+        .vlist { margin-top: 0.75rem; font-size: 0.9rem; } .vlist ul { margin: 0.4rem 0 0.75rem 1.2rem; } .vlist li { margin-bottom: 0.4rem; color: #334155; } .vsub { display: block; font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; color: var(--text-secondary); margin-top: 0.6rem; }
+        .vprog { height: 10px; background: #e2e8f0; border-radius: 6px; overflow: hidden; margin: 0.5rem 0; } .vprog i { display: block; height: 100%; }
+        .vpill { display: inline-block; font-size: 0.78rem; font-weight: 700; border-radius: 999px; padding: 0.2rem 0.7rem; margin-top: 0.5rem; }
+        .vpill0 { background: #d1fae5; color: #065f46; } .vpill1 { background: #fef3c7; color: #92400e; } .vpill2 { background: #fee2e2; color: #991b1b; }
+        .vnode { cursor: pointer; } .vnode:hover circle { fill: #eef2ff; }
+        .vdots { display: grid; grid-template-columns: repeat(20, 1fr); gap: 4px; margin: 0.5rem 0; } .vdot { aspect-ratio: 1; border-radius: 50%; background: #e2e8f0; display: block; } .vdot.on { background: var(--accent-indigo); }
+        .vneeds { display: flex; flex-direction: column; gap: 0.4rem; margin: 0.5rem 0; }
+        .vneed { display: grid; grid-template-columns: 1.5rem 1fr auto; gap: 0.5rem; align-items: center; font-size: 0.88rem; padding: 0.45rem 0.7rem; border-radius: 10px; background: #f8fafc; border: 1px solid #e2e8f0; }
+        .vneed em { font-style: normal; font-size: 0.72rem; font-weight: 700; color: var(--text-secondary); } .vneed-req { border-color: #c7d2fe; background: #eef2ff; } .vneed-req .vsym { color: var(--accent-indigo); } .vneed-no { opacity: 0.6; }
+        @media (max-width: 520px) { .vbar { grid-template-columns: 1fr; gap: 0.2rem; } .vbar-v { text-align: left; } .viz-card { padding: 1.1rem; } }
 </style>
 </head>
 <body>
@@ -733,21 +776,15 @@
             <div class="crumbs"><a href="/en/blog/">Blog</a> &rsaquo; <a href="/en/blog/why-your-institution-needs-mmm/">Why your educational institution needs Marketing Mix Modeling</a></div>
             <div class="badge">Reason 1 of 6</div>
             <h1>Which channels actually bring in students?</h1>
-            <div class="post-body"><p>If you ask your marketing team which channels bring in students, you will probably get an answer based on a report: “Google brought 60% of applications.” It is a tidy, precise answer, and very likely a <strong>misleading</strong> one.</p>
-<h2>The last-click problem</h2>
-<p>Almost every platform credits the result to the last touch before the action. Think about how a family actually decides: they hear a radio spot on the way to work, see a billboard near home, a friend mentions the school, and weeks later they <strong>search the school’s name on Google</strong> and fill in the form. In the report, search gets all the credit.</p>
-<blockquote>Illustrative example, not data from any client. A school with three campuses invests in Meta, Google, radio, billboards and fairs. Google’s report shows 60% of applications came from search. But searches for the school’s <em>name</em> only exist because radio and billboards had already built awareness. If the school cut radio for “not showing results”, brand searches would drop a few weeks later, and nobody would know why.</blockquote>
-<p>Last click rewards the channel that <strong>closes</strong> and punishes the ones that <strong>open</strong>. That is why it tends to inflate brand search and undervalue traditional media, exactly where many educational institutions invest a big share.</p>
+            <div class="post-body"><p><strong>The channel that gets the credit in your reports is often the one that closed the decision, not the one that opened it.</strong> A family decides over months: a radio spot, a billboard near home, a friend’s opinion, an open day, and finally a search for the school’s name. Last-click rules give that final search 100% of the credit. Blake, Nosko and Tadelis tested a version of this at eBay: they <a href="https://www.nber.org/papers/w20171">switched off paid search ads on brand queries</a> in part of the market and found that nearly all the lost clicks and sales were recovered through unpaid search, so the paid brand clicks had no measurable short-term benefit. eBay is a household name and a school is not, so test before assuming the same, but the lesson holds: searches for your name mostly capture demand that was created somewhere else.</p>
+<div class="viz" data-widget="attribution" data-lang="en"></div>
+<h2>A precise report is not the same as a correct one</h2>
+<p><strong>Platform dashboards give clean, precise numbers that can still be far from the truth.</strong> Gordon, Zettelmeyer, Bhargava and Chapsky compared observational measurement methods with randomized experiments in <a href="https://www.kellogg.northwestern.edu/academics-research/research/detail/2019/a-comparison-of-approaches-to-advertising-measurement-evidence-from/">15 Facebook advertising tests</a> published in Marketing Science. They found that the observational methods often failed to reproduce the experimental results, even after controlling for extensive demographic and behavioral data. The reason is intuitive for admissions: the families who click your ad are already more interested in your school than the ones who do not. The Wanamaker complaint, whoever said it first (<a href="https://quoteinvestigator.com/2022/04/11/advertising/">Quote Investigator’s history of the line</a>), has lasted because the problem has.</p>
+<p><strong>What leaves no click is often what is working.</strong> Radio, billboards, fairs and open days cannot be followed, so a click-based report shows them contributing nothing. Cutting them then looks free, until the effect shows up weeks later in the search volume and the applications, as the next demo shows. The long-run effect of advertising is larger than the short-run one: <a href="https://www.gwern.net/doc/economics/advertising/2011-sethuraman.pdf">Sethuraman, Tellis and Briesch</a> put the average long-term elasticity at 0.24 against 0.12 short-term, so judging a channel by the month it ran is judging it by half of its effect.</p>
+<div class="viz" data-widget="halo" data-lang="en"></div>
 <h2>What MMM does differently</h2>
-<p>Marketing Mix Modeling doesn’t follow people: it looks at <strong>the relationship between how much was invested in each channel and how many applications and enrollments followed</strong>, week by week, over one or several cycles. If every time radio investment rises, brand searches and visits to the admissions page rise a while later, the model detects it and credits radio with its share.</p>
-<p>The result is an answer no platform report can give you:</p>
-<ul><li><strong>The contribution of each channel</strong> to leads, applications and enrollments, including channels with no click (radio, billboards, fairs, open days).</li><li><strong>The share that would have come anyway</strong>, from reputation, word of mouth and local demand.</li><li><strong>The return per peso invested</strong> in each channel, comparable across channels and across campuses or programs.</li></ul>
-<h2>What you need to get started</h2>
-<p>Less than it seems. In general terms:</p>
-<ol><li>Investment by channel and period (weekly or monthly).</li><li>Leads, applications and enrollments for the same periods.</li><li>Ideally, two or more admissions cycles and at least three channels.</li></ol>
-<p>If you don’t have all of this, it is not a blocker: reviewing what data exists and how usable it is is part of the initial audit.</p>
-<h2>What comes after knowing which channel contributes</h2>
-<p>Knowing each channel’s contribution is only the beginning. The next question is obvious: <strong>in which ones are we already spending more than they return?</strong> We cover that in the next guide, on saturation curves. And since measuring without tracking families is no longer optional, we also explain how measurement with aggregate data works.</p></div>
+<p><strong>Marketing Mix Modeling looks at the relationship between spend and results over time, not at individual clicks.</strong> It uses weekly or monthly totals: what you spent in each channel and how many leads, applications and enrollments followed. From those it estimates what each channel contributes, what would have happened anyway, and the return per peso. Google’s <a href="https://developers.google.com/meridian">Meridian</a> and Meta’s <a href="https://github.com/facebookexperimental/Robyn">Robyn</a> are both open-source implementations, and Robyn’s documentation highlights exploring adstock rates and saturation curves, the two ideas that make the method fit real advertising. Meridian also lets you calibrate the model with experiment results, so the numbers are checked against something other than the model itself.</p>
+<p><strong>You need less data than most teams expect.</strong> In general terms: spend by channel and period; leads, applications and enrollments for the same periods; and ideally two or more admissions cycles and at least three channels. Google presents Meridian as measurement that meets “marketers where they are”, and the same spirit applies here: if the data is incomplete, the audit evaluates what is usable instead of rejecting you. The next question, once you know what each channel contributes, is where you are already spending more than it returns.</p></div>
             <aside class="connect">
                 <h2>How this connects with the other reasons</h2>
                 <ul><li><a href="/en/blog/when-more-spend-stops-paying/">When spending more stops bringing more students</a><br>Once you know what each channel contributes, you can see where spend is already saturated.</li><li><a href="/en/blog/measuring-without-cookies-or-tracking-families/">Measuring without cookies or tracking families</a><br>Without cookies or tracking, click-based attribution fails; MMM measures contribution from aggregate data.</li><li><a href="/en/blog/admissions-cycle-and-mmm/">The admissions cycle: why timing changes everything</a><br>The lagged effects of the admissions cycle make last click lie about which channel convinced the family.</li></ul>
@@ -778,5 +815,6 @@
             a.addEventListener('click', function () { document.cookie = 'lang=' + a.dataset.lang + ';path=/;max-age=31536000;SameSite=Lax'; });
         });
     </script>
+    <script src="/assets/widgets.js" defer></script>
 </body>
 </html>

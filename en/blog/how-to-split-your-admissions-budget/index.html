@@ -711,6 +711,49 @@
         .page-hero h1 { font-size: 3.1rem; font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 1.25rem; }
         .page-hero p { color: var(--text-secondary); font-size: 1.15rem; margin-bottom: 2rem; }
         @media (max-width: 640px) { .page-hero h1 { font-size: 2.25rem; } .post h1 { font-size: 2rem; } }
+        /* Opening statement of each paragraph: bold + highlighter */
+        .post-body p > strong:first-child { font-weight: 800; color: var(--text-primary); background: linear-gradient(transparent 58%, rgba(99,102,241,0.2) 58%); padding: 0 0.1em; }
+        /* Interactive explainers (assets/widgets.js) */
+        .viz { margin: 2rem 0; }
+        .viz-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 20px; padding: 1.5rem; box-shadow: var(--shadow-md); }
+        .viz-tag { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent-indigo); font-weight: 700; }
+        .viz-head h3 { font-size: 1.2rem; margin: 0.25rem 0 0.4rem; letter-spacing: -0.02em; }
+        .viz-head p { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.55; margin: 0 0 1rem; }
+        .viz-ctrls { display: grid; gap: 0.9rem; margin-bottom: 1rem; }
+        .vc-h { display: flex; justify-content: space-between; gap: 1rem; font-size: 0.82rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.3rem; }
+        .vc-h output { font-family: var(--font-mono); color: var(--accent-indigo); font-weight: 700; white-space: nowrap; }
+        .vc input[type=range] { width: 100%; }
+        .vc-check { display: flex; gap: 0.5rem; align-items: center; font-size: 0.88rem; }
+        .seg { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+        .seg button { border: 1px solid var(--border-color); background: #fff; color: var(--text-primary); border-radius: 8px; padding: 0.4rem 0.8rem; font-size: 0.82rem; font-weight: 600; cursor: pointer; font-family: inherit; }
+        .seg button[aria-pressed="true"] { background: var(--accent-indigo); border-color: var(--accent-indigo); color: #fff; }
+        .seg button:focus-visible, .vnode:focus-visible, .vbtn:focus-visible { outline: 3px solid rgba(79,70,229,0.45); outline-offset: 2px; }
+        .vbtn { padding: 0.5rem 1rem; font-size: 0.85rem; margin-right: 0.5rem; }
+        .vq { display: flex; justify-content: space-between; align-items: center; gap: 1rem; font-size: 0.9rem; flex-wrap: wrap; }
+        .vq > span { flex: 1 1 260px; }
+        .viz-svg { width: 100%; height: auto; display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; }
+        .vt { font: 9px var(--font-mono); fill: #64748b; } .vl { font: 600 9.5px var(--font-sans); fill: #475569; }
+        .vtiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.75rem; margin: 1rem 0 0.5rem; }
+        .vtile { background: #f1f5f9; border-radius: 12px; padding: 0.75rem 0.9rem; display: flex; flex-direction: column; gap: 0.2rem; }
+        .vtile span { font-size: 0.72rem; color: var(--text-secondary); font-weight: 600; line-height: 1.3; }
+        .vtile b { font-family: var(--font-mono); font-size: 1.15rem; }
+        .vbars { display: flex; flex-direction: column; gap: 0.55rem; margin: 0.5rem 0; }
+        .vbar { display: grid; grid-template-columns: minmax(110px, 190px) 1fr auto; gap: 0.6rem; align-items: center; font-size: 0.82rem; }
+        .vbar-t { background: #e2e8f0; border-radius: 6px; height: 14px; overflow: hidden; } .vbar-t i { display: block; height: 100%; border-radius: 6px; }
+        .vbar-v { font-family: var(--font-mono); font-weight: 700; font-size: 0.78rem; min-width: 5.5rem; text-align: right; }
+        .vleg { display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.78rem; color: var(--text-secondary); margin: 0.5rem 0; } .vleg i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 0.35rem; }
+        .viz-take { background: rgba(99,102,241,0.07); border-left: 3px solid var(--accent-indigo); border-radius: 0 10px 10px 0; padding: 0.75rem 1rem; margin: 0.75rem 0 0; font-size: 0.92rem; line-height: 1.55; color: #334155; }
+        .viz-note { font-size: 0.72rem; color: var(--text-secondary); margin: 0.9rem 0 0; }
+        .vlist { margin-top: 0.75rem; font-size: 0.9rem; } .vlist ul { margin: 0.4rem 0 0.75rem 1.2rem; } .vlist li { margin-bottom: 0.4rem; color: #334155; } .vsub { display: block; font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; color: var(--text-secondary); margin-top: 0.6rem; }
+        .vprog { height: 10px; background: #e2e8f0; border-radius: 6px; overflow: hidden; margin: 0.5rem 0; } .vprog i { display: block; height: 100%; }
+        .vpill { display: inline-block; font-size: 0.78rem; font-weight: 700; border-radius: 999px; padding: 0.2rem 0.7rem; margin-top: 0.5rem; }
+        .vpill0 { background: #d1fae5; color: #065f46; } .vpill1 { background: #fef3c7; color: #92400e; } .vpill2 { background: #fee2e2; color: #991b1b; }
+        .vnode { cursor: pointer; } .vnode:hover circle { fill: #eef2ff; }
+        .vdots { display: grid; grid-template-columns: repeat(20, 1fr); gap: 4px; margin: 0.5rem 0; } .vdot { aspect-ratio: 1; border-radius: 50%; background: #e2e8f0; display: block; } .vdot.on { background: var(--accent-indigo); }
+        .vneeds { display: flex; flex-direction: column; gap: 0.4rem; margin: 0.5rem 0; }
+        .vneed { display: grid; grid-template-columns: 1.5rem 1fr auto; gap: 0.5rem; align-items: center; font-size: 0.88rem; padding: 0.45rem 0.7rem; border-radius: 10px; background: #f8fafc; border: 1px solid #e2e8f0; }
+        .vneed em { font-style: normal; font-size: 0.72rem; font-weight: 700; color: var(--text-secondary); } .vneed-req { border-color: #c7d2fe; background: #eef2ff; } .vneed-req .vsym { color: var(--accent-indigo); } .vneed-no { opacity: 0.6; }
+        @media (max-width: 520px) { .vbar { grid-template-columns: 1fr; gap: 0.2rem; } .vbar-v { text-align: left; } .viz-card { padding: 1.1rem; } }
 </style>
 </head>
 <body>
@@ -733,20 +776,16 @@
             <div class="crumbs"><a href="/en/blog/">Blog</a> &rsaquo; <a href="/en/blog/why-your-institution-needs-mmm/">Why your educational institution needs Marketing Mix Modeling</a></div>
             <div class="badge">Reason 3 of 6</div>
             <h1>How to split next year’s admissions budget</h1>
-            <div class="post-body"><p>When it is time to set next year’s admissions budget, most institutions use one of three methods: last year’s budget plus or minus a percentage, whatever the loudest report suggests, or what a competitor seems to be doing. None of them answers the question that matters: <strong>if we move money from here to there, how many more students do we enroll?</strong></p>
-<h2>What a budget decision really needs</h2>
-<p>To split a budget well you need three things at once: what each channel contributes (first guide), where each one saturates (second guide), and how much total money you have, with real constraints: you can’t drop brand presence to zero, a new campus needs a minimum launch budget, a fair is booked a year in advance.</p>
+            <div class="post-body"><p><strong>Most admissions budgets are set by habit, and habit is a method nobody can audit.</strong> The usual rules are last year’s budget plus or minus a percentage, whatever the loudest report suggests, or what a competitor appears to do. <a href="https://secure.businesswire.com/news/home/20250512782208/en/Gartner-2025-CMO-Spend-Survey-Reveals-Marketing-Budgets-Have-Flatlined-at-7.7-of-Overall-Company-Revenue">Gartner’s 2025 CMO survey</a> found marketing budgets flat at 7.7% of revenue for the second year, so for most teams the question is no longer how much new money they get, but how well they split what they have. Paid media alone was 30.6% of those budgets, which makes the split between channels the biggest lever in the plan. A split by habit leaves that lever untouched.</p>
 <h2>Scenarios instead of opinions</h2>
-<p>With the model fitted, you can ask it “what if” questions. For example:</p>
-<ul><li>What if we keep the total budget but shift part of it from search to radio?</li><li>What if the budget is cut by 10%? Where is the cut cheapest in enrollments?</li><li>What if we get an extra 15%? Where does it pay best?</li></ul>
-<blockquote>Illustrative example, not data from any client. A group of schools spends the same total as last year. The model suggests moving 15% from search to radio and open days, and estimates a range of 20 to 45 additional enrollments, with 30 as the most likely value. The range matters as much as the number: it tells leadership how sure the model is.</blockquote>
-<p>An <strong>optimizer</strong> goes one step further: given the total budget and your constraints, it proposes the split that maximizes expected enrollments, so you compare it against the current one.</p>
+<p><strong>A fitted model lets you ask “what if” and get a number, with a range, instead of an opinion.</strong> What if we keep the total but move part of it from social to radio? What if we get 15% more, or 10% less? Meta’s <a href="https://github.com/facebookexperimental/Robyn">Robyn</a> includes gradient-based optimization for budget allocation, which is exactly this step: given the response curves, it proposes the split that maximizes the outcome. Below, a $100k monthly budget starts in a habit-driven mix (65% social, 20% search, 10% radio, 5% open days). Drag it, or ask for the best split, and watch the range as much as the number.</p>
+<div class="viz" data-widget="sandbox" data-lang="en"></div>
+<p><strong>The best split equalizes the return of the last dollar in every channel.</strong> That is the standard equimarginal principle of resource allocation: if one channel’s next dollar returns more than another’s, moving money from the second to the first still helps. It also explains why rules of thumb fall short. Binet and Field’s <a href="https://ipa.co.uk/media/14463/long_and_short_of_it_presentation_final_030424.pdf">60:40 balance between brand building and activation</a>, drawn from 996 IPA campaigns, is a useful prior, and <a href="https://www.marketingweek.com/ritson-brand-building-boost-short-term-sales/">Mark Ritson reminds</a> that it is an average across many categories and situations. Your own curves should refine it.</p>
 <h2>Be honest about uncertainty</h2>
-<p>A model estimates; it doesn’t promise. Good practice is to show ranges, not single numbers, and to <strong>test before moving everything</strong>: apply the change to one campus or one region first and compare. The result then feeds back into the model and makes the next recommendation sharper.</p>
-<h2>What you get</h2>
-<p>A decision you can explain: which channels grow, which shrink, why, and what to expect. Instead of defending a budget with “it’s what we did last year”, you defend it with scenarios and ranges.</p>
-<h2>Where this leads</h2>
-<p>Every possible budget split becomes an enrollment forecast. That is what leadership wants to see when it approves the budget, and it is the subject of the next guide. The reasoning starts earlier: knowing where spend saturates (second guide) is what tells you where to take budget from.</p></div>
+<p><strong>A model estimates; it does not promise, so show ranges and test before moving everything.</strong> Measurement is hard even for the platforms: <a href="https://www.kellogg.northwestern.edu/academics-research/research/detail/2019/a-comparison-of-approaches-to-advertising-measurement-evidence-from/">Gordon and colleagues</a> showed in 15 Facebook experiments that observational estimates often missed what randomized tests found. A sound practice is to apply a change to one campus or region first, using the logic of <a href="https://research.google/pubs/measuring-ad-effectiveness-using-geo-experiments/">Google’s geo experiments</a>, where regions are randomly assigned to control or treatment, and then feed the result back. Meridian supports exactly that, letting you <a href="https://developers.google.com/meridian">calibrate MMMs with experiments</a>. Every test makes the next recommendation sharper.</p>
+<p><strong>A cut is the moment a model pays for itself.</strong> Gartner found that 39% of CMOs planned to reduce agency budgets in 2025, and its research lead warned that flat budgets may face in-year cuts. Cutting everything evenly is the default, and it is rarely the cheapest in enrollments. The demo below compares an even cut with a cut guided by marginal return, on the same savings.</p>
+<div class="viz" data-widget="cut" data-lang="en"></div>
+<p><strong>What you get is a decision you can explain.</strong> Which channels grow, which shrink, why, and what to expect, with a range. Instead of defending a budget with “it is what we did last year”, you defend it with scenarios. And every possible split becomes an enrollment forecast, which is what leadership asks for when it approves the budget, the subject of the next guide.</p></div>
             <aside class="connect">
                 <h2>How this connects with the other reasons</h2>
                 <ul><li><a href="/en/blog/when-more-spend-stops-paying/">When spending more stops bringing more students</a><br>Knowing where spend saturates tells you where to take budget from and where to put it.</li><li><a href="/en/blog/enrollment-forecast-for-leadership/">An enrollment forecast leadership can use</a><br>Every possible budget split becomes an enrollment forecast you can defend.</li></ul>
@@ -777,5 +816,6 @@
             a.addEventListener('click', function () { document.cookie = 'lang=' + a.dataset.lang + ';path=/;max-age=31536000;SameSite=Lax'; });
         });
     </script>
+    <script src="/assets/widgets.js" defer></script>
 </body>
 </html>

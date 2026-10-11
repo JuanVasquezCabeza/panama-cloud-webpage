@@ -1,33 +1,17 @@
-If you ask your marketing team which channels bring in students, you will probably get an answer based on a report: “Google brought 60% of applications.” It is a tidy, precise answer, and very likely a **misleading** one.
+**The channel that gets the credit in your reports is often the one that closed the decision, not the one that opened it.** A family decides over months: a radio spot, a billboard near home, a friend’s opinion, an open day, and finally a search for the school’s name. Last-click rules give that final search 100% of the credit. Blake, Nosko and Tadelis tested a version of this at eBay: they [switched off paid search ads on brand queries](https://www.nber.org/papers/w20171) in part of the market and found that nearly all the lost clicks and sales were recovered through unpaid search, so the paid brand clicks had no measurable short-term benefit. eBay is a household name and a school is not, so test before assuming the same, but the lesson holds: searches for your name mostly capture demand that was created somewhere else.
 
-## The last-click problem
+{{widget:attribution}}
 
-Almost every platform credits the result to the last touch before the action. Think about how a family actually decides: they hear a radio spot on the way to work, see a billboard near home, a friend mentions the school, and weeks later they **search the school’s name on Google** and fill in the form. In the report, search gets all the credit.
+## A precise report is not the same as a correct one
 
-> Illustrative example, not data from any client. A school with three campuses invests in Meta, Google, radio, billboards and fairs. Google’s report shows 60% of applications came from search. But searches for the school’s *name* only exist because radio and billboards had already built awareness. If the school cut radio for “not showing results”, brand searches would drop a few weeks later, and nobody would know why.
+**Platform dashboards give clean, precise numbers that can still be far from the truth.** Gordon, Zettelmeyer, Bhargava and Chapsky compared observational measurement methods with randomized experiments in [15 Facebook advertising tests](https://www.kellogg.northwestern.edu/academics-research/research/detail/2019/a-comparison-of-approaches-to-advertising-measurement-evidence-from/) published in Marketing Science. They found that the observational methods often failed to reproduce the experimental results, even after controlling for extensive demographic and behavioral data. The reason is intuitive for admissions: the families who click your ad are already more interested in your school than the ones who do not. The Wanamaker complaint, whoever said it first ([Quote Investigator’s history of the line](https://quoteinvestigator.com/2022/04/11/advertising/)), has lasted because the problem has.
 
-Last click rewards the channel that **closes** and punishes the ones that **open**. That is why it tends to inflate brand search and undervalue traditional media, exactly where many educational institutions invest a big share.
+**What leaves no click is often what is working.** Radio, billboards, fairs and open days cannot be followed, so a click-based report shows them contributing nothing. Cutting them then looks free, until the effect shows up weeks later in the search volume and the applications, as the next demo shows. The long-run effect of advertising is larger than the short-run one: [Sethuraman, Tellis and Briesch](https://www.gwern.net/doc/economics/advertising/2011-sethuraman.pdf) put the average long-term elasticity at 0.24 against 0.12 short-term, so judging a channel by the month it ran is judging it by half of its effect.
+
+{{widget:halo}}
 
 ## What MMM does differently
 
-Marketing Mix Modeling doesn’t follow people: it looks at **the relationship between how much was invested in each channel and how many applications and enrollments followed**, week by week, over one or several cycles. If every time radio investment rises, brand searches and visits to the admissions page rise a while later, the model detects it and credits radio with its share.
+**Marketing Mix Modeling looks at the relationship between spend and results over time, not at individual clicks.** It uses weekly or monthly totals: what you spent in each channel and how many leads, applications and enrollments followed. From those it estimates what each channel contributes, what would have happened anyway, and the return per peso. Google’s [Meridian](https://developers.google.com/meridian) and Meta’s [Robyn](https://github.com/facebookexperimental/Robyn) are both open-source implementations, and Robyn’s documentation highlights exploring adstock rates and saturation curves, the two ideas that make the method fit real advertising. Meridian also lets you calibrate the model with experiment results, so the numbers are checked against something other than the model itself.
 
-The result is an answer no platform report can give you:
-
-- **The contribution of each channel** to leads, applications and enrollments, including channels with no click (radio, billboards, fairs, open days).
-- **The share that would have come anyway**, from reputation, word of mouth and local demand.
-- **The return per peso invested** in each channel, comparable across channels and across campuses or programs.
-
-## What you need to get started
-
-Less than it seems. In general terms:
-
-1. Investment by channel and period (weekly or monthly).
-2. Leads, applications and enrollments for the same periods.
-3. Ideally, two or more admissions cycles and at least three channels.
-
-If you don’t have all of this, it is not a blocker: reviewing what data exists and how usable it is is part of the initial audit.
-
-## What comes after knowing which channel contributes
-
-Knowing each channel’s contribution is only the beginning. The next question is obvious: **in which ones are we already spending more than they return?** We cover that in the next guide, on saturation curves. And since measuring without tracking families is no longer optional, we also explain how measurement with aggregate data works.
+**You need less data than most teams expect.** In general terms: spend by channel and period; leads, applications and enrollments for the same periods; and ideally two or more admissions cycles and at least three channels. Google presents Meridian as measurement that meets “marketers where they are”, and the same spirit applies here: if the data is incomplete, the audit evaluates what is usable instead of rejecting you. The next question, once you know what each channel contributes, is where you are already spending more than it returns.

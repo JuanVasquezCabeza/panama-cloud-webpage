@@ -711,6 +711,49 @@
         .page-hero h1 { font-size: 3.1rem; font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 1.25rem; }
         .page-hero p { color: var(--text-secondary); font-size: 1.15rem; margin-bottom: 2rem; }
         @media (max-width: 640px) { .page-hero h1 { font-size: 2.25rem; } .post h1 { font-size: 2rem; } }
+        /* Opening statement of each paragraph: bold + highlighter */
+        .post-body p > strong:first-child { font-weight: 800; color: var(--text-primary); background: linear-gradient(transparent 58%, rgba(99,102,241,0.2) 58%); padding: 0 0.1em; }
+        /* Interactive explainers (assets/widgets.js) */
+        .viz { margin: 2rem 0; }
+        .viz-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 20px; padding: 1.5rem; box-shadow: var(--shadow-md); }
+        .viz-tag { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent-indigo); font-weight: 700; }
+        .viz-head h3 { font-size: 1.2rem; margin: 0.25rem 0 0.4rem; letter-spacing: -0.02em; }
+        .viz-head p { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.55; margin: 0 0 1rem; }
+        .viz-ctrls { display: grid; gap: 0.9rem; margin-bottom: 1rem; }
+        .vc-h { display: flex; justify-content: space-between; gap: 1rem; font-size: 0.82rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.3rem; }
+        .vc-h output { font-family: var(--font-mono); color: var(--accent-indigo); font-weight: 700; white-space: nowrap; }
+        .vc input[type=range] { width: 100%; }
+        .vc-check { display: flex; gap: 0.5rem; align-items: center; font-size: 0.88rem; }
+        .seg { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+        .seg button { border: 1px solid var(--border-color); background: #fff; color: var(--text-primary); border-radius: 8px; padding: 0.4rem 0.8rem; font-size: 0.82rem; font-weight: 600; cursor: pointer; font-family: inherit; }
+        .seg button[aria-pressed="true"] { background: var(--accent-indigo); border-color: var(--accent-indigo); color: #fff; }
+        .seg button:focus-visible, .vnode:focus-visible, .vbtn:focus-visible { outline: 3px solid rgba(79,70,229,0.45); outline-offset: 2px; }
+        .vbtn { padding: 0.5rem 1rem; font-size: 0.85rem; margin-right: 0.5rem; }
+        .vq { display: flex; justify-content: space-between; align-items: center; gap: 1rem; font-size: 0.9rem; flex-wrap: wrap; }
+        .vq > span { flex: 1 1 260px; }
+        .viz-svg { width: 100%; height: auto; display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; }
+        .vt { font: 9px var(--font-mono); fill: #64748b; } .vl { font: 600 9.5px var(--font-sans); fill: #475569; }
+        .vtiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.75rem; margin: 1rem 0 0.5rem; }
+        .vtile { background: #f1f5f9; border-radius: 12px; padding: 0.75rem 0.9rem; display: flex; flex-direction: column; gap: 0.2rem; }
+        .vtile span { font-size: 0.72rem; color: var(--text-secondary); font-weight: 600; line-height: 1.3; }
+        .vtile b { font-family: var(--font-mono); font-size: 1.15rem; }
+        .vbars { display: flex; flex-direction: column; gap: 0.55rem; margin: 0.5rem 0; }
+        .vbar { display: grid; grid-template-columns: minmax(110px, 190px) 1fr auto; gap: 0.6rem; align-items: center; font-size: 0.82rem; }
+        .vbar-t { background: #e2e8f0; border-radius: 6px; height: 14px; overflow: hidden; } .vbar-t i { display: block; height: 100%; border-radius: 6px; }
+        .vbar-v { font-family: var(--font-mono); font-weight: 700; font-size: 0.78rem; min-width: 5.5rem; text-align: right; }
+        .vleg { display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.78rem; color: var(--text-secondary); margin: 0.5rem 0; } .vleg i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 0.35rem; }
+        .viz-take { background: rgba(99,102,241,0.07); border-left: 3px solid var(--accent-indigo); border-radius: 0 10px 10px 0; padding: 0.75rem 1rem; margin: 0.75rem 0 0; font-size: 0.92rem; line-height: 1.55; color: #334155; }
+        .viz-note { font-size: 0.72rem; color: var(--text-secondary); margin: 0.9rem 0 0; }
+        .vlist { margin-top: 0.75rem; font-size: 0.9rem; } .vlist ul { margin: 0.4rem 0 0.75rem 1.2rem; } .vlist li { margin-bottom: 0.4rem; color: #334155; } .vsub { display: block; font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; color: var(--text-secondary); margin-top: 0.6rem; }
+        .vprog { height: 10px; background: #e2e8f0; border-radius: 6px; overflow: hidden; margin: 0.5rem 0; } .vprog i { display: block; height: 100%; }
+        .vpill { display: inline-block; font-size: 0.78rem; font-weight: 700; border-radius: 999px; padding: 0.2rem 0.7rem; margin-top: 0.5rem; }
+        .vpill0 { background: #d1fae5; color: #065f46; } .vpill1 { background: #fef3c7; color: #92400e; } .vpill2 { background: #fee2e2; color: #991b1b; }
+        .vnode { cursor: pointer; } .vnode:hover circle { fill: #eef2ff; }
+        .vdots { display: grid; grid-template-columns: repeat(20, 1fr); gap: 4px; margin: 0.5rem 0; } .vdot { aspect-ratio: 1; border-radius: 50%; background: #e2e8f0; display: block; } .vdot.on { background: var(--accent-indigo); }
+        .vneeds { display: flex; flex-direction: column; gap: 0.4rem; margin: 0.5rem 0; }
+        .vneed { display: grid; grid-template-columns: 1.5rem 1fr auto; gap: 0.5rem; align-items: center; font-size: 0.88rem; padding: 0.45rem 0.7rem; border-radius: 10px; background: #f8fafc; border: 1px solid #e2e8f0; }
+        .vneed em { font-style: normal; font-size: 0.72rem; font-weight: 700; color: var(--text-secondary); } .vneed-req { border-color: #c7d2fe; background: #eef2ff; } .vneed-req .vsym { color: var(--accent-indigo); } .vneed-no { opacity: 0.6; }
+        @media (max-width: 520px) { .vbar { grid-template-columns: 1fr; gap: 0.2rem; } .vbar-v { text-align: left; } .viz-card { padding: 1.1rem; } }
 </style>
 </head>
 <body>
@@ -733,19 +776,18 @@
             <div class="crumbs"><a href="/en/blog/">Blog</a></div>
             <div class="badge">Guide</div>
             <h1>Why your educational institution needs Marketing Mix Modeling</h1>
-            <div class="post-body"><p>Every year your institution decides how much to invest in admissions and how to split it across social media, search, radio, billboards, fairs and open days. At the end of the cycle the enrollments arrive, but it is rarely clear <strong>how much of that result each channel brought in</strong>.</p>
-<p>That question has an answer, and it doesn’t depend on following every family around the internet. It’s called <strong>Marketing Mix Modeling (MMM)</strong>.</p>
-<h2>What Marketing Mix Modeling is, in plain words</h2>
-<p>It is a statistical model that starts from what you already have: how much you invested in each channel each week or month, and how many leads, applications and enrollments you got over the same period. Using that aggregate data, the model separates what each channel contributed from what would have happened anyway. It also accounts for the fact that a campaign’s effect is not immediate, that every channel saturates, and that admissions have seasons.</p>
-<p>You don’t need to install trackers, identify families, or depend on what each platform reports about itself.</p>
+            <div class="post-body"><p><strong>Most educational institutions cannot say which part of their admissions budget brings students, and that is a measurement problem, not a marketing problem.</strong> The line “half the money I spend on advertising is wasted, but I don’t know which half” has been pinned on the retailer John Wanamaker for a century, although <a href="https://quoteinvestigator.com/2022/04/11/advertising/">Quote Investigator could not confirm he ever said it</a>. Pressure comes from the budget side too: <a href="https://secure.businesswire.com/news/home/20250512782208/en/Gartner-2025-CMO-Spend-Survey-Reveals-Marketing-Budgets-Have-Flatlined-at-7.7-of-Overall-Company-Revenue">Gartner’s 2025 CMO survey</a> found marketing budgets flat at 7.7% of company revenue, with 59% of CMOs saying their budget was too small to execute their strategy. And each student is getting more expensive to win: in <a href="https://newamerica.org/documents/9177/RNL_2022_CostRecruiting_Report.pdf">RNL’s 2022 cost-of-recruiting report</a>, the median cost to recruit one undergraduate at US private four-year institutions rose from $2,114 in 2020 to $2,795. When every enrollment costs more and budgets do not grow, knowing which channel works stops being optional.</p>
+<p><strong>Marketing Mix Modeling answers that question with data you already have, without following a single family.</strong> It relates what you spent in each channel each week or month to the leads, applications and enrollments that followed, while accounting for seasonality, delayed effects and saturation. Google describes its open-source <a href="https://developers.google.com/meridian">Meridian</a> as built to enable “privacy-durable, advanced measurement”, and Meta’s <a href="https://github.com/facebookexperimental/Robyn">Robyn</a> presents modern MMM as “a privacy-safe solution”, so two of the biggest ad platforms now publish MMM tooling themselves. The idea is not new: Simon Broadbent introduced “adstock”, the lingering effect of advertising, in <a href="https://en.wikipedia.org/wiki/Advertising_adstock">a 1979 paper</a>. What changed is that tracking people got harder while the computing got cheap.</p>
+<div class="viz" data-widget="readiness" data-lang="en"></div>
 <h2>Why it matters for an educational institution</h2>
-<p>An enrollment is worth years of tuition. A school whose students stay six years, or a university with multi-semester programs, can justify far more analysis per enrollment than a one-time purchase business. Moving the admissions budget well, even by a small percentage, pays for itself.</p>
-<p>Admissions also have traits that generic marketing models ignore: a single decision window per year, channels that work for months before a family asks, a lot of traditional media (radio, billboards, fairs), and leadership that wants to know whether the intake target is at risk.</p>
-<h2>The reasons</h2>
-<p>Below are the reasons it is worth measuring with MMM, each with its own guide. They are not independent: <strong>they build on one another</strong>. First you learn which channels contribute, then where spend stops paying, then how to split the budget, and finally how to back it up with a forecast for leadership. Two reasons, measuring without tracking and the admissions cycle, explain why traditional methods fail and how MMM corrects for it.</p>
-<p>Each guide ends by showing how it connects to the others, so you can read them in whatever order suits you.</p>
+<p><strong>An enrollment is worth years of tuition, so a small efficiency gain is worth a lot.</strong> A student who stays six years turns every extra enrollment into a long stream of tuition. That is why even a modest improvement in the mix can justify real analysis, far more than a business that sells once. RNL’s figures show how much institutions already pay per student, and the same logic applies in Latin America, with different numbers (the RNL data is from the US, so use it as a sign of how the cost is built, not as a benchmark). The calculator below lets you put your own numbers in.</p>
+<div class="viz" data-widget="value" data-lang="en"></div>
+<p><strong>Admissions has traits that generic marketing models ignore.</strong> There is one main decision window per year, channels work for months before a family asks, and a large share of the mix is traditional media that leaves no click. Advertising effects also last: in a meta-analysis of 56 studies, <a href="https://www.gwern.net/doc/economics/advertising/2011-sethuraman.pdf">Sethuraman, Tellis and Briesch (2011)</a> estimated an average short-term advertising elasticity of 0.12 and a long-term one of 0.24, about double. A report that only looks at the same month will therefore undervalue slow channels. Binet and Field’s analysis of 996 campaigns in the IPA databank, <a href="https://ipa.co.uk/media/14463/long_and_short_of_it_presentation_final_030424.pdf">The Long and the Short of It</a>, found the best results when brand building and activation were balanced, around 60:40, although <a href="https://www.marketingweek.com/ritson-brand-building-boost-short-term-sales/">Mark Ritson cautions</a> that this is an average across very different situations.</p>
+<h2>The six reasons</h2>
+<p><strong>The six reasons are one chain, not six separate benefits.</strong> First you learn which channels contribute, then where each one stops paying, then how to split the budget, and finally how to defend that split with a forecast leadership can use. Two more reasons explain why the traditional methods fail and how a model corrects for it: measuring without tracking people, and the admissions cycle. Each guide below goes deep on one reason and shows how it connects to the others. Use the map to move between them.</p>
+<div class="viz" data-widget="map" data-lang="en" data-json='{"reasons":[{"n":1,"title":"Which channels actually bring in students?","card":"Why last click can’t tell you which channels bring students, and what can.","url":"/en/blog/which-channels-bring-students/"},{"n":2,"title":"When spending more stops bringing more students","card":"Saturation curves show where the next dollar is no longer worth it.","url":"/en/blog/when-more-spend-stops-paying/"},{"n":3,"title":"How to split next year’s admissions budget","card":"From gut feeling and last year’s numbers to scenarios with expected enrollments.","url":"/en/blog/how-to-split-your-admissions-budget/"},{"n":4,"title":"An enrollment forecast leadership can use","card":"Tying the marketing budget to the intake target.","url":"/en/blog/enrollment-forecast-for-leadership/"},{"n":5,"title":"Measuring without cookies or tracking families","card":"Aggregate-data measurement for when user tracking is no longer reliable.","url":"/en/blog/measuring-without-cookies-or-tracking-families/"},{"n":6,"title":"The admissions cycle: why timing changes everything","card":"Lagged effects and seasonality: what you spend today enrolls months later.","url":"/en/blog/admissions-cycle-and-mmm/"}],"links":[{"from":1,"to":2,"text":"Once you know what each channel contributes, you can see where spend is already saturated."},{"from":2,"to":3,"text":"Knowing where spend saturates tells you where to take budget from and where to put it."},{"from":3,"to":4,"text":"Every possible budget split becomes an enrollment forecast you can defend."},{"from":5,"to":1,"text":"Without cookies or tracking, click-based attribution fails; MMM measures contribution from aggregate data."},{"from":6,"to":1,"text":"The lagged effects of the admissions cycle make last click lie about which channel convinced the family."},{"from":6,"to":4,"text":"Seasonality shapes the enrollment forecast."}]}'></div>
 <h2>Where to start</h2>
-<p>You don’t need perfect data. Assessing what data exists and how useful it is is exactly the first step: the <strong>marketing budget and data audit</strong>. It ends with a clear recommendation and a plan to implement the model, so you decide with evidence.</p></div>
+<p><strong>You do not need perfect data to start; the first step is finding out what you have.</strong> That is the marketing budget and data audit, which ends with a recommendation and an implementation plan. It also looks at where a small experiment could check the model, because <a href="https://www.kellogg.northwestern.edu/academics-research/research/detail/2019/a-comparison-of-approaches-to-advertising-measurement-evidence-from/">Gordon and colleagues</a> found, across 15 Facebook experiments, that observational methods often failed to reproduce what randomized experiments showed. <a href="https://research.google/pubs/measuring-ad-effectiveness-using-geo-experiments/">Google’s geo experiments</a> randomly assign geographic regions to test or control conditions, and Meridian lets you <a href="https://developers.google.com/meridian">calibrate models with experiments</a>. You decide with evidence, not with a vendor’s promise.</p></div>
             <h2 style="font-size:1.6rem;font-weight:800;letter-spacing:-0.02em;margin:2.5rem 0 1.25rem;">The 6 reasons</h2>
             <div class="grid-3" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;">
                 <a class="reason-card" href="/en/blog/which-channels-bring-students/"><div class="pillar-num">Reason 1</div><h3>Which channels actually bring in students?</h3><p>Why last click can’t tell you which channels bring students, and what can.</p></a>
@@ -784,5 +826,6 @@
             a.addEventListener('click', function () { document.cookie = 'lang=' + a.dataset.lang + ';path=/;max-age=31536000;SameSite=Lax'; });
         });
     </script>
+    <script src="/assets/widgets.js" defer></script>
 </body>
 </html>

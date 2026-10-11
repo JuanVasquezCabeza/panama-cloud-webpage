@@ -1,29 +1,19 @@
-When it is time to set next year’s admissions budget, most institutions use one of three methods: last year’s budget plus or minus a percentage, whatever the loudest report suggests, or what a competitor seems to be doing. None of them answers the question that matters: **if we move money from here to there, how many more students do we enroll?**
-
-## What a budget decision really needs
-
-To split a budget well you need three things at once: what each channel contributes (first guide), where each one saturates (second guide), and how much total money you have, with real constraints: you can’t drop brand presence to zero, a new campus needs a minimum launch budget, a fair is booked a year in advance.
+**Most admissions budgets are set by habit, and habit is a method nobody can audit.** The usual rules are last year’s budget plus or minus a percentage, whatever the loudest report suggests, or what a competitor appears to do. [Gartner’s 2025 CMO survey](https://secure.businesswire.com/news/home/20250512782208/en/Gartner-2025-CMO-Spend-Survey-Reveals-Marketing-Budgets-Have-Flatlined-at-7.7-of-Overall-Company-Revenue) found marketing budgets flat at 7.7% of revenue for the second year, so for most teams the question is no longer how much new money they get, but how well they split what they have. Paid media alone was 30.6% of those budgets, which makes the split between channels the biggest lever in the plan. A split by habit leaves that lever untouched.
 
 ## Scenarios instead of opinions
 
-With the model fitted, you can ask it “what if” questions. For example:
+**A fitted model lets you ask “what if” and get a number, with a range, instead of an opinion.** What if we keep the total but move part of it from social to radio? What if we get 15% more, or 10% less? Meta’s [Robyn](https://github.com/facebookexperimental/Robyn) includes gradient-based optimization for budget allocation, which is exactly this step: given the response curves, it proposes the split that maximizes the outcome. Below, a $100k monthly budget starts in a habit-driven mix (65% social, 20% search, 10% radio, 5% open days). Drag it, or ask for the best split, and watch the range as much as the number.
 
-- What if we keep the total budget but shift part of it from search to radio?
-- What if the budget is cut by 10%? Where is the cut cheapest in enrollments?
-- What if we get an extra 15%? Where does it pay best?
+{{widget:sandbox}}
 
-> Illustrative example, not data from any client. A group of schools spends the same total as last year. The model suggests moving 15% from search to radio and open days, and estimates a range of 20 to 45 additional enrollments, with 30 as the most likely value. The range matters as much as the number: it tells leadership how sure the model is.
-
-An **optimizer** goes one step further: given the total budget and your constraints, it proposes the split that maximizes expected enrollments, so you compare it against the current one.
+**The best split equalizes the return of the last dollar in every channel.** That is the standard equimarginal principle of resource allocation: if one channel’s next dollar returns more than another’s, moving money from the second to the first still helps. It also explains why rules of thumb fall short. Binet and Field’s [60:40 balance between brand building and activation](https://ipa.co.uk/media/14463/long_and_short_of_it_presentation_final_030424.pdf), drawn from 996 IPA campaigns, is a useful prior, and [Mark Ritson reminds](https://www.marketingweek.com/ritson-brand-building-boost-short-term-sales/) that it is an average across many categories and situations. Your own curves should refine it.
 
 ## Be honest about uncertainty
 
-A model estimates; it doesn’t promise. Good practice is to show ranges, not single numbers, and to **test before moving everything**: apply the change to one campus or one region first and compare. The result then feeds back into the model and makes the next recommendation sharper.
+**A model estimates; it does not promise, so show ranges and test before moving everything.** Measurement is hard even for the platforms: [Gordon and colleagues](https://www.kellogg.northwestern.edu/academics-research/research/detail/2019/a-comparison-of-approaches-to-advertising-measurement-evidence-from/) showed in 15 Facebook experiments that observational estimates often missed what randomized tests found. A sound practice is to apply a change to one campus or region first, using the logic of [Google’s geo experiments](https://research.google/pubs/measuring-ad-effectiveness-using-geo-experiments/), where regions are randomly assigned to control or treatment, and then feed the result back. Meridian supports exactly that, letting you [calibrate MMMs with experiments](https://developers.google.com/meridian). Every test makes the next recommendation sharper.
 
-## What you get
+**A cut is the moment a model pays for itself.** Gartner found that 39% of CMOs planned to reduce agency budgets in 2025, and its research lead warned that flat budgets may face in-year cuts. Cutting everything evenly is the default, and it is rarely the cheapest in enrollments. The demo below compares an even cut with a cut guided by marginal return, on the same savings.
 
-A decision you can explain: which channels grow, which shrink, why, and what to expect. Instead of defending a budget with “it’s what we did last year”, you defend it with scenarios and ranges.
+{{widget:cut}}
 
-## Where this leads
-
-Every possible budget split becomes an enrollment forecast. That is what leadership wants to see when it approves the budget, and it is the subject of the next guide. The reasoning starts earlier: knowing where spend saturates (second guide) is what tells you where to take budget from.
+**What you get is a decision you can explain.** Which channels grow, which shrink, why, and what to expect, with a range. Instead of defending a budget with “it is what we did last year”, you defend it with scenarios. And every possible split becomes an enrollment forecast, which is what leadership asks for when it approves the budget, the subject of the next guide.

@@ -711,6 +711,49 @@
         .page-hero h1 { font-size: 3.1rem; font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 1.25rem; }
         .page-hero p { color: var(--text-secondary); font-size: 1.15rem; margin-bottom: 2rem; }
         @media (max-width: 640px) { .page-hero h1 { font-size: 2.25rem; } .post h1 { font-size: 2rem; } }
+        /* Opening statement of each paragraph: bold + highlighter */
+        .post-body p > strong:first-child { font-weight: 800; color: var(--text-primary); background: linear-gradient(transparent 58%, rgba(99,102,241,0.2) 58%); padding: 0 0.1em; }
+        /* Interactive explainers (assets/widgets.js) */
+        .viz { margin: 2rem 0; }
+        .viz-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 20px; padding: 1.5rem; box-shadow: var(--shadow-md); }
+        .viz-tag { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent-indigo); font-weight: 700; }
+        .viz-head h3 { font-size: 1.2rem; margin: 0.25rem 0 0.4rem; letter-spacing: -0.02em; }
+        .viz-head p { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.55; margin: 0 0 1rem; }
+        .viz-ctrls { display: grid; gap: 0.9rem; margin-bottom: 1rem; }
+        .vc-h { display: flex; justify-content: space-between; gap: 1rem; font-size: 0.82rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.3rem; }
+        .vc-h output { font-family: var(--font-mono); color: var(--accent-indigo); font-weight: 700; white-space: nowrap; }
+        .vc input[type=range] { width: 100%; }
+        .vc-check { display: flex; gap: 0.5rem; align-items: center; font-size: 0.88rem; }
+        .seg { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+        .seg button { border: 1px solid var(--border-color); background: #fff; color: var(--text-primary); border-radius: 8px; padding: 0.4rem 0.8rem; font-size: 0.82rem; font-weight: 600; cursor: pointer; font-family: inherit; }
+        .seg button[aria-pressed="true"] { background: var(--accent-indigo); border-color: var(--accent-indigo); color: #fff; }
+        .seg button:focus-visible, .vnode:focus-visible, .vbtn:focus-visible { outline: 3px solid rgba(79,70,229,0.45); outline-offset: 2px; }
+        .vbtn { padding: 0.5rem 1rem; font-size: 0.85rem; margin-right: 0.5rem; }
+        .vq { display: flex; justify-content: space-between; align-items: center; gap: 1rem; font-size: 0.9rem; flex-wrap: wrap; }
+        .vq > span { flex: 1 1 260px; }
+        .viz-svg { width: 100%; height: auto; display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; }
+        .vt { font: 9px var(--font-mono); fill: #64748b; } .vl { font: 600 9.5px var(--font-sans); fill: #475569; }
+        .vtiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.75rem; margin: 1rem 0 0.5rem; }
+        .vtile { background: #f1f5f9; border-radius: 12px; padding: 0.75rem 0.9rem; display: flex; flex-direction: column; gap: 0.2rem; }
+        .vtile span { font-size: 0.72rem; color: var(--text-secondary); font-weight: 600; line-height: 1.3; }
+        .vtile b { font-family: var(--font-mono); font-size: 1.15rem; }
+        .vbars { display: flex; flex-direction: column; gap: 0.55rem; margin: 0.5rem 0; }
+        .vbar { display: grid; grid-template-columns: minmax(110px, 190px) 1fr auto; gap: 0.6rem; align-items: center; font-size: 0.82rem; }
+        .vbar-t { background: #e2e8f0; border-radius: 6px; height: 14px; overflow: hidden; } .vbar-t i { display: block; height: 100%; border-radius: 6px; }
+        .vbar-v { font-family: var(--font-mono); font-weight: 700; font-size: 0.78rem; min-width: 5.5rem; text-align: right; }
+        .vleg { display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.78rem; color: var(--text-secondary); margin: 0.5rem 0; } .vleg i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 0.35rem; }
+        .viz-take { background: rgba(99,102,241,0.07); border-left: 3px solid var(--accent-indigo); border-radius: 0 10px 10px 0; padding: 0.75rem 1rem; margin: 0.75rem 0 0; font-size: 0.92rem; line-height: 1.55; color: #334155; }
+        .viz-note { font-size: 0.72rem; color: var(--text-secondary); margin: 0.9rem 0 0; }
+        .vlist { margin-top: 0.75rem; font-size: 0.9rem; } .vlist ul { margin: 0.4rem 0 0.75rem 1.2rem; } .vlist li { margin-bottom: 0.4rem; color: #334155; } .vsub { display: block; font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; color: var(--text-secondary); margin-top: 0.6rem; }
+        .vprog { height: 10px; background: #e2e8f0; border-radius: 6px; overflow: hidden; margin: 0.5rem 0; } .vprog i { display: block; height: 100%; }
+        .vpill { display: inline-block; font-size: 0.78rem; font-weight: 700; border-radius: 999px; padding: 0.2rem 0.7rem; margin-top: 0.5rem; }
+        .vpill0 { background: #d1fae5; color: #065f46; } .vpill1 { background: #fef3c7; color: #92400e; } .vpill2 { background: #fee2e2; color: #991b1b; }
+        .vnode { cursor: pointer; } .vnode:hover circle { fill: #eef2ff; }
+        .vdots { display: grid; grid-template-columns: repeat(20, 1fr); gap: 4px; margin: 0.5rem 0; } .vdot { aspect-ratio: 1; border-radius: 50%; background: #e2e8f0; display: block; } .vdot.on { background: var(--accent-indigo); }
+        .vneeds { display: flex; flex-direction: column; gap: 0.4rem; margin: 0.5rem 0; }
+        .vneed { display: grid; grid-template-columns: 1.5rem 1fr auto; gap: 0.5rem; align-items: center; font-size: 0.88rem; padding: 0.45rem 0.7rem; border-radius: 10px; background: #f8fafc; border: 1px solid #e2e8f0; }
+        .vneed em { font-style: normal; font-size: 0.72rem; font-weight: 700; color: var(--text-secondary); } .vneed-req { border-color: #c7d2fe; background: #eef2ff; } .vneed-req .vsym { color: var(--accent-indigo); } .vneed-no { opacity: 0.6; }
+        @media (max-width: 520px) { .vbar { grid-template-columns: 1fr; gap: 0.2rem; } .vbar-v { text-align: left; } .viz-card { padding: 1.1rem; } }
 </style>
 </head>
 <body>
@@ -733,17 +776,16 @@
             <div class="crumbs"><a href="/es/blog/">Blog</a> &rsaquo; <a href="/es/blog/por-que-necesita-mmm-su-institucion-educativa/">Por qué su institución educativa necesita Marketing Mix Modeling</a></div>
             <div class="badge">Razón 5 de 6</div>
             <h1>Medir sin cookies y sin rastrear a las familias</h1>
-            <div class="post-body"><p>Durante años, la medición del marketing digital se apoyó en seguir a las personas: una cookie aquí, un píxel allá, un clic que se podía asociar a un formulario de solicitud. Esa base se ha ido erosionando, y para una institución educativa el problema es mayor que para la mayoría.</p>
-<h2>Qué dejó de funcionar</h2>
-<ul><li><strong>Los navegadores y los teléfonos limitan el rastreo.</strong> Safari y Firefox restringen las cookies de terceros, y las aplicaciones del iPhone deben pedir permiso para rastrear, que la mayoría de las personas niega.</li><li><strong>Consentimiento y regulación.</strong> En América Latina las reglas de protección de datos se endurecen (por ejemplo, la LGPD en Brasil), y un equipo de admisiones que maneja datos de familias y de menores tiene buenas razones para ser cuidadoso.</li><li><strong>Las plataformas se califican a sí mismas.</strong> Cada plataforma reporta sus resultados con sus propias reglas de atribución, y los totales casi nunca suman el número real de matrículas.</li><li><strong>Lo tradicional es invisible.</strong> La radio, las vallas, las ferias y las jornadas de puertas abiertas no dejan un clic que seguir, y sin embargo suelen pesar en la decisión.</li></ul>
+            <div class="post-body"><p><strong>Rastrear personas se ha vuelto poco confiable, y los datos que quedan están sesgados hacia quienes dan su consentimiento.</strong> La App Tracking Transparency de Apple, que llegó con iOS 14.5 en abril de 2021, exige que las aplicaciones <a href="https://www.eff.org/deeplinks/2021/04/apples-apptrackingtransparency-upending-mobile-phone-tracking">pidan permiso a los usuarios antes de rastrear</a> su actividad en las aplicaciones de otras empresas. En las primeras semanas tras el lanzamiento, <a href="https://flurry.com/blog/ios-14-5-opt-in-rate-idfa-app-tracking-transparency-weekly">Flurry midió</a> una tasa de aceptación de cerca de 12 % de los usuarios de apps en el mundo y 4 % en EE. UU., contando los toques autorizados sobre autorizados más negados. Flurry misma notó que quienes adoptan primero pueden ser más cuidadosos con la privacidad, así que tome las cifras como una señal temprana, no como una constante. La dirección es clara: una imagen de su embudo de admisiones basada en clics tiene huecos, y los huecos no son aleatorios.</p>
+<div class="viz" data-widget="visibility" data-lang="es"></div>
+<h2>Aun donde el rastreo funciona, las plataformas se califican a sí mismas</h2>
+<p><strong>Cada plataforma reporta sus resultados con sus propias reglas, y los totales casi nunca suman las matrículas reales.</strong> <a href="https://www.kellogg.northwestern.edu/academics-research/research/detail/2019/a-comparison-of-approaches-to-advertising-measurement-evidence-from/">Gordon, Zettelmeyer, Bhargava y Chapsky</a> compararon la medición observacional con experimentos aleatorizados en 15 pruebas de Facebook y encontraron que los métodos observacionales con frecuencia no reproducían los resultados experimentales. Y <strong>los canales tradicionales son invisibles por construcción</strong>: la radio, las vallas, las ferias y las jornadas de puertas abiertas no dejan un clic que seguir, y sin embargo suelen pesar en la decisión. Un embudo que no los ve subestimará a unos canales y sobrestimará a otros.</p>
 <h2>Qué usa el MMM en su lugar</h2>
-<p>El Marketing Mix Modeling solo necesita <strong>datos agregados</strong>: cuánto se invirtió por canal cada semana y cuántos leads, solicitudes y matrículas hubo esa semana. En esos datos no hay individuos, ni cookies, ni identificadores. No importa si una familia aceptó el rastreo, usó un navegador privado o se enteró del colegio por una vecina.</p>
-<p>Eso trae dos beneficios a la vez: la medición sigue funcionando a medida que el rastreo se reduce, y la institución maneja muchos menos datos personales para obtener una respuesta.</p>
-<blockquote>Esta es una propiedad de diseño del método, no asesoría legal. Las obligaciones de su institución dependen del país y del resto de cómo maneja los datos; la auditoría solo necesita cifras agregadas.</blockquote>
+<p><strong>El Marketing Mix Modeling se diseñó alrededor de datos agregados, y por eso sobrevive a la pérdida del rastreo.</strong> Necesita cuánto se invirtió en cada canal cada semana y cuántos leads, solicitudes y matrículas hubo esa semana, más un calendario. En esos datos no hay individuos: ni cookies, ni identificadores. <a href="https://developers.google.com/meridian">Meridian</a>, de Google, dice haber sido creado para habilitar una medición avanzada y «privacy-durable», y <a href="https://github.com/facebookexperimental/Robyn">Robyn</a>, de Meta, describe el MMM moderno como «una solución respetuosa de la privacidad». No importa si una familia aceptó el rastreo, usó un navegador privado o se enteró del colegio por una vecina.</p>
+<p><strong>Usar menos datos personales también reduce su propia exposición.</strong> Un equipo de admisiones maneja información de familias y de menores, y las normas de protección de datos de América Latina, como la LGPD de Brasil, hacen parte del panorama. Un método que solo necesita totales semanales necesita muchos menos datos personales para responder la pregunta del presupuesto. Es una propiedad de diseño del método, no asesoría legal, y sus obligaciones dependen de su país y del resto de cómo maneje los datos.</p>
+<div class="viz" data-widget="needs" data-lang="es"></div>
 <h2>Lo que no reemplaza</h2>
-<p>El MMM no dice qué hizo una familia en particular, ni optimiza anuncios individuales en tiempo real. Responde otra pregunta, de la que depende el presupuesto: <strong>qué canales traen estudiantes y a dónde poner el dinero.</strong> Las herramientas a nivel de clic siguen siendo útiles para la gestión diaria de campañas; el MMM es con lo que se las verifica.</p>
-<h2>Dónde se conecta</h2>
-<p>Por eso la pregunta de la primera guía, qué canales traen estudiantes, ya no se puede responder solo con atribución por clics: los clics faltan o están sesgados. El MMM mide el aporte sin ellos.</p></div>
+<p><strong>El MMM no dice qué hizo una familia en particular, ni ajusta anuncios individuales en tiempo real.</strong> Responde otra pregunta, de la que depende su presupuesto: qué canales traen estudiantes y a dónde poner el dinero. Las herramientas a nivel de clic siguen siendo útiles para la gestión diaria de campañas; el modelo de mezcla es con lo que se las verifica. Cuando una decisión es grande, una prueba aleatorizada es la verificación más fuerte, como en los <a href="https://research.google/pubs/measuring-ad-effectiveness-using-geo-experiments/">experimentos geográficos de Google</a>, y su resultado puede calibrar el modelo. Por eso la pregunta de la primera guía, qué canales traen estudiantes, ya no puede apoyarse solo en la atribución por clics.</p></div>
             <aside class="connect">
                 <h2>Cómo se conecta con las otras razones</h2>
                 <ul><li><a href="/es/blog/que-canales-traen-estudiantes/">¿Qué canales traen realmente estudiantes?</a><br>Sin cookies ni rastreo, la atribución por clics falla; el MMM mide el aporte con datos agregados.</li></ul>
@@ -774,5 +816,6 @@
             a.addEventListener('click', function () { document.cookie = 'lang=' + a.dataset.lang + ';path=/;max-age=31536000;SameSite=Lax'; });
         });
     </script>
+    <script src="/assets/widgets.js" defer></script>
 </body>
 </html>

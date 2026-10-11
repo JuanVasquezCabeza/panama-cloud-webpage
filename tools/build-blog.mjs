@@ -38,8 +38,14 @@ const write = (path, html) => { mkdirSync(join(root, path.slice(1)), { recursive
 const body = (a, lang) => {
   const f = join(root, 'content', 'blog', lang, `${a.slug[lang]}.md`);
   if (!existsSync(f)) throw new Error(`Missing article: ${f}`);
-  return md(readFileSync(f, 'utf8'));
+  return md(readFileSync(f, 'utf8'), { lang, widgetAttrs: (name) => (name === 'map' ? ` data-json='${mapJson(lang)}'` : '') });
 };
+const usesWidgets = (html) => html.includes('data-widget=');
+// Data for the interactive "how the six reasons connect" map widget.
+const mapJson = (lang) => JSON.stringify({
+  reasons: nodes.map((n) => ({ n: n.n, title: n.title[lang], card: n.card[lang], url: `/${lang}/blog/${n.slug[lang]}/` })),
+  links: R.links.map((l) => ({ from: l.from, to: l.to, text: l.text[lang] })),
+}).replace(/'/g, '&#39;');
 
 function connections(a, lang, s) {
   const rel = R.links.filter((l) => l.from === a.n || l.to === a.n)
@@ -68,13 +74,15 @@ for (const lang of LANGS) {
   // Pillar
   const cards = nodes.map((n) => `<a class="reason-card" href="${url(n, lang)}"><div class="pillar-num">${s.reason(n.n)}</div><h3>${esc(n.title[lang])}</h3><p>${esc(n.card[lang])}</p></a>`).join('\n                ');
   const map = R.links.map((l) => `<li><a href="${url(byN.get(l.from), lang)}">${esc(byN.get(l.from).title[lang])}</a> &rarr; <a href="${url(byN.get(l.to), lang)}">${esc(byN.get(l.to).title[lang])}</a><br>${esc(l.text[lang])}</li>`).join('');
+  const pBody = body(pillar, lang);
   write(url(pillar, lang), page(mk(pillar, {
+    scripts: usesWidgets(pBody) ? ['/assets/widgets.js'] : [],
     main: `
         <article class="post">
             <div class="crumbs"><a href="${paths.blog(lang)}">${s.blog}</a></div>
             <div class="badge">${s.guide}</div>
             <h1>${esc(pillar.title[lang])}</h1>
-            <div class="post-body">${body(pillar, lang)}</div>
+            <div class="post-body">${pBody}</div>
             <h2 style="font-size:1.6rem;font-weight:800;letter-spacing:-0.02em;margin:2.5rem 0 1.25rem;">${s.reasons(total)}</h2>
             <div class="grid-3" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;">
                 ${cards}
@@ -88,13 +96,15 @@ for (const lang of LANGS) {
 
   // Nodes
   for (const n of nodes) {
+    const nBody = body(n, lang);
     write(url(n, lang), page(mk(n, {
+      scripts: usesWidgets(nBody) ? ['/assets/widgets.js'] : [],
       main: `
         <article class="post">
             <div class="crumbs"><a href="${paths.blog(lang)}">${s.blog}</a> &rsaquo; <a href="${url(pillar, lang)}">${esc(pillar.title[lang])}</a></div>
             <div class="badge">${s.reasonOf(n.n, total)}</div>
             <h1>${esc(n.title[lang])}</h1>
-            <div class="post-body">${body(n, lang)}</div>${connections(n, lang, s)}
+            <div class="post-body">${nBody}</div>${connections(n, lang, s)}
             <p><a class="btn btn-secondary" href="${url(pillar, lang)}">${s.backToPillar(total)}</a></p>${cta(lang, s)}
         </article>`,
     })));

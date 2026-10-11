@@ -1,24 +1,19 @@
-Durante años, la medición del marketing digital se apoyó en seguir a las personas: una cookie aquí, un píxel allá, un clic que se podía asociar a un formulario de solicitud. Esa base se ha ido erosionando, y para una institución educativa el problema es mayor que para la mayoría.
+**Rastrear personas se ha vuelto poco confiable, y los datos que quedan están sesgados hacia quienes dan su consentimiento.** La App Tracking Transparency de Apple, que llegó con iOS 14.5 en abril de 2021, exige que las aplicaciones [pidan permiso a los usuarios antes de rastrear](https://www.eff.org/deeplinks/2021/04/apples-apptrackingtransparency-upending-mobile-phone-tracking) su actividad en las aplicaciones de otras empresas. En las primeras semanas tras el lanzamiento, [Flurry midió](https://flurry.com/blog/ios-14-5-opt-in-rate-idfa-app-tracking-transparency-weekly) una tasa de aceptación de cerca de 12 % de los usuarios de apps en el mundo y 4 % en EE. UU., contando los toques autorizados sobre autorizados más negados. Flurry misma notó que quienes adoptan primero pueden ser más cuidadosos con la privacidad, así que tome las cifras como una señal temprana, no como una constante. La dirección es clara: una imagen de su embudo de admisiones basada en clics tiene huecos, y los huecos no son aleatorios.
 
-## Qué dejó de funcionar
+{{widget:visibility}}
 
-- **Los navegadores y los teléfonos limitan el rastreo.** Safari y Firefox restringen las cookies de terceros, y las aplicaciones del iPhone deben pedir permiso para rastrear, que la mayoría de las personas niega.
-- **Consentimiento y regulación.** En América Latina las reglas de protección de datos se endurecen (por ejemplo, la LGPD en Brasil), y un equipo de admisiones que maneja datos de familias y de menores tiene buenas razones para ser cuidadoso.
-- **Las plataformas se califican a sí mismas.** Cada plataforma reporta sus resultados con sus propias reglas de atribución, y los totales casi nunca suman el número real de matrículas.
-- **Lo tradicional es invisible.** La radio, las vallas, las ferias y las jornadas de puertas abiertas no dejan un clic que seguir, y sin embargo suelen pesar en la decisión.
+## Aun donde el rastreo funciona, las plataformas se califican a sí mismas
+
+**Cada plataforma reporta sus resultados con sus propias reglas, y los totales casi nunca suman las matrículas reales.** [Gordon, Zettelmeyer, Bhargava y Chapsky](https://www.kellogg.northwestern.edu/academics-research/research/detail/2019/a-comparison-of-approaches-to-advertising-measurement-evidence-from/) compararon la medición observacional con experimentos aleatorizados en 15 pruebas de Facebook y encontraron que los métodos observacionales con frecuencia no reproducían los resultados experimentales. Y **los canales tradicionales son invisibles por construcción**: la radio, las vallas, las ferias y las jornadas de puertas abiertas no dejan un clic que seguir, y sin embargo suelen pesar en la decisión. Un embudo que no los ve subestimará a unos canales y sobrestimará a otros.
 
 ## Qué usa el MMM en su lugar
 
-El Marketing Mix Modeling solo necesita **datos agregados**: cuánto se invirtió por canal cada semana y cuántos leads, solicitudes y matrículas hubo esa semana. En esos datos no hay individuos, ni cookies, ni identificadores. No importa si una familia aceptó el rastreo, usó un navegador privado o se enteró del colegio por una vecina.
+**El Marketing Mix Modeling se diseñó alrededor de datos agregados, y por eso sobrevive a la pérdida del rastreo.** Necesita cuánto se invirtió en cada canal cada semana y cuántos leads, solicitudes y matrículas hubo esa semana, más un calendario. En esos datos no hay individuos: ni cookies, ni identificadores. [Meridian](https://developers.google.com/meridian), de Google, dice haber sido creado para habilitar una medición avanzada y «privacy-durable», y [Robyn](https://github.com/facebookexperimental/Robyn), de Meta, describe el MMM moderno como «una solución respetuosa de la privacidad». No importa si una familia aceptó el rastreo, usó un navegador privado o se enteró del colegio por una vecina.
 
-Eso trae dos beneficios a la vez: la medición sigue funcionando a medida que el rastreo se reduce, y la institución maneja muchos menos datos personales para obtener una respuesta.
+**Usar menos datos personales también reduce su propia exposición.** Un equipo de admisiones maneja información de familias y de menores, y las normas de protección de datos de América Latina, como la LGPD de Brasil, hacen parte del panorama. Un método que solo necesita totales semanales necesita muchos menos datos personales para responder la pregunta del presupuesto. Es una propiedad de diseño del método, no asesoría legal, y sus obligaciones dependen de su país y del resto de cómo maneje los datos.
 
-> Esta es una propiedad de diseño del método, no asesoría legal. Las obligaciones de su institución dependen del país y del resto de cómo maneja los datos; la auditoría solo necesita cifras agregadas.
+{{widget:needs}}
 
 ## Lo que no reemplaza
 
-El MMM no dice qué hizo una familia en particular, ni optimiza anuncios individuales en tiempo real. Responde otra pregunta, de la que depende el presupuesto: **qué canales traen estudiantes y a dónde poner el dinero.** Las herramientas a nivel de clic siguen siendo útiles para la gestión diaria de campañas; el MMM es con lo que se las verifica.
-
-## Dónde se conecta
-
-Por eso la pregunta de la primera guía, qué canales traen estudiantes, ya no se puede responder solo con atribución por clics: los clics faltan o están sesgados. El MMM mide el aporte sin ellos.
+**El MMM no dice qué hizo una familia en particular, ni ajusta anuncios individuales en tiempo real.** Responde otra pregunta, de la que depende su presupuesto: qué canales traen estudiantes y a dónde poner el dinero. Las herramientas a nivel de clic siguen siendo útiles para la gestión diaria de campañas; el modelo de mezcla es con lo que se las verifica. Cuando una decisión es grande, una prueba aleatorizada es la verificación más fuerte, como en los [experimentos geográficos de Google](https://research.google/pubs/measuring-ad-effectiveness-using-geo-experiments/), y su resultado puede calibrar el modelo. Por eso la pregunta de la primera guía, qué canales traen estudiantes, ya no puede apoyarse solo en la atribución por clics.

@@ -1,29 +1,19 @@
-Cuando llega el momento de definir el presupuesto de admisiones del próximo año, la mayoría de las instituciones usa uno de tres métodos: el presupuesto del año pasado más o menos un porcentaje, lo que sugiera el reporte que más se escucha, o lo que parece hacer la competencia. Ninguno responde la pregunta que importa: **si movemos dinero de aquí hacia allá, ¿cuántos estudiantes más matriculamos?**
-
-## Qué necesita realmente una decisión de presupuesto
-
-Para repartir bien un presupuesto se necesitan tres cosas a la vez: qué aporta cada canal (primera guía), dónde se satura cada uno (segunda guía) y cuánto dinero total hay, con restricciones reales: no se puede dejar la presencia de marca en cero, una sede nueva necesita un presupuesto mínimo de lanzamiento, una feria se reserva con un año de anticipación.
+**La mayoría de los presupuestos de admisiones se define por costumbre, y la costumbre es un método que nadie puede auditar.** Las reglas habituales son el presupuesto del año pasado más o menos un porcentaje, lo que sugiera el reporte que más se escucha, o lo que parece hacer la competencia. La [encuesta CMO de Gartner de 2025](https://secure.businesswire.com/news/home/20250512782208/en/Gartner-2025-CMO-Spend-Survey-Reveals-Marketing-Budgets-Have-Flatlined-at-7.7-of-Overall-Company-Revenue) encontró presupuestos de marketing estancados en 7,7 % de los ingresos por segundo año, así que para la mayoría de los equipos la pregunta ya no es cuánto dinero nuevo reciben, sino qué tan bien reparten el que tienen. Solo los medios pagos fueron 30,6 % de esos presupuestos, lo que hace del reparto entre canales la palanca más grande del plan. Un reparto por costumbre deja esa palanca sin usar.
 
 ## Escenarios en lugar de opiniones
 
-Con el modelo ajustado, se le pueden hacer preguntas de «qué pasaría si». Por ejemplo:
+**Un modelo ajustado permite preguntar «¿y si…?» y obtener un número, con un rango, en lugar de una opinión.** ¿Y si mantenemos el total pero movemos una parte de redes a radio? ¿Y si recibimos 15 % más, o 10 % menos? [Robyn](https://github.com/facebookexperimental/Robyn), de Meta, incluye optimización basada en gradiente para la asignación del presupuesto, que es exactamente este paso: dadas las curvas de respuesta, propone el reparto que maximiza el resultado. Abajo, un presupuesto mensual de USD 100k parte de una mezcla por costumbre (65 % redes, 20 % búsqueda, 10 % radio, 5 % jornadas de puertas abiertas). Arrástrelo, o pida el mejor reparto, y mire el rango tanto como el número.
 
-- ¿Qué pasa si mantenemos el presupuesto total, pero pasamos una parte de búsqueda a radio?
-- ¿Qué pasa si recortan el presupuesto en 10 %? ¿Dónde sale más barato el recorte en matrículas?
-- ¿Qué pasa si hay 15 % adicional? ¿Dónde rinde mejor?
+{{widget:sandbox}}
 
-> Ejemplo ilustrativo, no corresponde a datos de ningún cliente. Un grupo de colegios gasta lo mismo que el año pasado. El modelo sugiere mover 15 % de búsqueda hacia radio y jornadas de puertas abiertas, y estima un rango de 20 a 45 matrículas adicionales, con 30 como valor más probable. El rango importa tanto como el número: le dice a la dirección qué tan seguro está el modelo.
-
-Un **optimizador** va un paso más allá: dado el presupuesto total y sus restricciones, propone el reparto que maximiza las matrículas esperadas, para compararlo con el actual.
+**El mejor reparto iguala el retorno del último dólar en cada canal.** Es el principio equimarginal habitual de la asignación de recursos: si el siguiente dólar de un canal rinde más que el de otro, mover dinero del segundo al primero todavía ayuda. También explica por qué las reglas empíricas se quedan cortas. El [equilibrio 60:40 entre construcción de marca y activación](https://ipa.co.uk/media/14463/long_and_short_of_it_presentation_final_030424.pdf) de Binet y Field, sacado de 996 campañas del IPA, es un punto de partida útil, y [Mark Ritson recuerda](https://www.marketingweek.com/ritson-brand-building-boost-short-term-sales/) que es un promedio de muchas categorías y situaciones. Sus propias curvas deben afinarlo.
 
 ## Sea honesto con la incertidumbre
 
-Un modelo estima; no promete. La buena práctica es mostrar rangos, no números únicos, y **probar antes de mover todo**: aplicar el cambio primero en una sede o en una región y comparar. El resultado vuelve al modelo y hace más precisa la siguiente recomendación.
+**Un modelo estima; no promete, así que muestre rangos y pruebe antes de mover todo.** Medir es difícil incluso para las plataformas: [Gordon y colegas](https://www.kellogg.northwestern.edu/academics-research/research/detail/2019/a-comparison-of-approaches-to-advertising-measurement-evidence-from/) mostraron en 15 experimentos de Facebook que las estimaciones observacionales con frecuencia se alejaban de lo que encontraban las pruebas aleatorizadas. Una buena práctica es aplicar un cambio primero en una sede o región, con la lógica de los [experimentos geográficos de Google](https://research.google/pubs/measuring-ad-effectiveness-using-geo-experiments/), donde las regiones se asignan al azar a control o tratamiento, y luego devolver el resultado al modelo. Meridian permite justamente eso: [calibrar los MMM con experimentos](https://developers.google.com/meridian). Cada prueba hace más precisa la siguiente recomendación.
 
-## Qué obtiene
+**Un recorte es el momento en que un modelo se paga solo.** Gartner encontró que 39 % de los CMO planeaba reducir presupuestos de agencias en 2025, y su responsable de investigación advirtió que los presupuestos estancados pueden enfrentar recortes durante el año. Recortar todo por igual es lo habitual, y rara vez es lo más barato en matrículas. La demo de abajo compara un recorte parejo con uno guiado por el retorno marginal, con el mismo ahorro.
 
-Una decisión que se puede explicar: qué canales crecen, cuáles se reducen, por qué y qué esperar. En lugar de defender un presupuesto con «es lo que hicimos el año pasado», lo defiende con escenarios y rangos.
+{{widget:cut}}
 
-## A dónde lleva esto
-
-Cada reparto posible del presupuesto se convierte en un pronóstico de matrículas. Eso es lo que la dirección quiere ver cuando aprueba el presupuesto, y es el tema de la siguiente guía. El razonamiento empieza antes: saber dónde se satura la inversión (segunda guía) es lo que indica de dónde sacar presupuesto.
+**Lo que obtiene es una decisión que puede explicar.** Qué canales crecen, cuáles se reducen, por qué y qué esperar, con un rango. En lugar de defender un presupuesto con «es lo que hicimos el año pasado», lo defiende con escenarios. Y cada reparto posible se convierte en un pronóstico de matrículas, que es lo que la dirección pide cuando aprueba el presupuesto, el tema de la siguiente guía.

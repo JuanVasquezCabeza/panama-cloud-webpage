@@ -1,25 +1,17 @@
-Todo director de admisiones lo ha vivido: la primera campaña en un canal funciona de maravilla, así que al año siguiente se duplica el presupuesto, y los resultados casi no se mueven. No es mala suerte ni una pieza creativa floja. Son los **rendimientos decrecientes**, y todos los canales los tienen.
+**Todo canal tiene un techo, y su costo promedio por matrícula no le dirá cuándo lo alcanza.** Tome un canal ilustrativo de redes sociales pagas: los primeros USD 20.000 al mes traen 100 matrículas (USD 200 cada una), los siguientes USD 20.000 traen 60 más (USD 333 cada una) y los siguientes USD 20.000 solo 36 (USD 556 cada una). Aun así, el costo promedio de los USD 60.000 es de unos USD 306, una cifra que se ve perfectamente aceptable. Por eso los reportes que solo muestran el promedio siguen financiando canales mucho después de que dejaron de rendir. La demo de abajo le permite recorrer esa curva en cuatro canales estilizados.
 
-## Por qué el siguiente peso vale menos que el anterior
+{{widget:saturation}}
 
-Un canal solo llega a cierta cantidad de personas que de verdad están considerando su colegio: las familias de su zona, con el presupuesto adecuado, en el momento adecuado. La primera inversión llega a las más fáciles. La siguiente llega a las mismas personas otra vez, o a personas menos interesadas. El gasto sigue subiendo, pero cada matrícula adicional sale más cara.
+## Los rendimientos decrecientes están entre los hechos mejor documentados de la publicidad
 
-> Ejemplo ilustrativo, no corresponde a datos de ningún cliente. Imagine un canal de redes sociales pagas. Los primeros USD 20.000 al mes traen 100 solicitudes (USD 200 cada una). Al subir a USD 40.000 se llega a 160 en total, así que los 20.000 adicionales compraron 60 más (USD 333 cada una). Con USD 60.000 el total es 190, y el tercer bloque solo compró 30 más (USD 667 cada una). El costo *promedio* por solicitud parece aceptable todo el tiempo; lo que creció fue el costo *marginal*.
+**Las elasticidades publicitarias están muy por debajo de uno, que es el rendimiento decreciente escrito como número.** En su metaanálisis de 56 estudios, [Sethuraman, Tellis y Briesch](https://www.gwern.net/doc/economics/advertising/2011-sethuraman.pdf) encontraron una elasticidad publicitaria promedio de corto plazo de 0,12: un aumento de 10 % en publicidad sube las ventas cerca de 1,2 %, no 10 %. La cifra de largo plazo fue 0,24, todavía lejos de ser proporcional. Las herramientas de modelado se construyen alrededor de este hecho: [Robyn](https://github.com/facebookexperimental/Robyn), de Meta, permite explorar tasas de adstock y curvas de saturación, y [Meridian](https://developers.google.com/meridian) permite calibrar MMM con experimentos, entre canales.
 
-## El costo promedio esconde el problema
+**La saturación es una propiedad de la audiencia, no de la pieza creativa.** Solo hay cierto número de familias en su zona que realmente están considerando un colegio como el suyo, y los primeros pesos llegan a las más fáciles. Blake, Nosko y Tadelis vieron lo mismo en eBay: [los usuarios nuevos y poco frecuentes eran influidos positivamente por los anuncios de búsqueda sin marca](https://www.nber.org/papers/w20171), pero los usuarios frecuentes, cuyo comportamiento no era influido por los anuncios, concentraban la mayor parte del gasto publicitario, de modo que el retorno promedio era negativo. Gastar más en quienes ya decidieron no compra nada. Un mejor diseño o un nuevo mensaje puede mover la curva, pero no elimina el techo.
 
-La mayoría de los reportes muestran el costo promedio por lead o por matrícula. Se mueve despacio y se ve bien mucho después de que el canal ya se saturó. El número que importa para decidir dónde poner el próximo peso es el **marginal**: lo que realmente traerá el siguiente bloque de inversión.
+## El número que importa es el marginal
 
-El MMM estima una **curva de respuesta para cada canal**: la relación entre cuánto invierte y qué obtiene. Además muestra en qué punto de esa curva está hoy: todavía subiendo, doblándose o plana.
+**Para decidir a dónde va el próximo peso se necesita el retorno del próximo peso, no el promedio de todos los anteriores.** Los canales están en puntos distintos de sus curvas: uno muy financiado puede estar plano mientras uno pequeño todavía sube. Con presupuestos estancados en 7,7 % de los ingresos y 59 % de los CMO diciendo que son demasiado pequeños, según la [encuesta de Gartner de 2025](https://secure.businesswire.com/news/home/20250512782208/en/Gartner-2025-CMO-Spend-Survey-Reveals-Marketing-Budgets-Have-Flatlined-at-7.7-of-Overall-Company-Revenue), cada peso tiene que ir donde todavía rinde. Pruébelo: sume el mismo presupuesto adicional a cuatro canales que parten de niveles distintos.
 
-## Qué cambia en la práctica
+{{widget:extra_budget}}
 
-- Puede dejar de sumar a canales que ya llegaron a su meseta, en vez de descubrirlo cuando ya cerró la admisión.
-- Puede encontrar canales que siguen en la parte empinada de la curva, donde cada peso extra todavía rinde bien.
-- Puede distinguir cuándo un canal no está rindiendo mal, sino simplemente **sobrefinanciado**.
-
-Una advertencia: las curvas son propias de cada canal, sede y momento, y el modelo las aprende de cómo cambió su inversión en el tiempo. Si un canal siempre recibe exactamente la misma inversión, no hay suficiente variación para conocer su curva. Es una de las cosas que revisa la auditoría inicial.
-
-## A dónde lleva esto
-
-Saber dónde se satura la inversión no es un fin en sí mismo: le dice de dónde sacar presupuesto y a dónde llevarlo. De eso trata la siguiente guía, sobre cómo repartir el presupuesto de admisiones. Y solo funciona cuando ya se sabe qué aporta realmente cada canal, como se explica en la primera guía de esta serie.
+**Una curva es tan buena como la variación que hay detrás, así que verifíquela con una prueba.** El modelo aprende la curva de cada canal de cómo cambió su inversión en el tiempo; si un canal siempre recibe la misma cantidad, no hay movimiento suficiente para conocer su forma. Es una de las cosas que revisa la auditoría inicial. Cuando una decisión es grande, un pequeño experimento la resuelve: los [experimentos geográficos de Google](https://research.google/pubs/measuring-ad-effectiveness-using-geo-experiments/) asignan regiones al azar a control o tratamiento, y el resultado puede volver al modelo, como [Meridian lo permite](https://developers.google.com/meridian). Saber dónde se satura la inversión le dice entonces de dónde sacar presupuesto y a dónde llevarlo, que es el tema de la siguiente guía.

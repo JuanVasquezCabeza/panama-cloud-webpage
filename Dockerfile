@@ -9,6 +9,7 @@ WORKDIR /app
 COPY index.html sitemap.xml robots.txt ./
 COPY en ./en
 COPY es ./es
+COPY assets ./assets
 
 # Perform basic syntax/HTML integrity validation on every page
 RUN echo "Validating HTML structure..." && \

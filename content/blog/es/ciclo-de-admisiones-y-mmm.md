@@ -1,23 +1,15 @@
-Las admisiones no funcionan como una tienda. Una familia no decide por impulso: tarda meses en pensar, visitar, comparar y esperar la ventana de matrícula. Por eso **cuándo** se invierte importa tanto como **cuánto**, y es la razón principal por la que los reportes simples engañan.
+**La publicidad sigue trabajando después de terminar, y por eso engañan los reportes que comparan la inversión de cada mes con los resultados de ese mismo mes.** En su metaanálisis de 56 estudios, [Sethuraman, Tellis y Briesch (2011)](https://www.gwern.net/doc/economics/advertising/2011-sethuraman.pdf) encontraron una elasticidad publicitaria promedio de 0,12 en el corto plazo y de 0,24 en el largo: con el tiempo, el efecto es cerca del doble de lo que muestra la primera medición. El concepto se remonta a Simon Broadbent, quien introdujo el «adstock», el arrastre de la publicidad, en [un artículo de 1979](https://en.wikipedia.org/wiki/Advertising_adstock). [Robyn](https://github.com/facebookexperimental/Robyn), de Meta, todavía permite hoy explorar tasas de adstock. En admisiones, donde una familia puede tardar meses en decidir, el retraso es la regla, no la excepción. Véalo abajo: elija un canal y una duración de campaña, y observe cuánto del efecto llega después de que la campaña termina.
 
-## Los efectos llegan tarde
-
-Una campaña de radio en septiembre no produce solicitudes en septiembre. Construye reconocimiento que se convierte en visitas en noviembre, solicitudes en enero y matrículas en marzo. Los reportes que comparan la inversión de cada mes con los resultados de ese mismo mes le dirán que la radio no hizo nada, y las cifras de los meses siguientes se las atribuirán a otro canal.
-
-El Marketing Mix Modeling representa esto de forma explícita como un **efecto de arrastre**: una inversión sigue trabajando durante semanas o meses, y se desvanece poco a poco. Cada canal tiene su propia duración; una jornada de puertas abiertas dura distinto que una valla.
+{{widget:carryover}}
 
 ## Una sola ventana al año
 
-La mayoría de las instituciones tiene una gran ventana de decisión. Buena parte de las matrículas se concentra en pocas semanas, y el resto del año se construye hacia ella. Un modelo que ignore la estacionalidad le atribuiría el mérito al canal que casualmente estaba activo en el pico, cuando el pico habría llegado de todos modos.
+**Las admisiones siguen un calendario, y el pico estacional no es un efecto de un canal.** La mayoría de las instituciones tiene una gran ventana de decisión, y buena parte de las matrículas se concentra en pocas semanas. Un modelo que ignora la estacionalidad le atribuye el mérito al canal que casualmente estaba activo en el pico, cuando el pico habría llegado de todos modos. Por eso el enfoque de Robyn incluye la [descomposición de series de tiempo en tendencia y estacionalidad](https://github.com/facebookexperimental/Robyn). La demo de abajo muestra las mismas solicitudes semanales leídas de dos formas: un reporte simple que atribuye a un impulso digital todo lo que supera el nivel normal, y un modelo que separa la temporada y el reconocimiento previo del impulso en sí.
 
-> Ejemplo ilustrativo, no corresponde a datos de ningún cliente. Un colegio invierte mucho en anuncios digitales en las semanas previas a la apertura de matrículas, y las solicitudes se disparan. Un reporte simple dice que lo digital es el mejor canal. El modelo separa el pico estacional del efecto de los anuncios, y encuentra que parte del aumento habría ocurrido igual, mientras que la inversión en radio de meses atrás explica una parte que el reporte atribuyó a lo digital.
+{{widget:season}}
 
 ## Qué significa en la práctica
 
-- Comparar años exige tener en cuenta el calendario: una jornada de puertas abiertas más temprana o un cambio en la fecha de matrícula mueve resultados de un mes a otro.
-- El mejor momento para ajustar la mezcla es meses antes de la ventana, no durante ella.
-- Cada ciclo de admisiones aporta información; con dos o más ciclos el modelo separa mucho mejor la estacionalidad de los efectos de los canales. Si tiene menos, la auditoría inicial evalúa qué es factible.
+**El mejor momento para ajustar la mezcla es meses antes de la ventana, no durante ella.** Como los efectos llegan tarde, las decisiones tomadas dentro de la ventana cambian sobre todo los resultados del año siguiente. La [encuesta de Gartner de 2025](https://secure.businesswire.com/news/home/20250512782208/en/Gartner-2025-CMO-Spend-Survey-Reveals-Marketing-Budgets-Have-Flatlined-at-7.7-of-Overall-Company-Revenue) encontró que 59 % de los CMO decía que su presupuesto era demasiado pequeño, y su responsable de investigación advirtió que los presupuestos estancados pueden enfrentar recortes durante el año, así que poder decir temprano qué recortes son seguros importa. Un modelo que lee el retraso y la temporada puede decirle cuándo la señal ya está ahí.
 
-## Dónde se conecta
-
-Los efectos rezagados son la razón por la que la respuesta a «¿qué canales traen estudiantes?» (primera guía) no puede salir del último clic: la causa real ocurrió meses antes. Y la estacionalidad le da al pronóstico de matrículas (cuarta guía) su forma, con sus picos y valles.
+**Comparar años exige tener en cuenta el calendario, y cada ciclo aporta información.** Una jornada de puertas abiertas más temprana o un cambio en la fecha de matrícula mueve resultados de un mes a otro sin que cambie el desempeño de ningún canal. Con dos o más ciclos, un modelo separa mucho mejor la estacionalidad de los efectos de los canales; con menos, la auditoría inicial evalúa qué es factible. Los efectos rezagados son la razón por la que la respuesta a «¿qué canales traen estudiantes?» no puede salir del último clic: la causa real ocurrió meses antes. Y la estacionalidad le da al pronóstico de matrículas su forma, con sus picos y valles.
