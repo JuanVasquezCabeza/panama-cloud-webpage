@@ -63,9 +63,9 @@ export const paths = {
 export const otherLang = (l) => (l === 'en' ? 'es' : 'en');
 
 const LABELS = {
-  en: { home: 'Home', products: 'Products & Solutions', blog: 'Blog', partners: 'Partners', privacy: 'Privacy Notice', audit: 'Request Audit', rights: 'All rights reserved.',
+  en: { home: 'Home', products: 'Products & Solutions', blog: 'Blog', partners: 'Partners', privacy: 'Privacy Notice', audit: 'Let’s talk', rights: 'All rights reserved.',
     tagline: 'Marketing Mix Modeling for education institutions in Latin America.', switchTo: 'Switch to English', langName: 'English' },
-  es: { home: 'Inicio', products: 'Productos y soluciones', blog: 'Blog', partners: 'Aliados', privacy: 'Aviso de Privacidad', audit: 'Solicitar auditoría', rights: 'Todos los derechos reservados.',
+  es: { home: 'Inicio', products: 'Productos y soluciones', blog: 'Blog', partners: 'Aliados', privacy: 'Aviso de Privacidad', audit: 'Hablemos', rights: 'Todos los derechos reservados.',
     tagline: 'Marketing Mix Modeling para instituciones educativas de América Latina.', switchTo: 'Cambiar a español', langName: 'Español' },
 };
 

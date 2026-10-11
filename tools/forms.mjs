@@ -27,8 +27,8 @@ export const FORM_STR = {
       studentRange: 'Approximate students', studentRanges: [['UNDER_1000', 'Under 1,000'], ['FROM_1000_TO_3000', '1,000 - 3,000'], ['FROM_3000_TO_10000', '3,000 - 10,000'], ['OVER_10000', 'Over 10,000']],
       campusCount: 'Number of campuses', campusCountPh: 'e.g. 3',
       channels: 'Where do you invest in admissions marketing?', channelOpts: [['SEARCH', 'Google / search ads'], ['SOCIAL', 'Meta / TikTok / social ads'], ['DISPLAY_VIDEO', 'Display / YouTube'], ['RADIO_TV', 'Radio / TV'], ['OUTDOOR', 'Billboards / outdoor'], ['EVENTS', 'Fairs / open days / events'], ['OTHER', 'Other']],
-      message: 'What would you like to learn?', messagePh: 'e.g. We want to know which channels bring enrollments and where to cut or add budget.',
-      send: 'Send audit request', subject: 'Marketing Data Audit request',
+      message: 'How can we help?', messagePh: 'e.g. We want to know which channels bring enrollments and where to cut or add budget.',
+      send: 'Let’s talk', subject: 'Let’s talk — website',
     },
     partner: {
       organization: 'Company', organizationPh: 'Your company',
@@ -53,8 +53,8 @@ export const FORM_STR = {
       studentRange: 'Número aproximado de estudiantes', studentRanges: [['UNDER_1000', 'Menos de 1.000'], ['FROM_1000_TO_3000', '1.000 - 3.000'], ['FROM_3000_TO_10000', '3.000 - 10.000'], ['OVER_10000', 'Más de 10.000']],
       campusCount: 'Número de sedes', campusCountPh: 'p. ej. 3',
       channels: '¿En qué canales invierte para admisiones?', channelOpts: [['SEARCH', 'Google / anuncios de búsqueda'], ['SOCIAL', 'Meta / TikTok / redes sociales'], ['DISPLAY_VIDEO', 'Display / YouTube'], ['RADIO_TV', 'Radio / TV'], ['OUTDOOR', 'Vallas / publicidad exterior'], ['EVENTS', 'Ferias / puertas abiertas / eventos'], ['OTHER', 'Otro']],
-      message: '¿Qué le gustaría saber?', messagePh: 'p. ej. Queremos saber qué canales traen matrículas y dónde recortar o sumar presupuesto.',
-      send: 'Enviar solicitud de auditoría', subject: 'Solicitud de Auditoría de Datos de Marketing',
+      message: '¿Cómo podemos ayudarle?', messagePh: 'p. ej. Queremos saber qué canales traen matrículas y dónde recortar o sumar presupuesto.',
+      send: 'Hablemos', subject: 'Hablemos — sitio web',
     },
     partner: {
       organization: 'Empresa', organizationPh: 'Su empresa',
